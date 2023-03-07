@@ -1,14 +1,16 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass{article}
 
-% change to german
-\usepackage[german]{babel}
+% various packages and settings {{{
 
-% better hyphenation
-\usepackage[final]{microtype}
-\usepackage{csquotes}
-
-% packages, images, math
-\usepackage{geometry, graphicx, amsfonts, multicol}
+% page format
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=20mm,
+    bottom=20mm
+}
 
 % font
 \usepackage[scaled]{helvet}
@@ -18,23 +20,38 @@
 % fontsize
 \usepackage[14pt]{extsizes}
 
-% Set Layout
-\geometry{
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=15mm,
-    bottom=25mm
-}
+% set line spacing
+\setstretch{1.5}
+
+% no paragraph indents
+\setlength{\parindent}{0pt}
+
+% page header
+\usepackage{fancyhdr} \pagestyle{fancy}
+\fancyhead[R]{<++>}
+
+% change to German
+\usepackage[german]{babel}
+
+% better hyphenation
+\usepackage[final]{microtype}
+\usepackage{csquotes}
 
 % import line spacing
 \usepackage{setspace}
 
-% set line spacing
-\setstretch{1.5}
+% math packages
+\usepackage{amsmath, amsfonts, mathtools}
+
+% other packages
+\usepackage{graphicx, multicol}
+
+% }}}
+
+\title{<++>}
 
 \begin{document}
 
-
+<++>
 
 \end{document}
