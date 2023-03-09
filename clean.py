@@ -5,7 +5,7 @@ blacklisted = [
     ".aux",
     ".fls",
     ".log",
-    # ".pdf",
+    ".pdf",
     ".gz",
     ".fdb_latexmk",
     ".dvi",

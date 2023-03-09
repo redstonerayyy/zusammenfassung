@@ -2,36 +2,28 @@
 
 % various packages and settings {{{
 
-% page format
-\usepackage{geometry}
-\geometry{
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=20mm,
-    bottom=20mm
-}
+% math packages
+\usepackage{amsmath, amsfonts, mathtools}
+
+% other important packages (should stay on top)
+\usepackage{graphicx, multicol, xcolor}
+
+% change to German
+\usepackage[german]{babel}
+
+% utf8 characters
+\usepackage[utf8]{inputenc}
 
 % font
 \usepackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
-\usepackage[T1]{fontenc}
+\usepackage[]{fontspec}
 
 % fontsize
-\usepackage[14pt]{extsizes}
-
-% set line spacing
-\setstretch{1.5}
+\usepackage[12pt]{extsizes}
 
 % no paragraph indents
 \setlength{\parindent}{0pt}
-
-% page header
-\usepackage{fancyhdr} \pagestyle{fancy}
-\fancyhead[R]{<++>}
-
-% change to German
-\usepackage[german]{babel}
 
 % better hyphenation
 \usepackage[final]{microtype}
@@ -40,11 +32,22 @@
 % import line spacing
 \usepackage{setspace}
 
-% math packages
-\usepackage{amsmath, amsfonts, mathtools}
-
-% other packages
-\usepackage{graphicx, multicol}
+% page format
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm
+}
+    
+% page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\today}}
+\rhead{\textbf{Induktion}}
 
 % }}}
 
