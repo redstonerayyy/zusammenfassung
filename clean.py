@@ -15,6 +15,9 @@ blacklisted = [
 
 def clean():
     for root, dirs, files in os.walk(".", topdown=True):
+        print(root)
+        if root == "./out":
+            continue
         for file in files:
             if pathlib.Path(file).suffix in blacklisted:
                 os.remove(os.path.join(root, file))

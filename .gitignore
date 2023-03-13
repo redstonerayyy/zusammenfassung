@@ -7,3 +7,6 @@
 *.xdv
 *.dvi
 *.gz
+
+# pdf output
+/out

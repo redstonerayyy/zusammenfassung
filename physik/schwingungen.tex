@@ -1,0 +1,141 @@
+\documentclass{article}
+
+% various packages and settings {{{
+
+% math packages
+\usepackage{amsmath, amsfonts, mathtools}
+
+% other important packages (should stay on top)
+\usepackage{graphicx, multicol, xcolor}
+
+% change to German
+\usepackage[german]{babel}
+
+% utf8 characters
+\usepackage[utf8]{inputenc}
+
+% font
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[]{fontspec}
+
+% fontsize
+\usepackage[12pt]{extsizes}
+
+% no paragraph indents
+\setlength{\parindent}{0pt}
+
+% better hyphenation
+\usepackage[final]{microtype}
+\usepackage{csquotes}
+
+% import line spacing
+\usepackage{setspace}
+
+% page format
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm
+}
+    
+% page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\today}}
+\rhead{\textbf{Schwingungen}}
+
+% }}}
+
+\begin{document}
+
+% set line spacing
+\setstretch{1.5}
+
+\section*{Versuche zu Feder- und Fadenpendel}
+
+Um Aufschluss über die Zusammehänge von Masse (m), Federstärke / Federkonstante (D),
+Startamplitude ($s_0$) beim Federpendel und Masse (m), Fadenlänge (l),
+Startamplitude ($s_0$) beim Fadenpendel in Bezug auf die zu Erwartende
+Schwingungsdauer zu erhalten lassen sich 2 Experimente durchführen.
+
+Faden und Feder lassen sich an einem Stativ befestigen. Anschließend befestigt man ein
+Massestück an Faden und Feder, sodass man nun 2 funktionierende Pendel hat.
+Zur Messung der Schwingungsdauer (T) läßt sich nun eine Lichtschranke verwenden.
+Beim Federpendel bietet es sich dabei an, etwas vom Massestück herausragendes zu nutzen
+wie z. B. ein Stück Papier, damit nicht die Feder detektiert wird von der Lichtschranke.
+
+In verschiedenen Experimentteilen lassen sich nun die größen Masse (m),
+Federstärke / Federkonstante (D), Fadenlänge (l) und Startamplitude ($s_0$) variieren.
+So lassen sich anschließend Messwerte erkennen. Besonders einfach ist dies, wenn man
+eine Lichtschranke mit guten digitalen möglichkeiten nutzt, so dass die Daten von einem
+digitalen Gerät (e. g. Tablet) direkt z. B. als Graph dargestellt werden.
+
+\clearpage
+
+\section*{Federpendel}
+
+\subsection*{Herleitung der Formel zur Berechnung der Schwingungsdauer (T) beim Federpendel}
+
+Diesem Ansatz liegt der zugrunde, dass beim Federpendel das lineare Kraftgesetz gilt.
+
+\large
+$F_R = -D \cdot s_0$
+\hspace*{1cm}$F_R \propto s_0$
+\vspace{0.5cm}
+
+\normalsize
+Die Kraft läßt sich auch durch $F = m \cdot a$ beschrieben.
+Die Beschleunigung ist die 2. Ableitunge der Strecke $a = \ddot{s}$. Dies lässt sich
+einsetzen.
+
+\large
+$m \cdot \ddot{s} = -D \cdot s_0$
+\vspace{0.5cm}
+
+\normalsize
+Da die Strecke jeweils abhängig zur Zeit ist, lassen sich in diesem Fall $\ddot{s}$ und
+$s_0$ als Sinusfunktion mit $t$ als Parameter darstellen.
+
+\large
+$m \cdot \ddot{s}(t) = -D \cdot s(t)$
+\vspace{0.5cm}
+
+\normalsize
+Vereinfacht kann man von einer ungedämpften Schwingung ausgehen, sodass wir eine
+normale Sinusfunktion mit $s_0$ als Amplitude haben. Daraus lässt sich dann auch die
+Ableitung bilden.
+
+\large
+$s(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t)$
+
+$\ddot{s}(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \cdot -(\frac{2\pi}{T})^2$
+\vspace{0.5cm}
+
+\normalsize
+Nun setzt man diese beiden Funktionen ein und formt um.
+
+\large
+\begin{align*}
+    m \cdot -(\frac{2\pi}{T})^2 \cdot s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) & =
+    -D \cdot s_0 \cdot \sin (\frac{2\pi}{T} \cdot t)
+                                                                              & | : s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \\
+    m \cdot -(\frac{2\pi}{T})^2                                               & =
+    -D                                                                        & | \cdot -1, : m                             \\
+    (\frac{2\pi}{T})^2                                                        & =
+    \frac{D}{m}                                                               & | \sqrt{\phantom{x}}                        \\
+    \frac{2\pi}{T}                                                            & =
+    \sqrt{\frac{D}{m}}                                                        & | \text{\normalsize Kehrbrüche}, : 2\pi     \\
+    T                                                                         & =
+    2\pi \cdot \sqrt{\frac{D}{m}}
+\end{align*}
+
+\clearpage
+
+\section*{Fadenpendel}
+
+\end{document}
