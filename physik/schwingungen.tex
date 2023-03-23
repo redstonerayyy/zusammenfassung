@@ -49,6 +49,43 @@
 \lhead{\textbf{\today}}
 \rhead{\textbf{Schwingungen}}
 
+% colorful boxes
+\usepackage{mdframed}
+
+\setcounter{secnumdepth}{0} % no section numbering
+
+% }}}
+
+% custom commands {{{
+\usepackage{environ}
+
+% define custom formula environment
+\NewEnviron{formulas}{
+    \vspace{-2.5em}
+    \Large
+    \begin{align*}
+        \BODY
+    \end{align*}
+    \normalsize
+}
+
+% same formula env, but with red border
+\NewEnviron{Formulas}{
+    \begin{mdframed}[linecolor=red]
+        \vspace{-2.5em}
+        \Large
+        \begin{align*}
+            \BODY
+        \end{align*}
+        \normalsize
+    \end{mdframed}
+}
+
+% normal-sized text inside the formulas
+\newcommand{\normaltext}[1]{
+    \normalsize\text{#1}\Large
+}
+
 % }}}
 
 \begin{document}
@@ -56,10 +93,11 @@
 % set line spacing
 \setstretch{1.5}
 
-\section*{Versuche zu Feder- und Fadenpendel}
+\section{Versuche zu Feder- und Fadenpendel}
 
-Um Aufschluss über die Zusammehänge von Masse (m), Federstärke / Federkonstante (D),
-Startamplitude ($s_0$) beim Federpendel und Masse (m), Fadenlänge (l),
+Um Aufschluss über die Zusammenhänge von Masse ($m$), Federstärke /
+Federkonstante ($D$),
+Startamplitude ($s_0$) beim Federpendel und Masse ($m$), Fadenlänge ($l$),
 Startamplitude ($s_0$) beim Fadenpendel in Bezug auf die zu Erwartende
 Schwingungsdauer zu erhalten lassen sich 2 Experimente durchführen.
 
@@ -69,74 +107,67 @@ Zur Messung der Schwingungsdauer (T) läßt sich nun eine Lichtschranke verwende
 Beim Federpendel bietet es sich dabei an, etwas vom Massestück herausragendes zu nutzen
 wie z. B. ein Stück Papier, damit nicht die Feder detektiert wird von der Lichtschranke.
 
-In verschiedenen Experimentteilen lassen sich nun die größen Masse (m),
-Federstärke / Federkonstante (D), Fadenlänge (l) und Startamplitude ($s_0$) variieren.
+In verschiedenen Experimentteilen lassen sich nun die Größen Masse ($m$),
+Federstärke / Federkonstante ($D$), Fadenlänge ($l$) und Startamplitude ($s_0$) variieren.
 So lassen sich anschließend Messwerte erkennen. Besonders einfach ist dies, wenn man
 eine Lichtschranke mit guten digitalen möglichkeiten nutzt, so dass die Daten von einem
 digitalen Gerät (e. g. Tablet) direkt z. B. als Graph dargestellt werden.
 
 \clearpage
 
-\section*{Federpendel}
+\section{Federpendel}
 
-\subsection*{Herleitung der Formel zur Berechnung der Schwingungsdauer (T) beim Federpendel}
+\subsection{Herleitung der Formel zur Berechnung der Schwingungsdauer (T) beim Federpendel}
 
 Diesem Ansatz liegt der zugrunde, dass beim Federpendel das lineare Kraftgesetz gilt.
 
-\large
-$F_R = -D \cdot s_0$
-\hspace*{1cm}$F_R \propto s_0$
-\vspace{0.5cm}
+\begin{formulas}
+    F_R = -D \cdot s_0 && F_R \propto s_0
+\end{formulas}
 
-\normalsize
 Die Kraft läßt sich auch durch $F = m \cdot a$ beschrieben.
-Die Beschleunigung ist die 2. Ableitunge der Strecke $a = \ddot{s}$. Dies lässt sich
+Die Beschleunigung ist die 2. Ableitungen der Strecke $a = \ddot{s}$. Dies lässt sich
 einsetzen.
 
-\large
-$m \cdot \ddot{s} = -D \cdot s_0$
-\vspace{0.5cm}
+\begin{formulas}
+    m \cdot \ddot{s} = -D \cdot s_0
+\end{formulas}
 
-\normalsize
 Da die Strecke jeweils abhängig zur Zeit ist, lassen sich in diesem Fall $\ddot{s}$ und
 $s_0$ als Sinusfunktion mit $t$ als Parameter darstellen.
 
-\large
-$m \cdot \ddot{s}(t) = -D \cdot s(t)$
-\vspace{0.5cm}
+\begin{formulas}
+    m \cdot \ddot{s}(t) = -D \cdot s(t)
+\end{formulas}
 
-\normalsize
 Vereinfacht kann man von einer ungedämpften Schwingung ausgehen, sodass wir eine
 normale Sinusfunktion mit $s_0$ als Amplitude haben. Daraus lässt sich dann auch die
 Ableitung bilden.
 
-\large
-$s(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t)$
+\begin{formulas}
+    s(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \\
+    \ddot{s}(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \cdot -(\frac{2\pi}{T})^2
+\end{formulas}
 
-$\ddot{s}(t) = s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \cdot -(\frac{2\pi}{T})^2$
-\vspace{0.5cm}
-
-\normalsize
 Nun setzt man diese beiden Funktionen ein und formt um.
 
-\large
-\begin{align*}
+\begin{formulas}
     m \cdot -(\frac{2\pi}{T})^2 \cdot s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) & =
-    -D \cdot s_0 \cdot \sin (\frac{2\pi}{T} \cdot t)
+        -D \cdot s_0 \cdot \sin (\frac{2\pi}{T} \cdot t)
                                                                               & | : s_0 \cdot \sin (\frac{2\pi}{T} \cdot t) \\
-    m \cdot -(\frac{2\pi}{T})^2                                               & =
+        m \cdot -(\frac{2\pi}{T})^2                                               & =
     -D                                                                        & | \cdot -1, : m                             \\
-    (\frac{2\pi}{T})^2                                                        & =
+        (\frac{2\pi}{T})^2                                                        & =
     \frac{D}{m}                                                               & | \sqrt{\phantom{x}}                        \\
-    \frac{2\pi}{T}                                                            & =
-    \sqrt{\frac{D}{m}}                                                        & | \text{\normalsize Kehrbrüche}, : 2\pi     \\
+        \frac{2\pi}{T}                                                            & =
+    \sqrt{\frac{D}{m}}                                                        & | \normaltext{Kehrbrüche}, : 2\pi     \\
     T                                                                         & =
-    2\pi \cdot \sqrt{\frac{m}{D}}
-\end{align*}
+        2\pi \cdot \sqrt{\frac{m}{D}}
+\end{formulas}
 
 \clearpage
 
-\section*{Fadenpendel}
+\section{Fadenpendel}
 
 $T = 2\pi \cdot \sqrt{\frac{l}{g}}$
 
