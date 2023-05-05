@@ -7,6 +7,7 @@
 *.xdv
 *.dvi
 *.gz
+*.toc
 
 # pdf output
 /out
