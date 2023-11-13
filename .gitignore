@@ -11,3 +11,6 @@
 
 # pdf output
 /out
+
+# python
+**/__pycache__/**
