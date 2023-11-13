@@ -10,6 +10,7 @@ blacklisted = [
     ".fdb_latexmk",
     ".dvi",
     ".xdv",
+    ".toc"
 ]
 
 
