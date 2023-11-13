@@ -2,7 +2,9 @@ import subprocess, os, pathlib, shutil
 from clean import clean
 
 filelist = [
-    "./physik/induktion.tex"
+    "./physik/physik.tex",
+    "./mathe/mathe.tex",
+    "./informatik/informatik.tex"
 ]
 
 def build():
