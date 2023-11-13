@@ -1,11 +1,7 @@
-.PHONY: build out clean
+.PHONY: build clean
 
 build:
-	python build.py
+	python ./scripts/build.py
 
 clean:
-	python clean.py
-
-out:
-	python build.py
-	python clean.py
+	python ./scripts/clean.py

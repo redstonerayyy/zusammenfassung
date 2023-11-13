@@ -13,9 +13,8 @@ blacklisted = [
 ]
 
 
-def clean():
-    for root, dirs, files in os.walk(".", topdown=True):
-        print(root)
+def clean(dir = "."):
+    for root, dirs, files in os.walk(dir, topdown=True):
         if root == "./out":
             continue
         for file in files:
