@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "*.aux": true,
+        "*.fls": true,
+    },
+}
