@@ -1,6 +1,11 @@
 {
     "files.exclude": {
-        "*.aux": true,
-        "*.fls": true,
-    },
+        "**/*.fls": true,
+        "**/*.aux": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.log": true,
+        "**/*.synctex.gz": true,
+        "**/*.toc": true,
+        "**/*.xdv": true,
+    }
 }
