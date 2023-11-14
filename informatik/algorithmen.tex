@@ -2,6 +2,60 @@
 
 \subsection{Binäre Suche}
 
+Die Binäre Suche ist ein Algorithmus um in sortierten Datenstrukturen (z. B. Reihungen)
+in ein Element zu finden. Dabei werden maximal $log_{2}(n) + 1$ Operationen benötigt,
+bis das Element gefunden wurde (oder feststeht, das es nicht enthalten ist).
+Die Binäre Suche lässt sich auf lexikographisch sortierbare Datentypen anwenden,
+z. B. eine Reihung von Ganzzahlen. Durch vergleichen des gesuchten Werts mit dem mittleren
+Wert des aktuellen Bereiches kann festgestellt werden, ob sich dieser Wert im linken oder
+rechten Teil des sortierten Bereichs befindet. Anschließend wird mit dem mittleren Wert
+des neuen Teilbereichs verglichen und schließlich findet man so das gesuchte Element.
+Durch jeden Vergleich wird der Suchbereich halbiert und die nötigen Vergleiche sind
+logarithmisch zur Anzahl der Elementanzahl.
 
+\vspace*{0.3cm}
+Es soll geprüft werden, ob die Zahl 2 in der sortierten Reihung enthalten ist.
+Der aktuelle Vergleich ist rot und der aktuelle Bereich blau markiert.
+Nach 4 Vergleichen ist klar, dass 2 enthalten ist. 
+Es wurden also $log_{2}(11) + 1$ Versuche benötigt.
+
+% matrix magic
+\pgfdeclarelayer{myback}
+\pgfsetlayers{myback,background,main}
+
+\tikzset{mycolor/.style = {line width=1bp,color=#1}}%
+\tikzset{myfillcolor/.style = {draw,fill=#1}}%
+
+\NewDocumentCommand{\highlight}{O{blue!40} m m}{%
+\draw[mycolor=#1] (#2.north west)rectangle (#3.south east);
+}
+
+\begin{figure}[H]
+    \centering
+    \adjustbox{scale=1.5}{
+        \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax ]
+        \matrix (m) [
+            matrix of math nodes,
+            left delimiter={[},
+            right delimiter={]},
+            row sep=10pt,
+            r/.style={fill=red!20},
+            b/.style={fill=blue!20}
+        ] {
+            1 & 2 & 3 & 4 & 5 & |[r]| 6 & 7 & 8 & 9 & 10 & 11 \\
+            1 & 2 & |[r]| 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+            |[r]| 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+            1 & |[r]| 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+        };
+        
+        \begin{pgfonlayer}{myback}
+        \highlight[blue]{m-1-1}{m-1-11}
+        \highlight[blue]{m-2-1}{m-2-5}
+        \highlight[blue]{m-3-1}{m-3-2}
+        \highlight[blue]{m-4-2}{m-4-2}
+        \end{pgfonlayer}
+        \end{tikzpicture}
+    }
+\end{figure}
 
 \subsection{Quicksort}

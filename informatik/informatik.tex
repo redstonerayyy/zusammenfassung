@@ -3,7 +3,7 @@
 % various packages and settings {{{
 
 % math packages
-\usepackage{amsmath, amsfonts, mathtools}
+\usepackage{amsmath, amssymb, amsfonts, mathtools}
 
 % other important packages (should stay on top)
 \usepackage{graphics, multicol, xcolor}
@@ -128,6 +128,14 @@
     breakatwhitespace=true,
     tabsize=3
 }
+
+% allow larger matrices
+\setcounter{MaxMatrixCols}{100}
+
+% matrices and tikz
+\usepackage{xparse, adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{matrix, backgrounds}
 
 \begin{document}
 
