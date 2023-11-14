@@ -1,4 +1,110 @@
-\section{Rekursion}
+\section{Rekursive Problemlösung}
+
+\subsection{Divide and Conquer Prinzip}
+
+Beim ``Divide and Conquer'' (Teile und Herrsche) Prinzip wird ein größeres, schwereres Problem
+in viele Kleine zerlegt, die dann jedes für sich einfacher gelöst werden können.
+Dies geschieht häufig mit rekursiven Funktionen z. B. bei Such- und Sortierverfahren
+(e.g. Binäre Suche, Quicksort).
+
 \subsection{Fachbegriffe der Rekursion}
+
+\subsubsection{Abbruchbedingung (Rekursionsanker)}
+
+Die Abbruchbedingung verhindert die unendliche Ausführung der rekursiven Funktion.
+Sie stellt dabei die Basis der rekursiven Definition dar und wird meist nach dem vollständigen
+rekursiven Abstieg erreicht.
+
+\begin{lstlisting}
+sum(n)
+    if n=0 # Rekursionsanker
+        return 0
+    else    # Rekursionsabstieg
+        return n + sum(n-1)
+\end{lstlisting}
+
+\subsubsection{Rekursiver Abstieg/Aufstieg}
+\label{sec:rekursion_ab_auf}
+
+Der rekursive Abstieg bezeichnet das rekursive Selbstaufrufen der Funktion bis zum
+erreichen des Rekursionsankers. Danach beginnt der Rekursionsaufstieg, bei dem
+das Ergebnis berechnet bzw. zurückgegeben wird.
+
+\begin{lstlisting}
+sum(3) = 3 + sum(2)             # Beginn Rekursiver Abstieg
+    sum(2) = 2 + sum(1)
+        sum(1) = 1 + sum(0)
+            sum(0) = 0          # Auslösen Rekursionsanker
+        sum(1) = 1 + 0 = 1
+    sum(2) = 2 + 1 = 3
+sum(3) = 3 + 3 = 6              # Ende Rekursiver Aufstieg
+\end{lstlisting}
+
+
 \subsection{Rekursionsarten}
-\subsection{Divide and Conquer}
+
+\subsubsection{Aufsteigende Rekursion (Einzelrekursion)}
+
+Bei der Aufsteigenden Rekursion wird das Ergebnis der rekursiven Funktion
+beim Rekursionsaufstieg berechnet. Dies ist beispielhaft bei \hyperref[sec:rekursion_ab_auf]{Rekursiver Abstieg/Aufstieg} beschrieben.
+
+\begin{lstlisting}
+sum(n)
+    if n=0
+        return 0
+    else
+        return n + sum(n-1)
+\end{lstlisting}
+
+\subsubsection{Endrekursion (Einzelrekursion)}
+
+Bei der Endrekursion erfolgt die Berechnung beim Rekursionsabstieg und endet,
+wenn die Abbruchbedingung erreicht ist. Beim Rekursionsaufstieg wird nur das
+Ergebnis durchgereicht.
+
+\begin{lstlisting}
+sum(m, n)
+    if n=0
+        return m
+    else
+        return sum(m+n, n-1)
+\end{lstlisting}
+
+\subsubsection{Baumartige Rekursion (Mehrfachrekursion)}
+
+Bei der Baumartigen bzw. Kaskadierenden Rekursion ruft sich eine Funktion pro Funktionsaufruf
+mehrmals rekursiv auf. Der Rückgabewert setzt sich aus der Kombination 2er oder mehr Aufrufe
+der Funktion zusammen.
+
+\begin{lstlisting}
+bintree_sum(t)
+    if t.leaf()
+        return t.value()
+    else
+        return bintree_sum(t.left()) + bintree_sum(t.right())
+\end{lstlisting}
+
+\subsubsection{Weitere Rekursionsarten (Nicht Kerncurriculum relevant)}
+
+Indirekte Rekursion bezeichnet 2 oder mehr Funktionen, die sich zwar
+nicht direkt selbst sondern gegenseitig aufrufen, wodurch auch Rekursion
+zustande kommen kann.
+
+\begin{lstlisting}
+f(x)
+    ...
+    return g(x - 1)
+
+g(x)
+    ...
+    return f(x - 1)
+\end{lstlisting}
+
+Geschachtelte Rekursion bezeichnet die Schachtelung von rekursiven Aufrufen
+innerhalb der Funktion.
+
+\begin{lstlisting}
+f(x)
+    ...
+    return f(x - f(x))
+\end{lstlisting}

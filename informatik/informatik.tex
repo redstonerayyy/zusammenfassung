@@ -15,9 +15,12 @@
 \usepackage[utf8]{inputenc}
 
 % font
-\usepackage[scaled]{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage[]{fontspec}
+% \usepackage[scaled]{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+% \usepackage[]{fontspec}
+% arial
+\usepackage{fontspec}
+\setmainfont{Arial}
 
 % fontsize
 \usepackage[12pt]{extsizes}
@@ -95,6 +98,36 @@
 % no caption enumeration
 \usepackage{caption}
 \captionsetup{labelformat=empty}
+
+% links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% code 
+\usepackage{listings}
+
+% setup listings
+\lstset{
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\linespread{0.9}\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{green},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
 
 \begin{document}
 
