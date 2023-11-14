@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[10pt, a4paper]{article}
 
 % various packages and settings {{{
 
@@ -80,12 +80,21 @@
 
 % }}}
 
+% set title spacing
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt}{0pt}
+\titlespacing\subsection{0pt}{12pt}{0pt}
+\titlespacing\subsubsection{0pt}{12pt}{0pt}
+
+% position tables
+\usepackage{float}
+
 \begin{document}
 
-\addtocounter{page}{-2}
+\addtocounter{page}{-3}
 \setstretch{1.5}
 
-\title{Informatik}
+\title{Informatik 12/13 Niedersachsen}
 \date{\today}
 
 \maketitle
@@ -93,6 +102,8 @@
 \thispagestyle{empty}
 
 \clearpage
+
+\thispagestyle{empty}
 
 \tableofcontents
 
@@ -107,6 +118,7 @@
 \include{codierung.tex}
 \include{objektorientierung.tex}
 \include{datenbanken.tex}
+\include{kryptologie.tex}
 \include{datenschutz.tex}
 
 \end{document}

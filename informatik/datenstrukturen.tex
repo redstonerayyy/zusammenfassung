@@ -1,6 +1,56 @@
 \section{Datenstrukturen}
-\subsection{Reihung}
+
+Datenstrukturen dienen der strukturierten Speicherung von Daten, meist im Arbeitsspeicher.
+Es soll schneller Zugriff und dass einfache Anwendungen von Algorithmen ermöglicht werden,
+wobei es wichtig ist, dass die Datenstruktur zu den Daten passt.
+Alle Beschreibungen der Datenstrukturen beziehen sich auf die Vorgaben des
+Kerncurriculums Informatik.
+
+\subsection{Statische Reihung}
+
+Die statische Reihung (vgl. Array) speichert Daten eines Datentyps und hat
+eine feste Länge. Der Zugriff auf die Daten erfolgt indexbasiert und
+mit einer Zugriffszeit von $O(1)$.
+
 \subsection{Dynamische Reihung}
+
+\begin{table}[H]
+    \begin{tabular}{|p{0.50\linewidth}|p{0.50\linewidth}|}
+    \hline
+    DynArray(): DynArray & Eine leere dynamische Reihung wird angelegt. \\ \hline
+    isEmpty(): Wahrheitswert & Gibt True zurück, wenn die Reihung leer ist. \\ \hline
+    getItem(Ganzzahl index): Inhalt & Gibt das Element am Index zurück. \\ \hline
+    append(Inhalt inhalt) & Fügt ein Element am Ende hinzu. \\ \hline
+    insertAt(Ganzzahl index, Inhalt inhalt) & Fügt ein Element am Index ein. Die Elemente rechts davon rücken um 1 Position nach rechts. \\ \hline
+    setItem(Ganzzahl index, Inhalt inhalt) & Ersetzt das Element am Index. \\ \hline
+    delete(Ganzzahl index) & Löscht das Element am Index, die anderen Elemente rücken nach links. \\ \hline
+    getLength(): Ganzzahl & Gibt die Länge zurück \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Schlange}
 \subsection{Stapel}
 \subsection{Binärbaum}
