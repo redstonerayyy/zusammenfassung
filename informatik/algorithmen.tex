@@ -58,4 +58,135 @@ Es wurden also $log_{2}(11) + 1$ Versuche benötigt.
     }
 \end{figure}
 
+\clearpage
+
 \subsection{Quicksort}
+
+Quicksort ist ein von Tony Hoare publizierter, rekursiver Sortieralgorithmus mit einer
+Komplexität von $O(n \cdot log_{2}(n))$, von dem viele unterschiedlich gute Variationen existieren.
+Die Grundstruktur aller Versionen ist dabei ähnlich.
+
+\begin{enumerate}
+    \item Wenn die Länge des Sortierbereichs kleiner als 2 ist, ist der Bereich sortiert.
+    Es kann auch bei anderen Minimalgrenzen (e.g. 10) dann der Bereich mit einem anderen
+    Algorithmus sortiert werden.
+    \item Ist dies nicht der Fall, wird ein Pivot Element ausgewählt. Dabei gibt es Verschiedene
+    Wege der Auswahl (z. B. kann man das Mittlere nehmen).
+    \item Anschließend wird der Sortierbereich in 2 Unterbereich aufgeteilt, sodass in einem
+    Bereich alle Elemente kleiner oder gleich und im anderen Bereich alle Elemente größer oder gleich
+    dem Pivot Element sind.
+    \item Anschließend wendet man Quicksort (Schritte 1 bis 4) auf jeden dieser Unterbereich an.
+\end{enumerate}
+
+\clearpage
+
+Ein auf Hoares publikation beruhender Pseudocode könnte so aussehen.
+Die Funktion $quicksort$ sorgt für das Anwenden der Partitionsmethode und das rekursive
+Aufrufen. Hoares Partitionsfunktion nutzt in $partition$ 2 Zeiger, einer startet links,
+der andere rechts. Der Linke bewegt sich nach rechts, solange alle Elemente kleiner
+als das Pivot Element sind. Der Rechte bewegt sich nach links, solange alle Elemente
+größer als das Pivot Elemente sind. Wenn beide Zeiger stoppen und sie sich nicht überkreuzt
+haben, so sind jeweils die Elemente an der Zeigerposition im falschen Teil des Bereichs und
+müssen getauscht werden. Durch Wiederholung wird so der Bereich in die für Quicksort gewollten
+2 Bereich geteilt. Die Trennung der Bereiche liegt dort, wo sich die Zeiger begegnen.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+    algorithm quicksort(A, lo, hi) is 
+        if lo >= 0 && hi >= 0 && lo < hi then
+            b := partition(A, lo, hi) // b is r at the end of partition()
+            quicksort(A, lo, b)
+            quicksort(A, b + 1, hi) 
+    
+    algorithm partition(A, lo, hi) is 
+        pivot := A[ floor((hi - lo)/2) + lo ] // middle of array
+    
+        l := lo - 1
+        r := hi + 1
+    
+        loop forever 
+            do l := l + 1 while A[l] < pivot
+            do r := r - 1 while A[r] > pivot
+    
+            if l >= r then return r
+    
+            swap A[l] with A[r]
+    \end{lstlisting}
+    \caption{Pseudocode für Quicksort nach Hoare}
+\end{figure}
+
+
+\thispagestyle{empty}
+\begin{figure}[H]
+    \centering
+    \adjustbox{scale=1.2}{
+        \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax ]
+        \matrix (m) [
+            matrix of math nodes,
+            left delimiter={[},
+            right delimiter={]},
+            row sep=10pt,
+            r/.style={fill=red!20},
+            b/.style={fill=blue!20},
+            g/.style={fill=green!20},
+            v/.style={fill=violet!20},
+            yl/.style={fill=yellow!20},
+            row 11 column 4/.style={ nodes = { top color=violet!50, bottom color=green!30 }},
+            row 17 column 2/.style={ nodes = { top color=violet!50, bottom color=green!30 }},
+            row 19 column 5/.style={ nodes = { top color=violet!50, bottom color=green!30 }}
+        ] {
+           1 & 8 & 10 & 6 & 7 & 5 & 9 & [1em] |[r]| 6 \\
+           |[v]| 1 & 8 & 10 & 6 & 7 & 5 & 9 & [1em] |[r]| 6 \\
+           1 & |[v]| 8 & 10 & 6 & 7 & 5 & 9 & [1em] |[r]| 6 \\
+           1 & |[v]| 8 & 10 & 6 & 7 & 5 & |[g]| 9 & [1em] |[r]| 6 \\
+           1 & |[v]| 8 & 10 & 6 & 7 & |[g]| 5 & 9 & [1em] |[r]| 6 \\
+           1 & |[yl]| 5 & 10 & 6 & 7 & |[yl]| 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & |[v]| 10 & 6 & 7 & |[g]| 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & |[v]| 10 & 6 & |[g]| 7 & 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & |[v]| 10 & |[g]| 6 & 7 & 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & |[yl]| 6 & |[yl]| 10 & 7 & 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & 6 & 10 & 7 & 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & |[g]| 6 & |[v]| 10 & 7 & 8 & 9 & [1em] |[r]| 6 \\
+           1 & 5 & 6 & 10 & 7 & 8 & 9 & [1em] |[r]| 5 & [0.5em] |[r]| 7 \\
+           |[v]| 1 & 5 & 6 & |[v]| 10 & 7 & 8 & 9 & [1em] |[r]| 5 & [0.5em] |[r]| 7 \\
+           1 & |[v]| 5 & 6 & |[v]| 10 & 7 & 8 & |[g]| 9 & [1em] |[r]| 5 & [0.5em] |[r]| 7 \\
+           1 & |[v]| 5 & |[g]| 6 & |[v]| 10 & 7 & |[g]| 8 & 9 & [1em] |[r]| 5 & [0.5em] |[r]| 7 \\
+           1 & 5 & 6 & |[v]| 10 & |[g]| 7 & 8 & 9 & [1em] |[r]| 5 & [0.5em] |[r]| 7 \\
+           1 & 5 & 6 & |[yl]| 7 & |[yl]| 10 & 8 & 9 & [1em] & [0.5em] |[r]| 7 \\
+           1 & 5 & 6 & 7 & 10 & 8 & 9 & [1em] & [0.5em] |[r]| 7 \\
+           1 & 5 & 6 & |[g]| 7 & |[v]| 10 & 8 & 9 & [1em] & [0.5em] |[r]| 7 \\
+           1 & 5 & 6 & 7 & 10 & 8 & 9 & [1em] |[r]| 8 & [0.5em] \\
+           \dots \\
+           1 & 5 & 6 & 7 & 8 & 9 & 10 & [1em] & [0.5em] \\
+        };
+        \draw[thick,red] ([xshift=0.5em]m-1-7.north east) -- ([xshift=0.5em]m-23-7.south east);
+        
+        \begin{pgfonlayer}{myback}
+            \highlight[blue]{m-1-1}{m-1-7}
+            \highlight[blue]{m-2-1}{m-2-7}
+            \highlight[blue]{m-3-1}{m-3-7}
+            \highlight[blue]{m-4-1}{m-4-7}
+            \highlight[blue]{m-5-1}{m-5-7}
+            \highlight[blue]{m-6-1}{m-6-7}
+            \highlight[blue]{m-7-1}{m-7-7}
+            \highlight[blue]{m-8-1}{m-8-7}
+            \highlight[blue]{m-9-1}{m-9-7}
+            \highlight[blue]{m-10-1}{m-10-7}
+            \highlight[blue]{m-11-1}{m-11-7}
+            \highlight[blue]{m-12-1}{m-12-7}
+            \highlight[blue]{m-13-1}{m-13-3}\highlight[blue]{m-13-4}{m-13-7}
+            \highlight[blue]{m-14-1}{m-14-3}\highlight[blue]{m-14-4}{m-14-7}
+            \highlight[blue]{m-15-1}{m-15-3}\highlight[blue]{m-15-4}{m-15-7}
+            \highlight[blue]{m-16-1}{m-16-3}\highlight[blue]{m-16-4}{m-16-7}
+            \highlight[blue]{m-17-1}{m-17-3}\highlight[blue]{m-17-4}{m-17-7}
+            \highlight[green]{m-18-1}{m-18-1}\highlight[green]{m-18-2}{m-18-3}\highlight[blue]{m-18-4}{m-18-7}
+            \highlight[green]{m-19-1}{m-19-1}\highlight[green]{m-19-2}{m-19-3}\highlight[blue]{m-19-4}{m-19-7}
+            \highlight[green]{m-20-1}{m-20-1}\highlight[green]{m-20-2}{m-20-3}\highlight[blue]{m-20-4}{m-20-7}
+            \highlight[green]{m-21-1}{m-21-1}\highlight[green]{m-21-2}{m-21-3}\highlight[green]{m-21-4}{m-21-4}\highlight[blue]{m-21-5}{m-21-7}
+            \highlight[green]{m-23-1}{m-23-1}\highlight[green]{m-23-2}{m-23-3}\highlight[green]{m-23-4}{m-23-4}\highlight[green]{m-23-5}{m-23-5}\highlight[green]{m-23-6}{m-23-7}
+        \end{pgfonlayer}
+        \end{tikzpicture}
+    }
+    \caption{Beispieldurchlauf des Algorithmus}
+\end{figure}
+\clearpage

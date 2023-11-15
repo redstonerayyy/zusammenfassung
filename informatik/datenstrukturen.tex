@@ -33,6 +33,8 @@ entfernen oder einfügen, wodurch sich die anderen Elemente rechts davon verschi
     \end{tabular}
 \end{table}
 
+\clearpage
+
 \subsection{Schlange}
 
 Eine Schlange (vgl. Queue) ist eine Datenstruktur mit variabler Länge, die nach dem
@@ -77,7 +79,7 @@ Ein Binärbaum ist eine nichtlineare Datenstruktur aus der Gruppe der Bäume, be
 jeder Knoten maximal 2 Unterknoten/Kinder hat. Das Hinzufügen, Entfernen und Auslesen
 von Elementen des Baums ist dabei auf verschiedene Arten möglich.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/baum_begriffe.png}
     \caption{Fachbegriffe bei Bäumen}
@@ -90,31 +92,32 @@ Es gibt 3 gängige Verfahren zum Traversieren von Binärbaumen, um z. B. dann di
 in einer anderen Datenstruktur (e.g. Schlange) zu speichern.
 Alle 3 Varianten werden dabei Rekursiv beschrieben (eine Rekursive implementierung ist nicht nötig).
 
-\vspace*{0.3cm}
+% tree to make images of
+% \vspace*{0.3cm}
 
-\begin{forest}
-    for tree={
-        grow=south,
-        circle, draw, minimum size=3ex, inner sep=1pt,
-        s sep=7mm
-    }
-    [15
-        [87
-            [67]
-            [48
-                [20]
-                [7]
-            ]
-        ]
-        [58
-            [95]
-            [26
-                [5]
-            ]
-            [35]
-        ]
-    ]
-\end{forest}
+% \begin{forest}
+%     for tree={
+%         grow=south,
+%         circle, draw, minimum size=3ex, inner sep=1pt,
+%         s sep=7mm
+%     }
+%     [15
+%         [87
+%             [67]
+%             [48
+%                 [20]
+%                 [7]
+%             ]
+%         ]
+%         [58
+%             [95]
+%             [26
+%                 [5]
+%             ]
+%             [35]
+%         ]
+%     ]
+% \end{forest}
 
 
 \subsubsection*{Pre-Order}
