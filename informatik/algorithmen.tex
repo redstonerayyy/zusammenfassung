@@ -78,8 +78,6 @@ Die Grundstruktur aller Versionen ist dabei ähnlich.
     \item Anschließend wendet man Quicksort (Schritte 1 bis 4) auf jeden dieser Unterbereich an.
 \end{enumerate}
 
-\clearpage
-
 Ein auf Hoares publikation beruhender Pseudocode könnte so aussehen.
 Die Funktion $quicksort$ sorgt für das Anwenden der Partitionsmethode und das rekursive
 Aufrufen. Hoares Partitionsfunktion nutzt in $partition$ 2 Zeiger, einer startet links,
@@ -91,38 +89,69 @@ müssen getauscht werden. Durch Wiederholung wird so der Bereich in die für Qui
 2 Bereich geteilt. Die Trennung der Bereiche liegt dort, wo sich die Zeiger begegnen.
 
 \begin{figure}[H]
-    \begin{lstlisting}
-    algorithm quicksort(A, lo, hi) is 
-        if lo >= 0 && hi >= 0 && lo < hi then
-            b := partition(A, lo, hi) // b is r at the end of partition()
-            quicksort(A, lo, b)
-            quicksort(A, b + 1, hi) 
-    
-    algorithm partition(A, lo, hi) is 
-        pivot := A[ floor((hi - lo)/2) + lo ] // middle of array
-    
-        l := lo - 1
-        r := hi + 1
-    
-        loop forever 
-            do l := l + 1 while A[l] < pivot
-            do r := r - 1 while A[r] > pivot
-    
-            if l >= r then return r
-    
-            swap A[l] with A[r]
-    \end{lstlisting}
-    \caption{Pseudocode für Quicksort nach Hoare}
+\begin{lstlisting}
+algorithm quicksort(A, lo, hi) is 
+    if lo >= 0 && hi >= 0 && lo < hi then
+        b := partition(A, lo, hi) // b is r at the end of partition()
+        quicksort(A, lo, b)
+        quicksort(A, b + 1, hi) 
+
+algorithm partition(A, lo, hi) is 
+    pivot := A[ floor((hi - lo)/2) + lo ] // middle of array
+
+    l := lo - 1
+    r := hi + 1
+
+    loop forever 
+        do l := l + 1 while A[l] < pivot
+        do r := r - 1 while A[r] > pivot
+
+        if l >= r then return r
+
+        swap A[l] with A[r]
+\end{lstlisting}
+\caption{Pseudocode für Quicksort nach Hoare}
 \end{figure}
 
-<TODO: add python code>
-
-\thispagestyle{empty}
 \begin{figure}[H]
-    \centering
+\begin{lstlisting}[language=python]
+def quicksort(array, lo, hi):
+    if lo >= 0 and hi >= 0 and lo < hi:
+        b = partition(array, lo, hi)
+        quicksort(array, lo, b)
+        quicksort(array, b + 1, hi)
+
+
+def partition(array, lo, hi):
+    pivot = array[int((hi - lo) / 2) + lo]
+
+    l = lo - 1
+    r = hi + 1
+
+    while True:
+        l += 1
+        while arrray[l] < pivot:
+            l += 1
+        
+        r += 1
+        while arrray[r] < pivot:
+            r += 1
+
+        if l >= r:
+            return r
+
+        temp = array[l]
+        array[l] = array[r]
+        array[r] = temp
+\end{lstlisting}
+\caption{Python Code für Quicksort nach Hoare}
+\end{figure}
+
+\begin{figure}[H]
+    % \centering
     \adjustbox{scale=1.2}{
-        \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax ]
-        \matrix (m) [
+        \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
+        \matrix (m) at (0,0) [
             matrix of math nodes,
             left delimiter={[},
             right delimiter={]},
@@ -185,6 +214,28 @@ müssen getauscht werden. Durch Wiederholung wird so der Bereich in die für Qui
             \highlight[green]{m-20-1}{m-20-1}\highlight[green]{m-20-2}{m-20-3}\highlight[blue]{m-20-4}{m-20-7}
             \highlight[green]{m-21-1}{m-21-1}\highlight[green]{m-21-2}{m-21-3}\highlight[green]{m-21-4}{m-21-4}\highlight[blue]{m-21-5}{m-21-7}
             \highlight[green]{m-23-1}{m-23-1}\highlight[green]{m-23-2}{m-23-3}\highlight[green]{m-23-4}{m-23-4}\highlight[green]{m-23-5}{m-23-5}\highlight[green]{m-23-6}{m-23-7}
+        \end{pgfonlayer}
+        
+        \matrix (m) at (7, 0) [
+            matrix of math nodes,
+            left delimiter={[},
+            right delimiter={]},
+            row sep=10pt,
+            r/.style={fill=red!20},
+            g/.style={fill=green!20},
+            v/.style={fill=violet!20},
+            yl/.style={fill=yellow!20},
+        ] {
+            |[r]| 6 & [0.5em] PivotElement \\
+            |[v]| 1 & LeftPointer \\
+            |[g]| 9 & RightPointer \\
+            |[yl]| 5 & SwapElements \\
+            3 & SortRange \\
+            7 & FinishedRange \\
+        };
+        \begin{pgfonlayer}{myback}
+            \highlight[blue]{m-5-1}{m-5-1}
+            \highlight[green]{m-6-1}{m-6-1}
         \end{pgfonlayer}
         \end{tikzpicture}
     }
