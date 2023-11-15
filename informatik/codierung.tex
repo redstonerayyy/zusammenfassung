@@ -1,4 +1,239 @@
 \section{Codierung}
+
 \subsection{Lauflängen-Codierung}
+
+Die Lauflängenkodierung komprimiert verlustfrei längere Abfolgen gleicher Symbole.
+
+\begin{lstlisting}
+AAAAA => 5A
+\end{lstlisting}
+
+Sind bei einem Bild z. B. 100 Pixel, die aufeinander Folgen, weiß,
+so muss nur noch 1 Pixel und die Anzahl gespeichert werden. Wenn 1 Pixel
+24 Bit groß ist, werden so unfähr 2,4 Kilobyte eingespart.
+
 \subsection{Huffman-Codierung}
+
+Bei der Huffman Codierung wird die Gesamtlänge der Daten dadurch reduziert,
+dass häufig vorkommende Symbole mit kürzeren Bitfolgen kodiert werden und
+selten vorkommende Symbole mit längeren Bitfolgen. Dadurch lässt sich die Gesamtlänge
+meist deutlich reduzieren. Je größer die Entropie der zu Kodierenden Symbole, desto
+höher ist die Kompressionsrate.
+
+Die resultierende Kodierung für eine Menge an Symbolen ist ein Präfixcode
+(erfüllt Fano-Bedingung).
+Das heißt, dass keine Bitfolge zur kodierung eines Symbols zu Beginn einer
+anderen Bitfolge zu finden ist. Somit ist es immer klar möglich, die Bitfolge
+einem Symbol zuzuordnen und festzustellen, wann die Bitfolge zuende ist.
+Um die Huffmann-Kodierung praktisch zu nutzen, muss die Huffmann-Kodierung
+zur decodierung allerdings immer mitgeliefert werden und verbraucht auch Platz.
+Lohnenswert ist die Huffmann-Kodierung also nur, wenn die Einsparungen größer sind als
+der Platz, den die Dekodierungstabelle verbraucht. 
+
+\subsubsection{Erstellung einer Huffman-Kodierung}
+
+Beim ASCII Code wird jedes Zeichen mit 8 Bit kodiert.
+Für jeden bestimmten Text lässt sich allerdings eine auf diesen
+zugeschnitte, meist bessere, Huffmann-Kodierung generieren.
+Zuerst werden die Häufigkeiten der Zeichen bestimmt.
+
+\begin{lstlisting}
+ABACEADBCEEEC
+A: 3
+B: 2
+C: 3
+D: 1
+E: 4
+Gesamt: 13
+\end{lstlisting}
+
+\clearpage
+
+Anschließend lässt sich die individuelle Kodierung über einen Huffmann-Baum erstellen.
+Es werden alle Häufigkeiten als Knoten betrachtet. Dann wird folgendes solange
+wiederholt, bis es nur noch 1 Baum gibt. Dabei können für Symbolfolgen auch
+mehrere unterschiedliche aber alle valide Bäume entstehen.
+
+\begin{enumerate}
+    \item Wähle die Teilbäume mit der geringsten absoluten/relativen Häufigkeit in
+    der Wurzel. Bei gleicher Häufigkeit wähle den Teilbaum mit der geringeren Tiefe.
+    \item Fasse diese zu einem neuen Teilbaum zusammen, in dessen Wurzel die Summe
+    der Häufigkeiten der Wurzeln der Teilbäume steht.
+    (Teilbaum mit geringerer Häufigkeit möglichst immer auf der gleichen Seite für optimale Kodierung)
+\end{enumerate}
+
+\vspace*{0.5cm}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm
+}
+[, phantom, s sep = 7mm
+    [A: 3]
+    [B: 2]
+    [C: 3]
+    [D: 1]
+    [E: 4]
+]
+\end{forest}
+
+\vspace*{1cm}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm
+}
+[, phantom, s sep = 7mm
+    [3
+        [D: 1]
+        [B: 2]
+    ]
+    [3, phantom, s sep = 7mm
+        [A: 3]
+        [C: 3]
+        [E: 4]
+    ]
+]
+\end{forest}
+
+\vspace*{1cm}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm
+}
+[, phantom, s sep = 7mm
+    [6
+        [A: 3]
+        [3
+            [D: 1]
+            [B: 2]
+        ]
+    ]
+    [3, phantom, s sep = 7mm
+        [C: 3]
+        [E: 4]
+    ]
+]
+\end{forest}
+
+\vspace*{1cm}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm
+}
+[, phantom, s sep = 7mm
+    [7
+        [C: 3]
+        [E: 4]
+    ]
+    [6
+        [A: 3]
+        [3
+            [D: 1]
+            [B: 2]
+        ]
+    ]
+]
+\end{forest}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm
+}
+[13
+    [6
+        [A: 3]
+        [3
+            [D: 1]
+            [B: 2]
+        ]
+    ]
+    [7
+        [C: 3]
+        [E: 4]
+    ]
+]
+\end{forest}
+
+\vspace*{0.5cm}
+
+Nun werden Nullen und Einsen an den Kanten eingetragen und für jedes Symbol
+lässt sich die Kodierung anhand der Zahlen am Pfad von der Wurzel ausgehend
+bestimmten. Die Buchstaben D und B kommen am seltensten vor. Man erkennt,
+dass diese mit der längsten Bitsequenz kodiert werden. Häufiger vorkommende
+Buchstaben werden kürzer kodiert. Die mit Huffmann kodierte Nachricht ist auch klar
+kürzer, doch muss immer die Dekodierungstabelle mitgeliefert werden.
+
+\vspace*{0.5cm}
+
+\begin{forest}
+for tree={
+    grow=south,
+    circle, draw, minimum size=5ex, inner sep=3pt,
+    s sep=7mm,
+    EL/.style = {edge label={node[midway, fill=white, inner sep=2pt, anchor=center]{#1}},},
+}
+[13
+    [6, EL=0
+        [A: 3, EL=0]
+        [3, EL=1
+            [D: 1, EL=0]
+            [B: 2, EL=1]
+        ]
+    ]
+    [7, EL=1
+        [C: 3, EL=0]
+        [E: 4, EL=1]
+    ]
+]
+\end{forest}
+
+\vspace*{0.5cm}
+
+\begin{lstlisting}
+A: 00
+B: 011
+C: 10
+D: 010
+E: 11
+ABACEADBCEEEC =ASCII=> 
+01000001 01000010 01000001 01000011 01000101 01000001 01000100 01000010
+01000011 01000101 01000101 01000101 01000011
+ABACEADBCEEEC =HUFF==>
+00 011 00 10 11 00 010 011 10 11 11 11 10
+\end{lstlisting}
+
+\subsection{Deflate Kompression}
+
+Der z. B. bei Zip-Dateien genutzte Kompressionsalgorithmus Deflate kombiniert
+die Huffmann-Kodierung mit einer LZ-Variation. Dadurch können Daten verlustfrei
+komprimiert werden, indem der von häufig vorkommenden und von sich wiederholenden
+Daten eingenomme Platz reduziert wird. 
+
+\subsection{Hamming Code}
+
+<TODO: Hamming>
+
 \subsection{Bildkodierung}
+
+Bei einem Bild wird die Farbe eines Pixel Grundsätzlich durch 3 Werte, einen Rot,
+Grün und Blau Wert festgelegt und so gespeichert. Diese Werte können dabei jeweils
+8, 10, 16 oder mehr Bit groß sein, wodurch sich der Farbraum der Pixel vergrößert.
+Zusätzlich kann noch die Transparenz eines Pixels gespeichert werden, der Alpha Wert.
+Je nach Bitanzahl pro Pixel und Kompression unterscheiden sich so Bilder verschiedener
+Qualitäten und Formate (e.g. JPG, PNG). Meist werden Bilder mit 8 Bit Werten gespeichert,
+also 8 Bit jeweils für Rot, Grün, Blau. Jede Farbe hat somit einen Wert zwischen 0 und 255.
+Ein Pixel kann also $255^3$ unterschiedliche Farben annehmen. Das sind ca. 16,7 Millionen
+Farben.

@@ -27,7 +27,7 @@ Eine Klasse ist ein Schemata zur Erzeugung eines Objekts.
         def drive(hours: float):
             self.__km_driven += self.speed * hours
     \end{lstlisting}
-    \caption{Klasse in Python}
+    \caption{Klasse Auto in Python}
 \end{minipage}
 \begin{minipage}{.3\textwidth}
     \begin{tikzpicture}
@@ -46,4 +46,93 @@ Eine Klasse ist ein Schemata zur Erzeugung eines Objekts.
 \end{figure}
 
 \subsection{Vererbung}
+
+Bei der Vererbung wird eine Klasse auf Basis einer anderen Definiert.
+Diese Unterklasse übernimmt dann alle Attribute und Methoden der Oberklasse
+und kann noch weitere hinzufügen oder neu definieren. Vererbung lässt sich auch
+Verketten. Klasse A erbt von B und Klasse B erbt von C. So hat A auch die Attribute
+und Methoden von C.
+
+\pgfsetlayers{package0, main, connections}
+
+\vspace*{0.5cm}
+\begin{figure}[H]
+\begin{center}
+    \begin{tikzpicture}
+        \umlclass[x=-4,]{Auto}{ 
+            + name : Zeichenkette \\ 
+            + speed : Dezimalzahl \\ 
+            - km\_driven : Dezimalzahl
+        }{ 
+            + getDriven() : Dezimalzahl \\
+            + drive(hours: Dezimalzahl) :
+        }
+        \umlclass[x=4, y=-1]{Mercedes}{ 
+            + preis : Ganzahl \\
+            + topspeed: Dezimalzahl
+        }{
+            + speedPerPrice() : Dezimalzahl\\
+        }
+        \umlinherit{Mercedes}{Auto}
+    \end{tikzpicture}
+    \caption{Vererbung}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{lstlisting}[language=python]
+class Mercedes(Auto): # Vererbung
+    def __init__self(self, name: str, speed: float, preis: Ganzahl, topspeed: Dezimalzahl):
+        self.name = name      # geerbtes Attribut
+        self.speed = speed    # geerbtes Attribut
+        self.__km_driven = 0  # geerbtes Attribut
+        self.preis = preis
+        self.topspeed = topspeed
+
+    def speedPerPrice() -> float: # neue Methode
+        return self.topspeed / self.preis
+\end{lstlisting}
+\caption{Klasse Mercedes in Python}
+\end{figure}
+
 \subsection{Klassendiagramme}
+
+Die Unified Modeling Language (UML) kann für sogenannte UML-Diagramme zur abstrakten
+Modellierung genutzt werden (von der Programmiersprache unabhängig).
+Im oberen Teil einer Klasse werden die Attribute mit Datentyp definiert.
+Im unteren Teil werden die Methoden der Klasse mit Rückgabewert definiert.
+Ein Plus bedeutet öffentlich, ein Minus bedeutet Privat, ein Hashtag
+bedeutet Geschützt und eine Tilde bedeutet nur im Package sichtbar.
+Eine Vererbung wird durch einen Pfeil mit unausgefülltem Ende von der erbenden
+zur vererbenden Klasse dargestellt. Eine Assoziation ist einfach eine Linie.
+
+\vspace*{0.5cm}
+\begin{figure}[H]
+\begin{center}
+    \begin{tikzpicture}
+        \umlclass[x=-2,y=5]{Autohaus}{ 
+            + autos : Reihung vom Typ Auto \\ 
+        }{ 
+            + getAutoCount() : Ganzzahl \\
+        }
+        \umlclass[x=-4,]{Auto}{ 
+            + name : Zeichenkette \\ 
+            + speed : Dezimalzahl \\ 
+            - km\_driven : Dezimalzahl
+        }{ 
+            + getDriven() : Dezimalzahl \\
+            + drive(hours: Dezimalzahl) :
+        }
+        \umlclass[x=4, y=-1]{Mercedes}{ 
+            + preis : Ganzahl \\
+            + topspeed: Dezimalzahl
+        }{
+            + speedPerPrice() : Dezimalzahl\\
+        }
+        \umlassoc{Auto}{Autohaus}
+        \umlinherit{Mercedes}{Auto}
+    \end{tikzpicture}
+    \caption{Klassendiagramme}
+\end{center}
+\end{figure}
+
