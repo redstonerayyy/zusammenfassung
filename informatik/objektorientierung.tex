@@ -1,4 +1,49 @@
 \section{Objektorientierung}
 \subsection{Klassen}
+
+Die Objektorientierte Programmierung mit Klassen hat zum Ziel,
+reale Zusammenhänge zu modellieren und Dinge zu strukturen und
+zu organisieren. Dazu gibt es Klassen mit Attributen und Methoden
+mit denen sich Objekte (Instanzen der Klasse) erzeugen lassen.
+Eine Klasse ist ein Schemata zur Erzeugung eines Objekts.
+
+\pgfsetlayers{package0, main}
+
+\vspace*{0.5cm}
+\begin{figure}[H]
+\begin{center}
+\hspace*{-2cm}
+\begin{minipage}{.7\textwidth}
+    \begin{lstlisting}[language=python]
+    class Car:
+        def __init__(self, name: str, speed: float):
+            self.name = name      # Attribut
+            self.speed = speed
+            self.__km_driven = 0
+            
+        def getDriven() -> float: # Methode
+            return self.__km_driven
+            
+        def drive(hours: float):
+            self.__km_driven += self.speed * hours
+    \end{lstlisting}
+    \caption{Klasse in Python}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+    \begin{tikzpicture}
+        \umlclass{Auto}{ 
+        + name : Zeichenkette \\ 
+        + speed : Dezimalzahl \\ 
+        - km\_driven : Dezimalzahl
+        }{ 
+            + getDriven() : Dezimalzahl \\
+            + drive(hours: Dezimalzahl) :
+            }
+    \end{tikzpicture}
+    \caption{UML Klassendiagramm}
+\end{minipage}
+\end{center}
+\end{figure}
+
 \subsection{Vererbung}
 \subsection{Klassendiagramme}
