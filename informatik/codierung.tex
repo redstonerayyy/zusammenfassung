@@ -228,12 +228,6 @@ Der Hamming Code ist ein Fehlerkorrekturcode um 1 Bit Fehler in Bitfolgen
 zu erkennen und zu korrigieren. Dabei zeichnet sich dieser dadruch aus,
 das nur wenige Paritätsbits benötigt werden.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/hamming7.4.png}
-    \caption{7,4 Hamming Code}
-\end{figure}
-
 Der Hamming Code funktioniert so, dass zu den 4 Datenbits 3 Paritätsbits
 hinzugefügt werden (gesamt 7 Bits). Die Paritätsbits werden so gesetzt,
 dass die Summe in alle Kreisen gerade (oder ungerade) ist. Es ist nur wichtig,
@@ -253,10 +247,42 @@ dass bei der Prüfung dies bekannt ist.
     \end{tabular}
 \end{table}
 
+Summiert man jeweils die Kreis so erhält man für die Ursprungsnachricht
+jeweils korrekte, gerade Ergebnisse. Bei der Fehlerhaften Nachricht (z. B. durch
+Übertragungsfehler), wo ein Bit getauscht wurde, erhält man hingegen unpassende,
+ungerade Ergebnisse.
+
+\begin{align*}
+red_u & = d_2 + d_3 + d_4 + p_3 = 0 + 0 + 1 + 1 = 2 \\
+green_u & = d_1 + d_2 + d_4 + p_1 = 1 + 0 + 1 + 0 = 2 \\
+blue_u & = d_1 + d_3 + d_4 + p_2 = 1 + 0 + 1 + 0 = 2 \\
+& \\
+red_f & = d_2 + d_3 + d_4 + p_3 = 0 + 1 + 1 + 1 = 3 \\
+green_f & = d_1 + d_2 + d_4 + p_1 = 1 + 0 + 1 + 0 = 2 \\
+blue_f & = d_1 + d_3 + d_4 + p_2 = 1 + 1 + 1 + 0 = 3 \\
+\end{align*}
+
+\vspace*{-1cm}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/hamming8.4.png}
+    \includegraphics[width=0.5\textwidth]{images/hamming7.4.png}
     \caption{7,4 Hamming Code}
+\end{figure}
+
+Wenn man davon ausgeht, das 1 Bit getauscht wurde, so lässt sich erkennen,
+das nur in den Kreisen Rot und Blau die Summe nicht passt. Das Bit kann
+sich also nicht im Grünen Kreis befinden. Die einzige Überschneidung
+von Rot und Blau ist $d_3$, weswegen sich das getauschte Bit dort befinden
+muss. Dieses kann nun zurückgetauscht werden, wodurch die ursprüngliche Nachricht
+wiederhergestellt wird. Sind allerdings 2 oder mehr Bits getauscht, so kann dies
+nicht erkannt werden. Der 8,4 Hamming Code ermöglicht es allerdings zu erkennen, wenn
+2 Bits getauscht sind, aber nicht diese auch zu korrigieren.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/hamming8.4.png}
+    \caption{8,4 Hamming Code}
 \end{figure}
 
 \subsection{Bildkodierung}
@@ -270,3 +296,9 @@ Qualitäten und Formate (e.g. JPG, PNG). Meist werden Bilder mit 8 Bit Werten ge
 also 8 Bit jeweils für Rot, Grün, Blau. Jede Farbe hat somit einen Wert zwischen 0 und 255.
 Ein Pixel kann also $255^3$ unterschiedliche Farben annehmen. Das sind ca. 16,7 Millionen
 Farben.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/rgbvalues.png}
+    \caption{Verschiedene Farbtiefen bei Bildern}
+\end{figure}
