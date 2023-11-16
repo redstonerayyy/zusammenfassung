@@ -1,7 +1,194 @@
 \section{Datenbanken}
+\subsection{Entity-Relationship-Modelle (ER-Modelle)}
+
+Ein Entity-Relationsip Modell soll Entitäten und Beziehungen eines Sachverhalts
+darstellen und so z. B. die Erstellung einer Datenbank erleichtern.
+Es gibt mehrere Arten zur Notation von Entity Relationship Modellen,
+in diesem Fall wird die Chen Notation betrachtet.
+
+\vspace*{1cm}
+
+\adjustbox{scale=0.8}{
+\begin{tikzpicture}[auto,node distance=1cm]
+\node[entity] (node1) {Student}[grow=up,sibling distance=3.5cm]
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {Lastname}}
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {Firstname}}
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {\underline{ID}}};
+
+\node[relationship] (rel1) [below = of node1] {Takes};
+\node[attribute] (node4) [left = of rel1] {Hours};
+\path (rel1) edge (node4);
+
+\node[entity] (node2) [below = of rel1]{Class}[grow=down,sibling distance=3.5cm]
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {\underline{ID}}}
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {Subject}}
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {Teacher}};
+\path (rel1) edge node {n} (node1) edge node {m}(node2);
+
+\node[relationship] (rel2) [right = of node1] {Goes To};
+
+\node[entity] (node3) [right = of rel2]{School}[grow=right, sibling distance=2.5cm]
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {\underline{ID}}}
+    child[text width=2cm, align=center, level distance=2cm, xshift=2cm] {node[attribute] {Name}}
+    child[text width=2cm, align=center, level distance=2cm] {node[attribute] {Type}};
+
+\path (rel2) edge node {m} (node1) edge node {1}(node3);
+\end{tikzpicture}
+}
+
+\vspace*{0.3cm}
+
+\subsubsection{Erklärung der ER-Notation nach Chen}
+
+\vspace*{0.3cm}
+
+\begin{enumerate}
+    \item Ein Rechteck stellt eine Entität dar.
+    \item Ein Oval stellt ein Attribut einer Entität dar.
+    \item Ein unterstrichenes Attribut ist Teil des Primärschlüssels.
+    \item Eine Raute erläutert die Beziehung zweier Entitäten.
+    \item Ein Oval an einer Raute kann der Beziehung Attribute zuordnen.
+    \item An einer Beziehung zwischen zwei Entitäten sind die Kardinalitäten notiert.
+\end{enumerate}
+
+\clearpage
+
+\subsubsection{Kardinalitäten}
+
+Die Kardinälität einer Beziehung beschreibt, wie vielen Entitäten der anderen
+Entität zugeordnet werden können. Beispielsweise kann ein Schüler nur auf 1 Schule 
+gehen, aber auf eine Schule können viele Schüler gehen. Klassen besucht ein Schüler
+hingegen mehrere und in eine Klasse gehen mehrere Schüler. Es gibt folgende Kardinalitäten,
+wobei man bei jeder Kardinalität auch angeben kann, ob einer Zuordnung optional ist
+oder wie viele Zuordnung es geben muss.
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|}
+    \hline
+        Kardinälität & Entität A & Entität B \\ \hline
+        Eins zu Eins & 1 & 1 \\ \hline
+        Eins zu Vielen & 1 & m \\ \hline
+        Viele zu Eins & m & 1 \\ \hline
+        Viele zu Viele & m & n \\ \hline
+        \end{tabular}
+\end{table}
+
 \subsection{Normalformen}
+
+Bei der Erstellung eines Datenbankschemas in einer Relationellen Datenbank
+(z. b. aus einem ER-Modell) unterscheidet man, je nach Eigentschaften des
+Schematas, in welcher Normalform sich dieses befindet. Ein Schemata kann
+von einer Normalform in eine andere (nächthöhere) überführt werden.
+Dies lässt sich auch automatisiert durchführen. Jede dieser Normalformen
+unterscheidet sich darin, wie die Abhängigkeiten zwischen den Tabellen
+und Attributen sind. Je höher die Normalform, desto weniger Redundanz der Daten
+(Wiederholung) ist vorhanden und desto weniger Inkosistenz und Anomalien gibt es.
+
+\subsubsection{0. Normalform}
+
+Die Daten liegen unstrukturiert, redundant und nicht-atomar vor.
+
+\newcolumntype{a}{>{\columncolor{blue!20}}l}
+\newcolumntype{d}{>{\columncolor{yellow!50}}l}
+
+\begin{table}[H]
+    \begin{tabular}{|a|l|l|l|}
+    \hline
+        CD\_ID & Albumtitel & Gründungsjahr & Titelliste \\ \hline
+        11 & Sniff Dog - Los Angeles & 1995 & {1. Crazy 2. Love 3. Crack} \\ \hline
+        12 & Jay-X - Goodbye New York & 1965 & {1. Imperial State of Math} \\ \hline
+        13 & Sniff Dog - Dr. Drug & 1999 & {1. Weed Every Day} \\ \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
 \subsubsection{1. Normalform}
+
+Die Anforderungen an die 1. NF sind, dass alle Attribute atomar sind und
+unnötige Spalten und Daten zusammengefasst werden, ohne das Informationen verloren gehen.
+
+\begin{table}[H]
+    \begin{tabular}{|a|l|l|l|a|l|}
+    \hline
+        CD\_ID & Albumtitel & Interpret & Gründungsjahr & Track & Titelliste \\ \hline
+        11 & Los Angeles & Sniff Dog & 1993 & 1 & Crazy \\ \hline
+        11 & Los Angeles & Sniff Dog & 1993 & 2 & Love \\ \hline
+        11 & Los Angeles & Sniff Dog & 1993 & 3 & Crack \\ \hline
+        12 & Goodbye New York & Jay-X & 1965 & 1 & Imperial State of Math \\ \hline
+        13 & Dr. Drug & Sniff Dog & 1993 & 1 & Weed Every Day \\ \hline
+    \end{tabular}
+\end{table}
+
 \subsubsection{2. Normalform}
+
+Die Anforderungen an die 2. NF sind die an alle Vorigen und dass keine
+nicht-schlüssel Attribute in einer Relation nur von einem Teil des Primärschlüssels
+abhängig sind (jedes Attribut einer Relation ist voll funktional abhängig vom Primärschlüssel dieser).
+
+\begin{table}[H]
+    \begin{tabular}{|a|l|l|l|}
+    \hline
+        CD\_ID & Albumtitel & Interpret & Gründungsjahr \\ \hline
+        11 & Los Angeles & Sniff Dog & 1993 \\ \hline
+        12 & Goodbye New York & Jay-X & 1965 \\ \hline
+        13 & Dr. Drug & Sniff Dog & 1993 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabular}{|a|a|l|}
+    \hline
+        CD\_ID & Track & Titel \\ \hline
+        11 & 1 & Crazy \\ \hline
+        11 & 2 & Love \\ \hline
+        11 & 3 & Crack \\ \hline
+        12 & 1 & Imperial State of Math \\ \hline
+        13 & 1 & Weed Every Day \\ \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
 \subsubsection{3. Normalform}
-\subsection{ER-Modelle}
+
+Die Anforderungen an die 3. NF sind die an alle Vorigen und dass keine
+nicht-schlüssel Attribute in einer Relation von anderen nicht-schlüssel Attributen
+funktional abhängegen. Diese nicht gewollten Abhängigkeiten nennt man transistive Abhängigkeiten.
+
+\begin{table}[H]
+    \begin{tabular}{|a|l|d|}
+    \hline
+        CD\_ID & Albumtitel & Interpret\_ID \\ \hline
+        11 & Los Angeles & 21 \\ \hline
+        12 & Goodbye New York & 22 \\ \hline
+        13 & Dr. Drug & 21 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabular}{|a|l|l|}
+    \hline
+        Interpret\_ID & Interpret & Gründungsjahr \\ \hline
+        21 & Sniff Dog & 1993 \\ \hline
+        22 & Jay-X & 1965 \\ \hline
+        21 & Sniff Dog & 1993 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabular}{|a|a|l|}
+    \hline
+        CD\_ID & Track & Titel \\ \hline
+        11 & 1 & Crazy \\ \hline
+        11 & 2 & Love \\ \hline
+        11 & 3 & Crack \\ \hline
+        12 & 1 & Imperial State of Math \\ \hline
+        13 & 1 & Weed Every Day \\ \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
+
 \subsection{SQL}
+\subsubsection{Struktur von SQL Abfragen}
