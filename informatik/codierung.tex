@@ -222,9 +222,42 @@ die Huffmann-Kodierung mit einer LZ-Variation. Dadurch können Daten verlustfrei
 komprimiert werden, indem der von häufig vorkommenden und von sich wiederholenden
 Daten eingenomme Platz reduziert wird. 
 
-\subsection{Hamming Codes}
+\subsection{Hamming Code}
 
-<TODO: Hamming>
+Der Hamming Code ist ein Fehlerkorrekturcode um 1 Bit Fehler in Bitfolgen
+zu erkennen und zu korrigieren. Dabei zeichnet sich dieser dadruch aus,
+das nur wenige Paritätsbits benötigt werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/hamming7.4.png}
+    \caption{7,4 Hamming Code}
+\end{figure}
+
+Der Hamming Code funktioniert so, dass zu den 4 Datenbits 3 Paritätsbits
+hinzugefügt werden (gesamt 7 Bits). Die Paritätsbits werden so gesetzt,
+dass die Summe in alle Kreisen gerade (oder ungerade) ist. Es ist nur wichtig,
+dass bei der Prüfung dies bekannt ist.
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|}
+    \hline
+        Bit & Ursprungs Nachricht & Fehlerhafte Nachricht \\ \hline
+        d1 & 1 & 1 \\ \hline
+        d2 & 0 & 0 \\ \hline
+        d3 & 0 & 1 \\ \hline
+        d4 & 1 & 1 \\ \hline
+        p1 & 0 & 0 \\ \hline
+        p2 & 0 & 0 \\ \hline
+        p3 & 1 & 1 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/hamming8.4.png}
+    \caption{7,4 Hamming Code}
+\end{figure}
 
 \subsection{Bildkodierung}
 
