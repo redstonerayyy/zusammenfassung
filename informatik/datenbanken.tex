@@ -1,9 +1,54 @@
 \section{Datenbanken}
 
-\subsubsection{Begriffe bei Datenbanken}
+\subsection{Begriffe bei Datenbanken}
 
-<Todo: Primärschlüssel, attribut, fremschlüssel, tabelle, einfüge, änderungs, löschanomalie>
+In relationnellen Datenbanksystemen werden Daten als Entitäten modelliert
+und strukturiert in sogenannten Tabellen (Relationen) gespeichert. Zwischen
+diesen Tabellen werden dann auch zusammenhänge modelliert.
 
+\vspace*{0.3cm}
+
+Tabellen bestehen aus Zeilen (Datensätzen) und Spalten. Jede Spalte
+steht dabei für ein Attribut der Tabelle, sodass jeder Datensatz
+einen passenden Wert für jedes Attribut der Tabelle, also für jede Spalte, haben
+muss. Jede Tabelle definiert ein oder mehrere Attribute, die den Primärschlüssel
+darstellen. Der Primärschlüssels darf in keinen Datensätzen gleich sein, da dieser
+zur eindeutigen Identifikation eines Datensatzes genutzt wird.
+Außerdem gibt es noch Fremdschlüssel, die in Attributen einer Tabelle
+gespeichert werden können. Dies sind Primärschlüssel einer anderen Tabelle,
+wodurch Zusammenhänge zwischen Tabellen hergestellt werden können.
+
+\vspace*{0.3cm}
+
+Datensatz: Grau
+
+Primärschlüssel: Blau
+
+Attribut: Rot
+
+Fremdschlüssel: Gelb
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|}
+    \hline
+        CD\_ID & Albumtitel & Interpret\_ID \\ \hline
+        \rowcolor{gray!20} 11 & Los Angeles & 21 \\ \hline
+        12 & Goodbye New York & 22 \\ \hline
+        13 & Dr. Drug & 21 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabular}{|>{\columncolor{blue!20}}l|>{\columncolor{red!20}}l|>{\columncolor{yellow!50}}l|}
+    \hline
+        CD\_ID & Albumtitel & Interpret\_ID \\ \hline
+        11 & Los Angeles & 21 \\ \hline
+        12 & Goodbye New York & 22 \\ \hline
+        13 & Dr. Drug & 21 \\ \hline
+    \end{tabular}
+\end{table}
+
+\clearpage
 
 \subsection{Entity-Relationship-Modelle (ER-Modelle)}
 
@@ -196,5 +241,83 @@ funktional abhängegen. Diese nicht gewollten Abhängigkeiten nennt man transist
 
 \clearpage
 
+\subsection{Datenbanken Anomalien und Inkonsistenz}
+
+Es gibt 3 Arten von Anomlien in Datenbanken. Einfüge-, Änderungs- und Löschanomlie.
+Diese treten meist auf, wenn das Datenbankschema unklar oder schlecht ist und Redundanzen
+aufweist. Dies führt zur Inkonsistenz der Datenbank. Das heißt, es fehlen wichtige
+Daten oder es gibt konfliktierende Datensätze, was die Integrität der Datenbank mindert.
+
+\subsubsection{Einfügeanomlie}
+
+Eine Einfügeanomalie tritt dann auf, wenn beim Einfügen eines Datensatzes
+nicht alle Spalten mit einem Wert gefüllt werden können, z. B. weil der
+Wert aufgrund des Sachzusammenhangs noch nicht bekannt ist.
+Dadurch entstehen inkonsistenzen.
+Beispielsweise hat ein Künstler sich noch nicht für einen Songnamen entschieden.
+
+\begin{table}[H]
+    \begin{tabular}{|a|a|l|}
+    \hline
+        CD\_ID & Track & Titel \\ \hline
+        11 & 1 & Crazy \\ \hline
+        11 & 2 & Love \\ \hline
+        11 & 3 &  \\ \hline
+        \end{tabular}
+\end{table}
+
+\subsubsection{Änderungsanomalie}
+
+Ein Änderungsanomlie tritt dann auf, wenn Daten redundant vorliegen und bei
+der Änderung z. B. eines Attributs nicht alle anderen Einträge auch geändert
+werden. Dadurch gibt es konflikte der Daten, also Inkonsistenz.
+Wird Beispielsweise der Albumname nicht für alle Songs geändert,
+so weiß man nicht, welcher Name der Richtige ist.
+
+\begin{table}[H]
+    \begin{tabular}{|a|a|l|l|}
+    \hline
+        CD\_ID & Track & Albumtitel & Titel \\ \hline
+        11 & 1 & Crazy & Los Angeles \\ \hline
+        11 & 2 & Love  & Los Angeles\\ \hline
+        11 & 3 & Crack & San Francisco \\ \hline
+        \end{tabular}
+\end{table}
+
+\subsubsection{Löschanomlie}
+
+Bei der Löschanomlie werden ungewollt Daten gelöscht. Dies
+geschieht z. B. dann, wenn Beziehungen nicht in seperaten
+Tabellen gespeichert sind oder wenn die Tabellen nicht korrekt
+aufgebaut sind.
+
+\clearpage
+
 \subsection{SQL}
-\subsubsection{Struktur von SQL Abfragen}
+
+Das Aufsetzen eines Datenbank Servers und einer Datenbank sowie das Erstellen und
+Modifizieren von Tabellen und die Grundlegenden Datentypen werden im folgenden
+nicht behandelt. Es wird ein Fokus auf SQL-Abfragen gelegt.
+
+\subsubsection{Strukturübersicht von SQL Abfragen}
+
+\adjustbox{scale=1.3}{
+\begin{lstlisting}
+Abfragestruktur:
+SELECT [DISTINCT | ALL] columns FROM tables
+[WHERE bedingung1 (AND | OR) bedingung2 (AND | OR) ...]
+[GROUP BY spalte1 , spalte2 , ...]
+[HAVING bedingung1 (AND | OR) bedingung2 (AND | OR) ...]
+[ORDER BY spalte1 [ASC | DESC], spalte2 [ASC | DESC], ...]
+[LIMIT anzahl]
+
+Operatoren für Berechnungen:
++, -, *, /
+
+Operatoren für Vergleiche in Bedingungen: 
+=, != , >, <, >=, <=, NOT
+LIKE (mit den Platzhaltern _ und %) , BETWEEN, IN, IS NULL
+
+Aggregatfunktionen: AVG( ), COUNT( ), MAX( ), MIN( ), SUM( ) 
+\end{lstlisting}
+}
