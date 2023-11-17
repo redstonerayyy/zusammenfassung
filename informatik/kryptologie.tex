@@ -1,14 +1,54 @@
 \section{Kryptologie}
 \subsection{Verschlüsselung im Alltag}
+
+Verschlüsselung ist ein Grundpfeiler der modernen Kommunikation und absolut nötig,
+damit kein Unbekannter und Unbefugter private Nachrichten oder Passwörter mitlesen
+kann. Ohne starke Verschlüsselungsverfahren, wäre die weitergabe sensibler Daten über
+das Internet nicht möglich.
+
 \subsection{Historische Verschlüsselungsverfahren}
+
+\subsubsection{Caesar Chiffre}
+
+Schon die alten Römer und viele nach ihnen erkannten, dass es durchaus von Vorteil
+ist, wenn die Feinde nichts über den geheimen Schlachtplan oder die nächste Intrige
+erfahren können.
+Das sogenannte Caesar-Chiffre ist die einfachste Form eines symetrischen,
+monoalphatischen Verschlüsselungsverfahren für Texte.
+Man bestimmt eine Verschiebung zwischen 1 und 25 und ersetzt dann
+alle Buchstaben des Klartexts, um den Geheimtext zu erhalten.
+Kennt man die Verschiebung, so lässt sich die Nachricht auch wieder entschlüsseln.
+Dieses Verfahren ist allerdings nicht sicher, weswegen es heutzutage niemand verwendet.
+Um einen Buchstaben zu verschlüsseln sucht man diesen im oberen Alphabet und
+ersetzt diesen dann durch den Buchstaben darunter aus dem unteren Alphabet.
+Beim Entschlüsseln ist dies umgekehrt. Man ersetzt den Buchstaben im Geheimtext
+durch den Buchstaben aus dem oberen Alphabet, der über der Position des Buchstabens
+im unteren Alphabet ist.
+
+\begin{lstlisting}
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Y Z A B C D E F G H I J K L M N O P Q R S T U V W X
+
+Klartext:   INFORMATIK
+Geheimtext: GLDMPKYRGI
+\end{lstlisting}
+
 \subsection{Symetrische Verschlüsselung}
 
-\subsubsection{Caesar und Vigenere}
+Symetrische Verschlüsselungsverfahren zeichnen sich dadurch aus, dass zum
+Ent- und Verschlüsseln der gleiche Algorithmus und der gleiche Schlüssel verwendet
+wird. Beispiele sind die Caesar Chiffre, die Vigenere Chriffe oder das Blockchiffre AES-256.
+
 \subsubsection{Blockchriffen}
 
 \subsection{Asymetrische Verschlüsselung (Public Key Cryptography)}
-\subsubsection{RSA und Schlüsselpaare}
+
 \subsubsection{Diffie und Hellmann Verfahren}
+
+\subsubsection{RSA und Schlüsselpaare}
+
 \subsection{Public Key Infrastructure (CA-Certificates)}
+
 \subsubsection{Zertifikate}
+
 \subsubsection{Signaturen}
