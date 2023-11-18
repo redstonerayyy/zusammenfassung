@@ -239,10 +239,36 @@ Signatur für Bob erstellt.
 
 \subsubsection{Lösung mit Zertifikaten und Zertifikatsstellen}
 
-\vspace*{0.5cm}
+Bob hat eine Bank gegründet, bei der Alice Kundin ist. Damit Eve ihre vertrauliche Kommunikation
+nicht mithören kann, nutzt Bob ein Zertifikat für seine Bank.
+Nachdem Bob sein Schlüsselpaar generiert hat, hat er bei der Zertifikatsstelle ein Zertifikat
+beantragt. Dazu musste er sich bei der Zertifikatsstelle authentifizieren, dass er
+wirklich der Betreiber von Bob's Bank ist. Anschließend hat die Zertifikatsstelle ein
+Zertifikat für seine Bank erstellt, in welchem sein öffentlicher Schlüssel sowie Informationen
+über seine Bank mit dem privaten Schlüssel der Zertifizierungsstelle signiert ist.
+Dieses sendet Bob nun an Alice, um zu bestätigen, dass sie wirklich mit Bob's bank kommuniziert.
+Alice kann die Signatur des Zertifikats prüfen, da sie im voraus den öffentlichen Schlüssel
+von der Zertifikatsstelle erhalten hat. Sie weiß dann, ob sie wirklich Bob's öffentlichen
+Schlüssel erhalten hat. Eve kann kein Zertifikat für Bob's Bank beantragen, da sie sich
+dafür bei der Zertifizierungsstelle als Bob authentifizieren müsste.
+Beantragt sie ein anderes Zertifikat, so erkennt Alice, dass dieses nicht für Bob's Bank,
+sondern für jemand anderen ausgestellt ist.
+Erstellt Eve selbst ein Zertifikat, so erkennt Alice mit dem öffentlichen Schlüssel der
+Zertifizierungsstelle, dass dieses gefälscht ist.
+Dies funktioniert allerdings nur, weil Bob und Alice beide Faythe, dem Betreiber
+der Zertifikatsstelle vertrauen und weil dieser sehr gewissenhaft arbeitet.
+Da Alice Kunding bei Bob ist, kann sie sich über die gesichterte Verbindung nun mit ihrem
+Password authentifizieren. Da sie den öffentlichen Schlüssel aus dem Zertifikat nutzt weiß sie,
+dass nur Bob die Nachricht lesen kann.
+Unter anderen Umständen, z. B. bei der Kommunikation zwischen Servern in einem Unternehmen
+ist es auch möglich, dass diese sich gegenseitig Zertifikate zusenden.
 
-% \begin{center}
-\adjustbox{scale=1.0}{
+\clearpage
+
+\vspace*{2.5cm}
+
+\begin{center}
+\adjustbox{scale=1.4}{
 \begin{tikzpicture}
 % left %
 \draw (-1,6) rectangle (4,8);
@@ -278,4 +304,4 @@ Signatur für Bob erstellt.
 
 \end{tikzpicture}
 }
-% \end{center}
+\end{center}
