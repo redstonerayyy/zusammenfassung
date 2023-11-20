@@ -299,12 +299,156 @@ Das Aufsetzen eines Datenbank Servers und einer Datenbank sowie das Erstellen un
 Modifizieren von Tabellen und die Grundlegenden Datentypen werden im folgenden
 nicht behandelt. Es wird ein Fokus auf SQL-Abfragen gelegt.
 
+\subsubsection{Auswahl von Tabellenspalten (SELECT, FROM)}
+
+Wählt die angegebenen Spalten aus den Tabellen aus und zeigt diese an.
+
+\begin{lstlisting}[language=sql]
+SELECT [* | column, ...] FROM [table, ...];
+
+SELECT vorname, alter FROM schueler;
+\end{lstlisting}
+
+\subsubsection{DISTINCT}
+
+Wählt die angegebenen Spalten aus den Tabellen aus und zeigt diese an.
+Kommen dabei in einer Spalte Werte mehrmals vor, so wird dieser Wert nur einmal angezeigt.
+
+\begin{lstlisting}[language=sql]
+SELECT DISTINCT [* | column, ...] FROM [table];
+
+SELECT DISTINCT lehrer FROM kurse;
+\end{lstlisting}
+
+\subsubsection{WHERE}
+
+Wählt nur Datensätze aus, die alle Bedingungen im \textbf{WHERE} Teil erfüllen.
+
+\begin{lstlisting}[language=sql]
+SELECT [* | column, ...]
+FROM [table]
+WHERE [condition [AND | OR] condition ...];
+
+SELECT *
+FROM kurse
+WHERE lehrer LIKE 'Herr%' AND klasse > 10;
+\end{lstlisting}
+
+\subsubsection{Bedingungen in SQL}
+
+Bedingungen im \textbf{WHERE} Teil lassen sich mit folgenden Operatoren formulieren.
+
+\begin{lstlisting}[language=sql]
+=, !=, >, <, >=, <=, NOT
+LIKE <string> mit '_' (für 1 Zeichen) oder '%' (für 1 bis n Zeichen)
+BETWEEN, IN, IS NULL
+\end{lstlisting}
+
+\begin{lstlisting}[language=sql]
+[column] [operator] [column]
+WHERE age < 5;
+WHERE name LIKE 'a%';
+WHERE NOT age = 3;
+\end{lstlisting}
+
+\clearpage
+
+\subsubsection{ORDER BY}
+
+Sortiert die Datensätze anhand ein oder mehr Spalten aufsteigend oder absteigend.
+
+\begin{lstlisting}[language=sql]
+SELECT [* | column, ...] FROM [table, ...] ORDER BY [column] [ASC | DESC];
+
+SELECT vorname, alter FROM schueler ORDER BY alter asc;
+\end{lstlisting}
+
+\subsubsection{LIMIT}
+
+Zeigt nur die ersten Datensätze an, bis das Limit an Zeilen erreicht ist.
+
+\begin{lstlisting}[language=sql]
+SELECT [* | column, ...] FROM [table, ...];
+
+SELECT vorname, alter FROM schueler LIMIT 4;
+\end{lstlisting}
+
+\subsubsection{Aggregatfunktionen (AVG, COUNT, ...)}
+
+\begin{lstlisting}[language=sql]
+AVG() Arithmetisches Mittel der Werte
+COUNT() Anzahl der Werte
+MAX() Maximum der Werte
+MIN() Minimum der Werte
+SUM() Summer der Werte
+\end{lstlisting}
+
+\begin{lstlisting}[language=sql]
+SELECT [AVG, ...]([* | column, ...]) FROM [table, ...];
+
+SELECT COUNT(*) FROM schueler;
+\end{lstlisting}
+
+\subsubsection{AS (Alias)}
+
+\begin{lstlisting}[language=sql]
+SELECT [* | column [AS alias], ...] FROM [table, ...];
+
+SELECT vorname AS name, alter FROM schueler LIMIT 4;
+\end{lstlisting}
+
+\subsubsection{Tabellen Zusammenführen}
+
+Wenn man mehrere Tabellen im \textbf{FROM} Teil eingibt, so wird das Kreuzprodukt der
+Tabellen gebildet. Das bedeutet, dass jede Zeile einer Tabelle einmal mit allen
+Zeilen der anderen Tabellen so kombiniert wird, dass jede Wertekombination
+aller Spalten einmal als Zeile vorkommt. Deswegen ist danach eine Filterung der
+Daten nötig. Nutzt man nun \textbf{WHERE} auf diese neue Tabelle, so lassen
+sich die Daten Tabellenübergreifend filtern (zusammenführen, ``joinen'').
+Es können z. B. die Namen aller Schüler angezeigt werden, die im Kurs 'Dt 31L' sind
+
+\begin{lstlisting}[language=sql]
+SELECT vorname
+FROM Schueler, Hatkurs, Kurse
+WHERE 
+    Schueler.id_nummer = Hatkurs.id_nummer AND
+    Hatkurs.Kursnummer = Kurse.Kursnummer AND
+    Kurse.Kursnummer = 'Dt 31L';
+\end{lstlisting}
+
+\subsubsection{GROUP BY}
+
+\textbf{GROUP BY} fasst alle Datensätze zu einer Gruppe zusammen, wo die
+Spalten den gleichen Wert haben. Dabei dürfen sich hinter \textbf{SELECT}
+allerdings nur Attribute befinden, nach denen gruppiert wird, oder Aggregatfunktionen.
+
+\begin{lstlisting}[language=sql]
+SELECT name, plz FROM Schueler GROUP BY plz, name;
+\end{lstlisting}
+
+\subsubsection{HAVING}
+
+\textbf{HAVING} bezieht sich auf eine Gruppe und nicht auf einen einzelnen Datensatz.
+Dadurch lassen sich z. B. Gruppen aussortieren, die gewisse Bedingungen nicht erfüllen.
+
+\begin{lstlisting}[language=sql]
+SELECT TrainerID, Vorname, Nachname, SUM(Dauer)
+FROM Trainer T, Kurs K
+WHERE T.TrainerID = K.Trainer
+GROUP BY TrainerID, Vorname, Nachname
+HAVING SUM(Dauer) > 120 
+\end{lstlisting}
+
+\subsubsection{SQL Reihenfolge an Operationen}
+
+\begin{lstlisting}[language=sql]
+FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> COUNT, ... -> ORDER BY
+\end{lstlisting}
+
 \subsubsection{Strukturübersicht von SQL Abfragen}
 
-<TODO: erklärung>
-
 \adjustbox{scale=1.3}{
-\begin{lstlisting}
+\begin{lstlisting}[language=sql]
 Abfragestruktur:
 SELECT [DISTINCT | ALL] columns FROM tables
 [WHERE bedingung1 (AND | OR) bedingung2 (AND | OR) ...]
