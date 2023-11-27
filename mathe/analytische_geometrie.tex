@@ -84,7 +84,7 @@ Betragsstriche um einen Vektor bedeuten, dass dessen Länge gemeint ist.
     \qquad | \overrightarrow{AB} | = \sqrt{3^2 + 1^2 + (-1)^2} = \sqrt{11}
 \end{equation*}
 
-\subsection{Vektoren mit Vorfaktor}
+\subsubsection{Vektoren mit Vorfaktor}
 
 Hat ein Vektor einen Vorfaktor (Skalar), so ist jede Komponente
 des Vektors mit diesem zu multiplizieren.
@@ -106,12 +106,81 @@ des Vektors mit diesem zu multiplizieren.
 
 \subsection{Kollineare Vektoren}
 
-2 Vektoren sind kollinear, wenn sich der eine Vektor aus der Multiplikation
-des 
+Vektoren sind kollinear, wenn sich der eine Vektor aus der Multiplikation
+des anderen Vektors mit einem Skalar ergibt.
+Sind zwei Vektoren kollinear, so bedeutet dies, dass beide die gleiche
+Richtung beschreiben.
+
+\begin{equation*}
+    \overrightarrow{a} =
+    \begin{bmatrix}
+        4 \\
+        6 \\
+        2
+    \end{bmatrix}
+    \qquad
+    \overrightarrow{b} =
+    \begin{bmatrix}
+        2 \\
+        3 \\
+        1
+    \end{bmatrix}
+    \qquad
+    \overrightarrow{a} =
+    2 \cdot \overrightarrow{b} =
+    2 \cdot
+    \begin{bmatrix}
+        2 \\
+        3 \\
+        1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        4 \\
+        6 \\
+        2
+    \end{bmatrix}
+\end{equation*}
 
 \subsection{Differenzvektor}
 
+
+
 \subsection{Abstand von Punkten}
+
+Um die Distanz zwischen zwei Punkten bzw. den Endpunkten von 2 vom gleichen Ort
+ausgehenden Vektoren zu berechnen, muss nur die Länge des Differenzvektors berechnet
+werden. Die Länge von $\overrightarrow{d}$ ist somit der Abstand zwischen
+$\overrightarrow{v_1}$ und $\overrightarrow{v_2}$.
+Eine Formel lässt sich somit von der Längenformel eines Vektors ableiten.
+
+\begin{equation*}
+    \overrightarrow{v_1} =
+    \begin{bmatrix}
+        4 \\
+        6 \\
+        2
+    \end{bmatrix}
+    \quad
+    \overrightarrow{v_2} =
+    \begin{bmatrix}
+        1 \\
+        2 \\
+        0
+    \end{bmatrix}
+    \quad
+    \overrightarrow{d} =
+    \begin{bmatrix}
+        3 \\
+        4 \\
+        2
+    \end{bmatrix}
+    \quad
+    \begin{aligned}
+        | \overrightarrow{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} \\
+        | \overrightarrow{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}
+    \end{aligned}
+\end{equation*}
 
 \subsection{Mittelpunkt einer Strecke}
 
