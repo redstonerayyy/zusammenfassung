@@ -1,7 +1,3 @@
-# Subjects
+# TODO
 
-## PH
-
-## MA
-
-## IF
+-INF Finite Automaten
