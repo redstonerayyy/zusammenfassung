@@ -1,26 +1,74 @@
 \section{Vektoren}
 
-Ein Vektor beschreibt eine Strecke mit Richtung zwischen 2 Punkten im Raum.
-Ein Vektor kann von jedem Ort im Raum ausgehen.und hat immer einen Start- und Endpunkt. 
-Jeder Punkt im Raum lässt sich als Vektor vom Ursprung $O$ zu den Koordinaten des Punktes
-darstellen.
+Ein Vektor beschreibt eine Verscheibung mit Richtung im Raum.
+Ein Vektor kann von jedem Ort im Raum ausgehen und kann dann einen Start- und Endpunkt haben.
+Jeder Punkt im Raum lässt sich mit einem Vektor vom Ursprung $O$ zu den
+Koordinaten des Punktes beschreiben.
 
 \begin{equation*}
-    P (1, 3, 2) \rightarrow \overrightarrow{OP} = \begin{bmatrix}
-        1 \\
+    \overrightarrow{v} = \begin{bmatrix}
+        5 \\
         3 \\
-        2
+        7
     \end{bmatrix}
     \qquad A (1, 2, 2) \; B (4, 3, 1) \rightarrow \overrightarrow{AB} = \begin{bmatrix}
         3 \\
         1 \\
         -1
     \end{bmatrix}
+    \qquad P (1, 3, 2) \rightarrow \overrightarrow{OP} = \begin{bmatrix}
+        1 \\
+        3 \\
+        2
+    \end{bmatrix}
 \end{equation*}
 
 \subsection{Rechnen mit Vektoren}
 
 \subsubsection{Addition und Subtraktion}
+
+Bei beim Rechnen mit Vektoren werden die Komponenten des einen Vektors
+mit den Komponenten des anderen Vektors addiert bzw. subtrahiert.
+Multiplikation ist dabei auf verschiedene Arten (später erklärt) möglich.
+Division ist nicht möglich.
+
+\begin{equation*}
+    \begin{bmatrix}
+        3 \\
+        1 \\
+        -2
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        2 \\
+        3 \\
+        1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        5 \\
+        4 \\
+        -1
+    \end{bmatrix}
+    \qquad
+    \begin{bmatrix}
+        3 \\
+        1 \\
+        -2
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        2 \\
+        3 \\
+        1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 \\
+        -2 \\
+        -3
+    \end{bmatrix}
+\end{equation*}
 
 \subsubsection{Länge eines Vektor}
 
@@ -36,7 +84,30 @@ Betragsstriche um einen Vektor bedeuten, dass dessen Länge gemeint ist.
     \qquad | \overrightarrow{AB} | = \sqrt{3^2 + 1^2 + (-1)^2} = \sqrt{11}
 \end{equation*}
 
+\subsection{Vektoren mit Vorfaktor}
+
+Hat ein Vektor einen Vorfaktor (Skalar), so ist jede Komponente
+des Vektors mit diesem zu multiplizieren.
+
+\begin{equation*}
+    2 \cdot
+    \begin{bmatrix}
+        3 \\
+        -1 \\
+        2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        6 \\
+        -2 \\
+        4
+    \end{bmatrix}
+\end{equation*}
+
 \subsection{Kollineare Vektoren}
+
+2 Vektoren sind kollinear, wenn sich der eine Vektor aus der Multiplikation
+des 
 
 \subsection{Differenzvektor}
 
@@ -130,12 +201,12 @@ Ebene von Rot-Blau.
 
 \section{Spiegelungen}
 \subsection{2D Spiegelungen}
-\subsubsection*{Achsenspiegelung}
-\subsubsection*{Punktspiegelung}
+\subsubsection{Achsenspiegelung}
+\subsubsection{Punktspiegelung}
 \subsection{3D Spiegelungen}
-\subsubsection*{Ebenenspiegelung}
-\subsubsection*{Punkspiegelung}
-\subsubsection*{Achsenspiegelung}
+\subsubsection{Ebenenspiegelung}
+\subsubsection{Punkspiegelung}
+\subsubsection{Achsenspiegelung}
 
 \section{Geraden}
 \subsection{Geradengleichung}
@@ -144,29 +215,38 @@ Ebene von Rot-Blau.
 \subsubsection{2D / 3D}
 \subsection{Spurpunkte auf Koordinatenebenen}
 \subsection{Lagebeziehungen von Geraden}
-\subsubsection{Parallelität von Geraden}
-\subsubsection{Identische Geraden}
-\subsubsection{Schnittpunkt von Geraden}
-\subsubsection{Windschiefe Geraden}
+\subsubsection{Geraden liegen parralel}
+\subsubsection{Geraden sind identisch}
+\subsubsection{Geraden schneiden sich}
+\subsubsection{Geraden liegen windschief}
 
 \section{Ebenen}
-\subsection{Formen von Ebenen}
-\subsection{Parameterform, Normalenform, Koordinatenform bei Ebenengleichungen}
-\subsection{Umwandlung zwischen den Formen}
-\subsection{Lagebeziehung Punkt-Ebene}
-\subsection{Punktprobe für Ebene}
-\subsection{Lagebeziehung Gerade und Ebene}
-\subsection{Schnittpunkt, Parallel, Gerade liegt in Ebene}
-\subsection{Lagebeziehung Ebene und Ebene}
-\subsection{Schnittgerade, Parallel, Ebene liegt in Ebene}
-\subsection{Winkel bei Geraden, Vektoren und Ebenen}
-\subsection{Winkel Gerade - Gerade}
-\subsection{Winkel Ebene - Ebene}
-\subsection{Winkel Gerade - Ebene}
-\subsection{Kürzester Abstand Punkt, Gerade (Analysis, Skalarprodukt)}
-\subsection{Kürzester Abstand Punkt, Ebene}
-\subsection{Parallele Geraden, Parallele Ebenen, Gerade parallel zu Ebene}
-\subsection{Abstand Windschiefer Geraden}
+\subsection{Ebenenformen}
+\subsubsection{Parameterform}
+\subsubsection{Normalenform}
+\subsubsection{Koordinatenform}
+\subsubsection{Umwandlung zwischen den Formen}
+\subsection{Punktprobe für Ebenen}
+\subsection{Lagebeziehung Gerade-Ebene}
+\subsubsection{Schnittpunkt Gerade-Ebene}
+\subsubsection{Gerade parallel zur Ebene}
+\subsubsection{Gerade liegt in der Ebene}
+\subsection{Lagebeziehung Ebene-Ebene}
+\subsubsection{Schnittgerade}
+\subsubsection{Ebenen liegen parralel}
+\subsubsection{Ebenen liegen ineinander}
+\subsection{Winkel zwischen Geraden und Ebenen}
+\subsubsection{Winkel Gerade-Gerade}
+\subsubsection{Winkel Gerade-Ebene}
+\subsubsection{Winkel Ebene-Ebene}
+
+\subsection{Abstände im Raum}
+\subsubsection{Abstand Punkt-Gerade (Analysis)}
+\subsubsection{Abstand Punkt-Gerade (Skalarprodukt)}
+\subsubsection{Abstand Punkt-Ebene}
+\subsubsection{Abstand windschiefer Geraden}
+\subsubsection{Abstände bei parallelen Geraden und Ebenen}
+
 
 
 
