@@ -6,17 +6,17 @@ Jeder Punkt im Raum lässt sich mit einem Vektor vom Ursprung $O$ zu den
 Koordinaten des Punktes beschreiben.
 
 \begin{equation*}
-    \overrightarrow{v} = \begin{bmatrix}
+    \vec{v} = \begin{bmatrix}
         5 \\
         3 \\
         7
     \end{bmatrix}
-    \qquad A (1, 2, 2) \; B (4, 3, 1) \rightarrow \overrightarrow{AB} = \begin{bmatrix}
+    \qquad A (1, 2, 2) \; B (4, 3, 1) \rightarrow \vec{AB} = \begin{bmatrix}
         3 \\
         1 \\
         -1
     \end{bmatrix}
-    \qquad P (1, 3, 2) \rightarrow \overrightarrow{OP} = \begin{bmatrix}
+    \qquad P (1, 3, 2) \rightarrow \vec{OP} = \begin{bmatrix}
         1 \\
         3 \\
         2
@@ -76,12 +76,31 @@ Die Länge eines Vektors ergibt sich aus dem Satz des Pythagoras.
 Betragsstriche um einen Vektor bedeuten, dass dessen Länge gemeint ist.
 
 \begin{equation*}
-    \overrightarrow{AB} = \begin{bmatrix}
+    \vec{AB} = \begin{bmatrix}
         3 \\
         1 \\
         -1
     \end{bmatrix}
-    \qquad | \overrightarrow{AB} | = \sqrt{3^2 + 1^2 + (-1)^2} = \sqrt{11}
+    \qquad | \vec{AB} | = \sqrt{3^2 + 1^2 + (-1)^2} = \sqrt{11}
+\end{equation*}
+
+\subsubsection{Gegenvektor}
+
+Der Gegenvektor ist die Umkehrung eines Vektors.
+
+\begin{equation*}
+    \vec{v} =
+    \begin{bmatrix}
+        3 \\
+        -1 \\
+        2
+    \end{bmatrix}
+    \qquad \vec{v} \cdot -1 = \vec{g} =
+    \begin{bmatrix}
+        -3 \\
+        1 \\
+        -2
+    \end{bmatrix}
 \end{equation*}
 
 \subsubsection{Vektoren mit Vorfaktor}
@@ -112,22 +131,22 @@ Sind zwei Vektoren kollinear, so bedeutet dies, dass beide die gleiche
 Richtung beschreiben.
 
 \begin{equation*}
-    \overrightarrow{a} =
+    \vec{a} =
     \begin{bmatrix}
         4 \\
         6 \\
         2
     \end{bmatrix}
     \qquad
-    \overrightarrow{b} =
+    \vec{b} =
     \begin{bmatrix}
         2 \\
         3 \\
         1
     \end{bmatrix}
     \qquad
-    \overrightarrow{a} =
-    2 \cdot \overrightarrow{b} =
+    \vec{a} =
+    2 \cdot \vec{b} =
     2 \cdot
     \begin{bmatrix}
         2 \\
@@ -142,34 +161,30 @@ Richtung beschreiben.
     \end{bmatrix}
 \end{equation*}
 
-\subsection{Differenzvektor}
-
-
-
 \subsection{Abstand von Punkten}
 
 Um die Distanz zwischen zwei Punkten bzw. den Endpunkten von 2 vom gleichen Ort
 ausgehenden Vektoren zu berechnen, muss nur die Länge des Differenzvektors berechnet
-werden. Die Länge von $\overrightarrow{d}$ ist somit der Abstand zwischen
-$\overrightarrow{v_1}$ und $\overrightarrow{v_2}$.
+werden. Die Länge von $\vec{d}$ ist somit der Abstand zwischen
+$\vec{v_1}$ und $\vec{v_2}$.
 Eine Formel lässt sich somit von der Längenformel eines Vektors ableiten.
 
 \begin{equation*}
-    \overrightarrow{v_1} =
+    \vec{v_1} =
     \begin{bmatrix}
         4 \\
         6 \\
         2
     \end{bmatrix}
     \quad
-    \overrightarrow{v_2} =
+    \vec{v_2} =
     \begin{bmatrix}
         1 \\
         2 \\
         0
     \end{bmatrix}
     \quad
-    \overrightarrow{d} =
+    \vec{d} =
     \begin{bmatrix}
         3 \\
         4 \\
@@ -177,8 +192,8 @@ Eine Formel lässt sich somit von der Längenformel eines Vektors ableiten.
     \end{bmatrix}
     \quad
     \begin{aligned}
-        | \overrightarrow{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} \\
-        | \overrightarrow{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}
+        | \vec{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} \\
+        | \vec{d} | = \sqrt{(4 - 1)^2 + (6 - 2)^2 + (2 - 0)^2}
     \end{aligned}
 \end{equation*}
 
@@ -204,11 +219,25 @@ Das Ergebnis ist eine relle Zahl.
 
 \subsubsection{Winkel beim Skalarprodukt}
 
-\subsubsection{Kollineare Vektoren beim Skalarprodukt}
+Für den Winkel zwischen 2 vom gleichen Punkt ausgehenden Vektoren gelten folgende Formeln
+Ist das Skalarprodukt gleich 0, so sind die Vektoren orthogonal, ist dass Skalarprodukt
+gleich des Produkts der Vektorlängen, so sind die Vektoren kollinear.
 
-\subsubsection{Skalarprodukt Assoziativ, Kommutativ, Distributiv}
+\begin{equation*}
+    \cos (\alpha) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
+    \qquad \vec{a} \cdot \vec{b} = 0 \Rightarrow \alpha = 90°
+    \qquad \vec{a} \cdot \vec{b} = |\vec{a}| \cdot |\vec{b}| \Rightarrow \alpha = 0°
+\end{equation*}
 
-\clearpage
+\subsubsection{Skalarprodukt: Assoziativ, Kommutativ und Distributiv}
+
+Beim Skalarprodukt gelten die Rechengesetze Assoziativgesetz, Kommutativgesetz und Distributivgesetz.
+
+\begin{equation*}
+    \vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}
+    \qquad (\vec{a} \cdot \vec{b}) \cdot \vec{c} = \vec{a} \cdot (\vec{b} \cdot \vec{c})
+    \qquad (\vec{a} \cdot \vec{b}) \cdot \vec{c}  = \vec{a} \cdot \vec{c} + \vec{b} \cdot \vec{c} 
+\end{equation*}
 
 \subsection{Kreuzprodukt}
 
@@ -233,9 +262,7 @@ Ebene von Rot-Blau.
         a_3 b_1 - a_1 b_3 \\
         a_1 b_2 - a_2 b_1
     \end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
+    \qquad
     \begin{bmatrix}
         3 \\
         1 \\
@@ -258,24 +285,27 @@ Ebene von Rot-Blau.
     \end{bmatrix}
 \end{equation*}
 
-\begin{center}
-    \includegraphics[width=0.6\textwidth]{images/cross-p.png}
-\end{center}
+\includegraphics[width=0.4\textwidth]{images/cross-p.png}
 
 
 \section{3D Koordinatensystem}
-\subsection{2 Varianten}
-\subsection{Punkte Ablesen}
-\subsection{Punkte Einzeichnen}
 
-\section{Spiegelungen}
-\subsection{2D Spiegelungen}
-\subsubsection{Achsenspiegelung}
-\subsubsection{Punktspiegelung}
-\subsection{3D Spiegelungen}
-\subsubsection{Ebenenspiegelung}
-\subsubsection{Punkspiegelung}
-\subsubsection{Achsenspiegelung}
+Die Darstellung eines 3D-Koordinatensystems in 2D (z. B. als Zeichnung auf Papier)
+ist mit verschiedenen Abmessungen möglich. Außerdem ist es beim Punkte einzeichnen nötig,
+strikt die Reihenfolge x, y, z einzuhalten.
+Beim Ablesen von Punkten muss 1 Koordinate des Punktes bereits bekannt sein, da die Punkte
+sonst mehrdeutig sind. Diese Angabe ist allerdings nicht immer explizit gegeben,
+sondern ergibt sich meist aus dem Zusammenhang (z. B. von einer Aufgabe).
+
+\begin{figure}[H]
+    \includegraphics[width=0.8\textwidth]{images/3d-cord-systems.png}
+    \caption{3D Koordinatensystem Arten}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.6\textwidth]{images/3d-draw-point.png}
+    \caption{Einzeichen von P(2 | 3 | 1,5)}
+\end{figure}
 
 \section{Geraden}
 \subsection{Geradengleichung}
@@ -316,10 +346,73 @@ Ebene von Rot-Blau.
 \subsubsection{Abstand windschiefer Geraden}
 \subsubsection{Abstände bei parallelen Geraden und Ebenen}
 
+\section{Spiegelungen}
+\subsubsection{2D Achsenspiegelung und Punktspiegelung}
 
+\begin{figure}[H]
+    \adjustbox{scale=0.8}{
+    \begin{tikzpicture}
+        % system
+        \tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+        \tkzGrid
+        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
+        \draw [thick,->] (0, -4.5) -- (0, 4.5);
+        \node at (4.5, -0.5) {x};
+        \node at (-0.5, 4.5) {y};
+        % vectors, points
+        \draw[red, arrows = {-Stealth}] (0, 2) -- (2.9, 2);
+        \draw[red, arrows = {-Stealth}] (0, 2) -- (-2.9, 2);
+        \draw[blue] (0, -4) -- (0, 4);
+        \draw [color=blue, fill=green] (3, 2) circle (0.05);
+        \draw [color=blue, fill=green] (-3, 2) circle (0.05);
+    \end{tikzpicture}
+    }
+    \adjustbox{scale=0.8}{
+    \begin{tikzpicture}
+        % system
+        \tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+        \tkzGrid
+        \draw [thick,->] (-4.5, 0) -- (4.5, 0);
+        \draw [thick,->] (0, -4.5) -- (0, 4.5);
+        \node at (4.5, -0.5) {x};
+        \node at (-0.5, 4.5) {y};
+        % vectors, points
+        \draw[red, arrows = {-Stealth}] (0, 0) -- (2.9, 2);
+        \draw[red, arrows = {-Stealth}] (0, 0) -- (-2.9, -2);
+        \draw [color=blue, fill=green] (3, 2) circle (0.05);
+        \draw [color=blue, fill=green] (-3, -2) circle (0.05);
+        \draw [color=blue, fill=blue] (0, 0) circle (0.1);
+    \end{tikzpicture}
+    }
+\end{figure}
 
+\subsection{3D Spiegelungen}
 
+Punktspiegelung, Ebenenspiegelung und Achsenspiegelung im 3-dimensionalen Raum.
 
+\begin{figure}[H]
+    \centering
+    \setkeys{Gin}{width=0.3\linewidth}    
+    \includegraphics[width=0.3\textwidth]{images/3d-point-reflection.png} \,
+    \includegraphics[width=0.3\textwidth]{images/3d-plane-reflection.png} \,
+    \includegraphics[width=0.3\textwidth]{images/3d-axis-reflection.png}
+\end{figure}
 
+\subsubsection{Punkspiegelung}
+Für die Punktspiegelung muss für alle Punkte der Gegenvektor zum  Verbindungsvektor von
+Spiegelpunkt und zu spiegelndem Punkt gebildet werden. Dieser zeigt dann vom Spiegelpunkt
+aus gesehen zur neuen Position des Punktes.
+Es verändern sich maximal alle 3 Koordinaten des Punktes.
 
+\subsubsection{Ebenenspiegelung}
+Um einen Punkt an einer Ebene zu spiegeln, muss man zuerst den Punkt auf der
+Ebene mit dem geringsten Abstand (Lotpunkt) zu diesem bestimmen. Anschließend
+spiegelt man den Punkt einfach anhand dieses Punktes. Alternativ kann dies
+auch mit einer Geradengleichung (vgl. Lotgerade) realisiert werden.
+Es verändert sich maximal 1 Koordinate des Punktes.
 
+\subsubsection{Achsenspiegelung}
+Um einen Punkt an einer Achse zu spiegeln, muss man zuerst den Punkt auf der
+Achse mit dem geringsten Abstand zu diesem bestimmen (vgl. Punkte-Gerade Abstand).
+Anschließend spiegelt man den Punkt einfach anhand dieses Punktes.
+Es verändern sich maximal 2 Koordinaten des Punktes.
