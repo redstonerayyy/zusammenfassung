@@ -192,8 +192,8 @@ Eine Formel lässt sich somit von der Längenformel eines Vektors ableiten.
     \end{bmatrix}
     \quad
     \begin{aligned}
-        | \vec{d} | = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} \\
-        | \vec{d} | = \sqrt{(4 - 1)^2 + (6 - 2)^2 + (2 - 0)^2}
+        | \vec{d} | & = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2} \\
+        | \vec{d} | & = \sqrt{(4 - 1)^2 + (6 - 2)^2 + (2 - 0)^2}
     \end{aligned}
 \end{equation*}
 
@@ -236,7 +236,7 @@ Beim Skalarprodukt gelten die Rechengesetze Assoziativgesetz, Kommutativgesetz u
 \begin{equation*}
     \vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}
     \qquad (\vec{a} \cdot \vec{b}) \cdot \vec{c} = \vec{a} \cdot (\vec{b} \cdot \vec{c})
-    \qquad (\vec{a} \cdot \vec{b}) \cdot \vec{c}  = \vec{a} \cdot \vec{c} + \vec{b} \cdot \vec{c} 
+    \qquad (\vec{a} + \vec{b}) \cdot \vec{c}  = \vec{a} \cdot \vec{c} + \vec{b} \cdot \vec{c} 
 \end{equation*}
 
 \subsection{Kreuzprodukt}
@@ -309,15 +309,142 @@ sondern ergibt sich meist aus dem Zusammenhang (z. B. von einer Aufgabe).
 
 \section{Geraden}
 \subsection{Geradengleichung}
-\subsection{Geradengleichung aus 2 Punkten Aufstellen}
-\subsubsection{Mehrdeutigkeit von Geradengleichung}
-\subsubsection{2D / 3D}
+
+Eine Gerade im 3-dimensionalen Raum ist vergleichbar mit einer linearen Funktion im einem 2-dimensionalen
+Koordinatensystem. Bei einer Gerade gibt es einen Startpunkt (vgl. y-Achsenabschnitt)
+und eine Richtung (vgl. Steigung). Der Startpunkt wird Stützvektor genannt und beschreibt einen
+Punkt im Raum. Die Richtung wird vom Richtungsvektor beschrieben. Da die Gerade im Raum
+liegt, bestehen alle Koordinaten aus 3 Werten (also x, y, z).
+
+\begin{equation*}
+    g: \vec{x} = \vec{a} + r \cdot \vec{v}
+    \qquad g: \vec{x} =
+    \begin{bmatrix}
+        2 \\
+        1 \\
+        3
+    \end{bmatrix}
+    +
+    r \cdot
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        2
+    \end{bmatrix}
+\end{equation*}
+
+Eine Geradengleichung lässt sich aus 2 Punkten aufstellen. Einer der Punkte wird der
+Stützvektor und der Richtungsvektor der Geraden ist der Differenzvektor der beiden Punkte.
+Eine Gerade durch die Vektoren (Punkte) $\vec{c}$ und $\vec{d}$ wäre wie folgt.
+
+\begin{equation*}
+    \begin{aligned}
+        \vec{a} & = \vec{c} \\
+        \vec{v} & = \vec{c} - \vec{d}
+    \end{aligned}
+    \qquad g: \vec{x} = \vec{a} + r \cdot \vec{v}
+\end{equation*}
+
+Eine Gerade kann dabei durch Unendlich viele unterschiedliche Geradengleichungen
+beschrieben werden, da jeder Punkt auf der Gerade als Stützvektor dienen kann
+und da alle zum Richtungsvektor kollinearen Vektoren auch die gleiche Gerade
+beschreiben.
+
 \subsection{Spurpunkte auf Koordinatenebenen}
+
+Eine Gerade kann 1, 2 oder 3 der Koordinatenebenen jeweils in einem Punkt schneiden.
+Diese Punkte nennt man dann Spurpunkte. Ob eine Gerade eine bestimmte Koordinatenebene
+schneidet lässt sich dadurch feststellen, dass für einen Wert $r$ die nicht zur Ebene
+gehörende Koordinate gleich 0 ist. Eine Schnittpunkt einer Gerade in $P(10 | 0 | 10)$ würde
+einen Spurpunkt auf der x-z Ebene bedeuten, da die y Koordinate gleich 0 ist.
+
+\vspace*{0.2cm}
+
+Für eine Gerade $g$ lässt sich z. B. der Spurpunkt der y-z Ebene bestimmten.
+Die zu erfüllende Bedingung ist $x = 0$, die anderen Koordinaten sind egal.
+Durch dass Komponentenweise gleichsetzen von Vektor und Geradengleichung lässt
+sich, wenn es einen Spurpunkt gibt, der Wert von $r$ bestimmen, wenn dies der Fall ist.
+Dazu muss die Gleichung der der auf 0 gesetzten Koordinate gelöst werden. 
+
+\begin{equation*}
+    g: \vec{x} =
+    \begin{bmatrix}
+        2 \\
+        1 \\
+        3
+    \end{bmatrix}
+    +
+    r \cdot
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        2
+    \end{bmatrix}
+    \qquad
+    \begin{bmatrix}
+        0 \\
+        y \\
+        z
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        2 \\
+        1 \\
+        3
+    \end{bmatrix}
+    +
+    r \cdot
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        2
+    \end{bmatrix}
+    \qquad
+    \begin{aligned}
+        0 = 2 + r \cdot 1 \\
+        \Rightarrow r = -2
+    \end{aligned}
+    \qquad
+    \vec{s} =
+    \begin{bmatrix}
+        0 \\
+        -1 \\
+        -1
+    \end{bmatrix}
+\end{equation*}
+
 \subsection{Lagebeziehungen von Geraden}
-\subsubsection{Geraden liegen parralel}
-\subsubsection{Geraden sind identisch}
-\subsubsection{Geraden schneiden sich}
-\subsubsection{Geraden liegen windschief}
+\subsubsection*{Geraden liegen parralel}
+
+Die Geraden liegen parallel, wenn die Richtungsvektoren kollinear sind.
+
+\subsubsection*{Geraden sind identisch}
+
+Die Geraden sind identisch, wenn die Richtungsvektoren kollinear sind und
+der Stützvektor der 1. Geraden auf der 2. Gerade liegt.
+Dies lässt sich durch gleichsetzen von Stützvektor und Geradengleichung prüfen.
+
+\subsubsection*{Geraden schneiden sich}
+
+Die Geraden schneiden sich, wenn die Richtungsvektoren nicht kollinear sind
+und für ein Wertepaar $r_1, r_2$ (Faktoren der Geradengleichungen) die Geradengleichungen
+den gleichen Punkt beschreiben. Dies lässt sich durch gleichsetzen von 2 Geradengleichungen
+überprüfen (Sind die Geraden identisch, so gibt es unendlich viele Wertepaare).
+Daraus entsteht dann ein Gleichungssystem, was sich mit Hilfsmitteln (Taschenrechner)
+oder von Hand lösen lässt.
+
+\begin{align*}
+    \vec{p} + r_1 \cdot \vec{u} = \vec{q} + r_2 \cdot \vec{v} \Rightarrow \\
+    \\
+    p_1 + r_1 \cdot u_1 = q_1 + r_2 \cdot v_1 \\
+    p_2 + r_1 \cdot u_2 = q_2 + r_2 \cdot v_2 \\
+    p_3 + r_1 \cdot u_3 = q_3 + r_2 \cdot v_3 \\
+\end{align*}
+
+\subsubsection*{Geraden liegen windschief}
+
+Um zu überprüfen, ob die Geraden windschief liegen, muss versucht werden, ein Schnittpunkt
+zu berechnen. Ergibt sich kein Schnittpunkt, so liegen die Geraden windschief.
 
 \section{Ebenen}
 \subsection{Ebenenformen}
@@ -346,8 +473,13 @@ sondern ergibt sich meist aus dem Zusammenhang (z. B. von einer Aufgabe).
 \subsubsection{Abstand windschiefer Geraden}
 \subsubsection{Abstände bei parallelen Geraden und Ebenen}
 
+\clearpage
+
 \section{Spiegelungen}
-\subsubsection{2D Achsenspiegelung und Punktspiegelung}
+
+\subsection{2D Spiegelungen}
+
+Achsenspiegelung und Punktspiegelung im 2-dimensionalen Raum.
 
 \begin{figure}[H]
     \adjustbox{scale=0.8}{
@@ -392,7 +524,7 @@ Punktspiegelung, Ebenenspiegelung und Achsenspiegelung im 3-dimensionalen Raum.
 
 \begin{figure}[H]
     \centering
-    \setkeys{Gin}{width=0.3\linewidth}    
+    \setkeys{Gin}{width=0.3\linewidth}
     \includegraphics[width=0.3\textwidth]{images/3d-point-reflection.png} \,
     \includegraphics[width=0.3\textwidth]{images/3d-plane-reflection.png} \,
     \includegraphics[width=0.3\textwidth]{images/3d-axis-reflection.png}
@@ -413,6 +545,6 @@ Es verändert sich maximal 1 Koordinate des Punktes.
 
 \subsubsection{Achsenspiegelung}
 Um einen Punkt an einer Achse zu spiegeln, muss man zuerst den Punkt auf der
-Achse mit dem geringsten Abstand zu diesem bestimmen (vgl. Punkte-Gerade Abstand).
+Achse mit dem geringsten Abstand zu diesem bestimmen (vgl. Punkt-Gerade Abstand).
 Anschließend spiegelt man den Punkt einfach anhand dieses Punktes.
 Es verändern sich maximal 2 Koordinaten des Punktes.
