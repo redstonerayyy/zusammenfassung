@@ -19,6 +19,13 @@
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage[]{fontspec}
 
+% set title spacing
+% titlesec above hyperref, else conflict
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt}{0pt}
+\titlespacing\subsection{0pt}{12pt}{0pt}
+\titlespacing\subsubsection{0pt}{12pt}{0pt}
+
 % links
 \usepackage{hyperref}
 \hypersetup{
@@ -102,9 +109,6 @@
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usetikzlibrary{arrows.meta}
-
-% multicol
-\usepackage{multicol}
 
 \begin{document}
 

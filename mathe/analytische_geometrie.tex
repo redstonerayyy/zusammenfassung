@@ -287,6 +287,7 @@ Ebene von Rot-Blau.
 
 \includegraphics[width=0.4\textwidth]{images/cross-p.png}
 
+\clearpage
 
 \section{3D Koordinatensystem}
 
@@ -307,7 +308,10 @@ sondern ergibt sich meist aus dem Zusammenhang (z. B. von einer Aufgabe).
     \caption{Einzeichen von P(2 | 3 | 1,5)}
 \end{figure}
 
+\clearpage
+
 \section{Geraden}
+
 \subsection{Geradengleichung}
 
 Eine Gerade im 3-dimensionalen Raum ist vergleichbar mit einer linearen Funktion im einem 2-dimensionalen
@@ -447,33 +451,235 @@ Um zu überprüfen, ob die Geraden windschief liegen, muss versucht werden, ein 
 zu berechnen. Ergibt sich kein Schnittpunkt, so liegen die Geraden windschief.
 
 \section{Ebenen}
-\subsection{Ebenenformen}
-\subsubsection{Parameterform}
-\subsubsection{Normalenform}
-\subsubsection{Koordinatenform}
-\subsubsection{Umwandlung zwischen den Formen}
-\subsection{Punktprobe für Ebenen}
-\subsection{Lagebeziehung Gerade-Ebene}
-\subsubsection{Schnittpunkt Gerade-Ebene}
-\subsubsection{Gerade parallel zur Ebene}
-\subsubsection{Gerade liegt in der Ebene}
-\subsection{Lagebeziehung Ebene-Ebene}
-\subsubsection{Schnittgerade}
-\subsubsection{Ebenen liegen parralel}
-\subsubsection{Ebenen liegen ineinander}
-\subsection{Winkel zwischen Geraden und Ebenen}
-\subsubsection{Winkel Gerade-Gerade}
-\subsubsection{Winkel Gerade-Ebene}
-\subsubsection{Winkel Ebene-Ebene}
 
-\subsection{Abstände im Raum}
-\subsubsection{Abstand Punkt-Gerade (Analysis)}
-\subsubsection{Abstand Punkt-Gerade (Skalarprodukt)}
-\subsubsection{Abstand Punkt-Ebene}
-\subsubsection{Abstand windschiefer Geraden}
-\subsubsection{Abstände bei parallelen Geraden und Ebenen}
+Ein im Raum liegende Ebene lässt sich durch 3 nicht auf einer Gerade liegende Punkte
+beschreiben. Folglich lässt sich somit auch aus 3 passenden Punkte eine Ebene konstruieren.
+Eine Ebene wird dabei durch eine Ebenengleichung in Parameter-, Normalen- oder Koordinatenform
+festgelegt.
+
+\subsection{Ebenenformen}
+
+\subsubsection{Parameterform}
+
+Für 3 Vektoren (Punkte) lässt sich die Ebenengleichung in Parameterform wie folgt aufstellen.
+Die Ebenengleichung in Parameterform besteht dabei aus einem Stützvektor und 2 Richtungsvektoren.
+Alle Punkte im Raum, die bei einem Wertepaar r, s die Ebenengleichung erfüllen, liegen
+dann auf der Ebene. Somit lässt sich für jeden Punkt im Raum bestimmen, ob dieser auf
+der Ebene liegt.
+
+\begin{align*}
+    & E: \vec{s} + r \cdot \vec{v_1} + s \cdot \vec{v_2} \\
+    \\
+    & E: \vec{x} =
+    \begin{bmatrix}
+        3 \\
+        7 \\
+        4
+    \end{bmatrix}
+    +
+    r \cdot
+    \begin{bmatrix}
+        0 \\
+        2 \\
+        -1
+    \end{bmatrix}
+    +
+    s \cdot
+    \begin{bmatrix}
+        7 \\
+        -3 \\
+        5
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection{Normalenform}
+
+Ein zu einer Ebene orthogonaler Vektor (orthogonal zu beiden Vektoren aus der Parameterform)
+steht senkrecht auf dieser und ist der Normalenvektor dieser Ebene.
+Bei der Normalenform ist $\vec{n}$ der Normalenvektor der Ebene und $\vec{q}$ ein Punkt
+auf der Ebene. Wenn ein Punkt auf der Ebene liegt, so liegt auch der Differenzvektor von
+diesem Punkt $\vec{x}$ und $\vec{q}$ in der Ebene. Somit ist dieser Differenzvektor dann
+orthogonal zum Normalenvektor der Ebene. Alle Punkte, die nicht dieses Kriterium erfüllen,
+liegen nicht auf der Ebene (vgl. Skalarprodukt ist 0, wenn Vektoren orthogonal).
+Die Normalenform kann auch durch Ausmultiplizieren und Addieren des rechten Terms
+Umgeformt werden, um eine andere Darstellung zu erhalten.
+
+\begin{equation*}
+    E: \vec{n} \cdot (\vec{x} - \vec{q}) = 0;
+    E: \vec {n} \cdot \vec{x} = d = \vec{n} \cdot \vec{q}
+\end{equation*}
+
+\subsubsection{Koordinatenform}
+
+Die Koordinatenform lässt sich aus der Normalenform umformen.
+Jeder Punkt x, y, z der diese Gleichung erfüllt, liegt auf der Ebene.
+Die Vorfaktoren für x, y, z sind dabei die Werte des Normalenvektors der Ebene.
+
+\begin{align*}
+    & E: \vec {n} \cdot \vec{x} = d = \vec{n} \cdot \vec{q} \\
+    & E: n_1 \cdot x + n_2 \cdot y + n_3 \cdot z = d
+\end{align*}
+
+\subsubsection{Umwandlung zwischen den Formen}
+
+\subsubsection*{Parameterform zu Normalenform}
+
+Das Kreuzprodukt der beiden Richtungsvektoren ist der Normalenvektor.
+Der Stützvektor fungiert als Punkt in der Ebene.
+
+\subsubsection*{Normalenform zu Koordinatenform}
+
+Im rechten und linken Term das Skalarprodukt ausrechnen.
+
+\begin{equation*}
+    E: \vec {n} \cdot \vec{x} = \vec{n} \cdot \vec{q}
+\end{equation*}
+
+\subsubsection*{Koordinatenform zu Normalenform}
+
+Normalenvektor ablesen und einen Punkt bestimmen. Anschließend
+Normalenform bilden.
+
+\subsubsection*{Koordinatenform zu Parameterform}
+
+Es müssen 3 Punkte bestimmt werden. Dabei ist es wichtig, dass diese nicht auf einer Gerade
+liegen, da sonst die Parameterform nicht funktioniert. Aus diesen Punkten lassen sich
+dann Stützvektor und Differenzvektoren bilden.
+
+\subsection{Lagebeziehung Gerade-Ebene}
+
+Liegt die Ebenengleichung in Koordinatenform vor (oder wird umgeformt), so lässt
+sich die Geradengleichung Komponentenweise einsetzen. Anschließend lässt sich diese Gleichung
+nach r umformen. Über r und die Geradengleichung lässt sich dann ein (potenzieller)
+Schnittpunkt berechnen.
+Gibt es keine Lösung für r, so liegen Gerade und Ebene parallel.
+Gibt es 1 Lösung, so schneidet die Gerade die Ebene.
+Gibt es $\infty$ Lösungen, so liegt die Gerade in der Ebene.
+
+\begin{align*}
+    & g: \vec{x} = \vec{a} + r \cdot \vec{v}
+    \qquad E: n_1 \cdot x + n_2 \cdot y + n_3 \cdot z = d \\
+    \\
+    & n_1 \cdot (a_1 + r \cdot v_1) + n_2 \cdot (a_2 + r \cdot v_2) + n_3 \cdot (a_3 + r \cdot v_3) = d
+\end{align*}
+
+\subsection{Lagebeziehung Ebene-Ebene}
+
+Vergleich mit der Gerade-Ebene beziehung lässt sich eine Ebenengleichung in Parameterform
+in eine in Koordinatenform einsetzen.
+Gibt es keine Lösung, so sind die Ebenen parallel.
+Gibt es eine Abhängigkeit von r und s, so gibt es eine Schnittgerade.
+Gibt es keine Abhängigkeit und $\infty$ Lösungen für r und s, so sind die Ebenen
+identisch (liegen ineinander).
+
+\begin{align*}
+    & E: \vec{x} = \vec{a} + r \cdot \vec{u} + s \cdot \vec{v}
+    \qquad E: n_1 \cdot x + n_2 \cdot y + n_3 \cdot z = d \\
+    \\
+    & n_1 \cdot (a_1 + r \cdot u_1 + s \cdot v_1) + n_2 \cdot (a_2 + r \cdot u_2 + s \cdot v_2) + n_3 \cdot (a_2 + r \cdot u_2 + s \cdot v_2) = d
+\end{align*}
+
+Wenn beide Ebenen in Koordinatenform vorliegen, so kann dies als Lineares-Gleichungssystem
+gedeutet werd. Dass es 3 Variablen und 2 Gleichungen gibt ist in diesem Fall kein Problem,
+da man eine Variable frei bestimmen darf. Anschließend lässt sich das lineare Gleichungssystem
+lösen. Von den Unbekannten x, y, z wählt man für eine frei einen Wert und löst anschließnd
+das System.
+Gibt es keine Lösung, so sind die Ebenen parallel.
+Gibt es eine Abhängigkeit von 2 Koordinaten, so gibt es eine Schnittgerade.
+Gibt es keine Abhängigkeit und $\infty$ Lösungen die 2 Koordinaten, so sind die Ebenen
+identisch (liegen ineinander).
+
+\begin{align*}
+    & E: n_{1.1} \cdot x + n_{1.2} \cdot y + n_{1.3} \cdot z = d_1 \\
+    & E: n_{2.1} \cdot x + n_{2.2} \cdot y + n_{2.3} \cdot z = d_2
+\end{align*}
 
 \clearpage
+
+\subsection{Winkel zwischen Geraden und Ebenen}
+
+Der Winkel zwischen 2 im gleichen Punkt startenden Vektoren lässt sich mit dem
+Skalarprodukt bestimmen. Dabei ist es wichtig, die richtigen Richtungsvektoren
+zu wählen, die im gleichen Punkt beginnen.
+Außerdem ist es wichtig, ob der Winkel oder der Gegenwinkel gesucht ist.
+Beide ergänzen sich zu 180° und sind voneinander abhängig.
+
+\begin{align*}
+    & \cos (\alpha) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|} \\
+    & \beta = 180° - \alpha
+\end{align*}
+
+\subsubsection*{Winkel Gerade-Gerade}
+
+Einer der Winkel zwischen den beiden Richtungsvektoren muss berechnet werden.
+
+\subsubsection*{Winkel Gerade-Ebene}
+
+Einer der Winkel zwischen dem Richtungsvektor und dem Normalenvektor muss berechnet werden.
+
+\subsubsection*{Winkel Ebene-Ebene}
+
+Einer der Winkel zwischen den beiden Normalenvektoren muss berechnet werden.
+
+\subsection{Abstände im Raum}
+
+\subsubsection{Abstand Punkt-Gerade}
+
+Wenn $\vec{f}$ der Punkt auf der Gerade mit dem geringsten Abstand zu $\vec{p}$ ist,
+gilt dass $\vec{f}$ der Lotfußpunkt ist und der Diffrenzvektor von $\vec{f}$ und $\vec{p}$
+orthogonal zum Richtungsvektor $\vec{v}$ der Geraden ist. Daraus ergibt sich folgende
+Formel, um den Punkt $\vec{f}$ zu berechnen. Die Länge des Differenzvektors von $\vec{f}$,
+$\vec{p}$ ist dann die kürzeste Distanz zwischen Gerade und Punkt.
+
+\begin{equation*}
+    (\vec{p} - \vec{f}) \cdot \vec{v} = 0
+    \qquad |\vec{p} - \vec{f}| = d
+\end{equation*}
+
+Ein weitere Möglichkeit ist die Bestimmung über die Analysis. Es kann dass Minimum
+einer Funktion der Distanz $d(r) = |\vec{f}(r) - \vec{p}|$ bestimmt werden,
+sodass man den $r$ Wert herausfindet.
+$\vec{f}(r)$ beschreibt dabei einen Punkt auf der Gerade, der von $r$ abhängig ist.
+
+\subsubsection{Abstand Punkt-Ebene}
+
+Zur Bestimmung vom Abstand eines Punktes zu einer Ebene, muss zuerst
+eine Lotgerade gebildet werden. Der Stützvektor ist der Punkt $\vec{p}$
+und der Richtungsvektor ist der Normalenvektor $\vec{n}$ der Ebene.
+Anschließend lässt sich ein Schnittpunkt dieser Lotgerade und der Ebene
+bestimmen, der Lotfußpunkt $F$. Die Distanz zwischen $\vec{p}$ und $F$ ist
+die kürzeste Distanz zwischen Punkt und Ebene.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/3d-point-plane-distance.png}
+\end{center}
+
+\subsubsection{Abstand windschiefer Geraden}
+
+Bei 2 windschiefen Geraden ist die Distanz zwischen zwei Punkten $P$ und $Q$,
+jeweils 1 auf jeder Gerade, dann am geringsten, wenn der Diffrenzvektor von $P$ und $Q$
+orthogonal zu beiden Richtungsvektoren ist. P ist dabei Abhängig von $s$ und $Q$ von $r$.
+Dieses Lineare-Gleichungssystem lässt sich nun lösen (2 Variablen, 2 Gleichungen).
+
+\begin{align*}
+    & (\vec{P} - \vec{Q}) \cdot \vec{u} = 0 \\
+    & (\vec{P} - \vec{Q}) \cdot \vec{v} = 0 \\
+    \\
+    & (\vec{P}(s) - \vec{Q}(r)) \cdot \vec{u} = 0 \\
+    & (\vec{P}(s) - \vec{Q}(r)) \cdot \vec{v} = 0
+\end{align*}
+
+\clearpage
+
+\subsubsection{Abstände bei parallelen Geraden und Ebenen}
+
+Ist der Abstand bei parallelen Ebenen, Geraden oder Kombinationen gesucht,
+so lässt sich einfach auf einer ein Punkt bestimmen und dann der kürzeste Abstand
+dieses Punktes zum anderen Objekt berechnet werden.
+
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{images/3d-parallel-distance.png}
+\end{center}
 
 \section{Spiegelungen}
 
