@@ -1,0 +1,243 @@
+\section{Ableitungen}
+
+\subsection{Ableitungsregeln}
+
+\subsubsection{Konstantenregel}
+
+Die Ableitung einer Konstante ist 0 (und wird dann weggelassen).
+Die Ableitung von $x$ ist 1.
+
+\vspace*{-1.3cm}
+\begin{align*}
+    f(x) & = 3x + 5 \\
+    f'(x) & = 3
+\end{align*}
+
+\subsubsection{Summenregel}
+\subsubsection{Differenzregel}
+\subsubsection{Potenzregel}
+\subsubsection{Faktorregel}
+
+\section*{Kettenregel}
+
+Die Kettenregel ist hilfreich, wenn man eine Funktion ableiten muss, die eine Potenz enthält.
+Sie zeigt, wie man eine Funktion abzuleiten kann, die als ihren Parameter eine weitere Funktion hat.
+
+Als Beispiel:
+
+$f(x) = (2x - 1)^3$
+
+Die Funktion lässt sich nun in eine äußere und innere Funktion aufteilen.
+
+$v(x) = 2x - 1$
+
+$u(x) = x^3$
+
+$f(x)$ lässt sich deshalb auch als $f(x) = u(v(x))$ schreiben.
+Die Kettenregel besagt nun, das diese Funktion auf folgendem Weg aufgeleitet werden kann.
+
+$f(x) = u(v(x))$
+
+$f'(x) = v'(x) \cdot u'(v(x))$
+
+Somit ist die Ableitung der Ursprungsfunktion
+
+$f'(x) = 2 \cdot 3(2x - 1)^2 = 6(2x - 1)^2$
+
+Diese setzt sich zusammen aus den Ableitungen von $v(x)$ und $u(x)$ der Ursprungsfunktion $v(x)$. 
+
+$v'(x) = 2$
+
+$u'(x) = 3x^2$
+
+\section*{Produktregel}
+Die Produktregel vereinfacht das Ableiten bei Funktionen, in denen 2 Terme
+miteinander Multipliziert werden, die sich als eigene Funktionen schreiben lassen.
+Als Beispiel:
+
+$f(x) = (x^2 - 1.5) \cdot (0.5x - x^2)$
+
+Die Funktion $f(x)$ lässt sich nun aufteilen in
+
+$u(x) = x^2 - 1.5$
+
+$v(x) = 0.5x - x^2$
+
+Somit lässt sich $f(x)$ als $f(x) = u(x) \cdot v(x)$ schreiben.
+Die Produktregel besagt, dass bei einer Funktion dieser Art gilt
+
+$f(x) = u(x) \cdot v(x)$
+
+$f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$
+
+Somit ist die Ableitung der Ursprungsfunktion
+
+$f'(x) = 2x \cdot (0.5x - x^2) + (x^2 - 1.5) \cdot (0.5 - 2x)$
+
+\section*{Quotientenregel}
+
+
+\subsection{Nullstellen, Vielfachheit}
+
+\section*{Nullstellen}
+Die Nullstellen der Ursprungsfunktion können in mehreren Verfahren oder Kombination dieser bestimmt werden. Diese sind
+\begin{itemize}
+	\item Umformung(z. B. Ausklammern)
+	\item pq-Formel
+	\item Taschenrechner(solve)
+	\item Polynomdivision(nicht behandelt)
+\end{itemize}
+
+Da die Umformung schwer einzugrenzen ist und die Lösung mit dem Taschenrechner einfach, wird nur die pq-Formel betrachtet.
+
+Die pq-Formel lässt sich nur auf Quadratische Funktionen bzw. Funktionen des 2. Grades anwenden.
+Dabei muss der Vorfaktor $a$ aus der Normalform $ax^2 + bx + c$ 1 sein.
+$b$ wird im Folgenden als $p$ bezeichnet, $c$ als $q$.
+
+Die pq-Formel lautet: \newline
+
+$\mathlarger{x_{1,2} = -\frac{p}{2} \pm \sqrt[]{(\frac{p}{2})^2 - q}}$ \newline
+
+Das Einsetzen ergibt in die Formel ergibt dann die Nullstellen der Funktion.
+
+Wenn man von der Funktion $f(x) = x^2 + 4x + 2$ ausgeht, dann ist die zugehörige pq-Formel \newline
+
+$\mathlarger{x_{1,2} = -\frac{4}{2} \pm \sqrt[]{(\frac{4}{2})^2 - 2}}$ \newline
+
+Diese lässt sich vereinfachen zu \newline
+
+$\mathlarger{x_{1,2} = -2 \pm \sqrt[]{4 - 2}}$
+
+Ist allerdings die Summe unter der Wurzel negativ, so gibt es keine Lösungen.
+
+\section*{y-Achsenabschnitt}
+
+Der y-Achsenabschnitt ist der Wert der Funktion an der Stelle $x = 0$.
+Er bezeichnet denn Schnittpunkt des Graphen mit der y-Achse und lässt sich
+durch Einsetzen von Null in die Ursprungsfunktion berechnen. 
+
+\subsection{Extrempunkte}
+
+\section*{Bestimmen von Extremstellen}
+Die Extremstellen eines Graphen sind die höchsten oder niedrigsten Punkte des Graphen.
+Dabei unterscheided man zwischen lokalen und globalen Minima und Maxima. Global bedeutet,
+dass es auf den ganzen Graphen der höchste oder tiefste Punkt ist, lokal, das es nur in einem Bereich
+der höchste oder tiefste Punkt ist.
+\newline
+
+Die Extremstellen einer Funktion $f(x)$ sind an den Stellen, wo $f'(x) = 0$ gilt, also wo
+die Ursprungsfunktion keine Steigung hat. Außerdem gibt die 2. Ableitung, wenn man sie mit Null
+gleichgesetzt, also $f''(x) = 0$, aufschluss darüber, ob es ein Hoch- oder Tiefpunkt ist.
+Ist der Wert der 2. Ableitung an der Stelle x größer als $0$, so liegt ein Tiefpunkt vor, ist der Wert kleiner
+als $0$, dann ist es ein Hochpunkt.
+\newline
+
+Somit lässt sich festhalten, dass die zur Berechnung der Extremstellen die 1. Ableitung der Funktion
+mit $0$ gleichgesetzt werden muss. An den Stellen wo nun $f'(x) = 0$ ist, muss nun x in die 2. Ableitung
+eingesetzt werden, um zu prüfen, ob es ein Hoch- oder Tiefpunkt ist.
+Zum Schluss können noch durch Einsetzen in die Ursprungsfunktion die tatsächlichen Punkte
+berechnet werden.
+\newline
+
+1. Ableitung gleich Null setzen: $f'(x) = 0$
+
+In 2. Ableitung einsetzen: $f''(x) > 0$ oder $f''(x) < 0$
+
+Punkte berechen: $E( x | f(x) )$
+
+\subsection{Wendepunkte, Sattelpunkte}
+
+\section*{Bestimmen von Wendepunkten}
+Die Wendepunkte bei einem Graphen sind die Punkte, wo der Graph sein Krümmungsverhalten ändert.
+Voraussetzung dafür ist, dass die 2. Ableitung an diesem Punkt gleich $0$ ist und die 3. Ableitung ungleich $0$.
+\newline
+
+Für einen Wendepunkt gilt also:
+
+$f''(x) = 0$
+$f'''(x) \neq 0$
+\newline
+
+Zur Bestimmung der Wendestellen müssen nun zunächst die Ableitungen gebildet werden und
+die 2. Ableitung wird mit 0 gleichgesetzt. Anschließend überprüft man dann mit der 3. Ableitung,
+ob es ein Wendepunkt ist.
+
+\subsection{Symetrie}
+
+\section*{Symmetrie}
+Achsensymetrie(y-Achse) $f(x) = f(-x)$
+
+Punktsymetrie(Ursprung) $f(x) = -f(-x)$
+
+\subsection{Limes/Unendlichkeit}
+
+\section*{Verhalten im Unendlichen}
+Für $x$ gegen $\infty$ oder $-\infty$ lässt sich ein Wert bestimmen.
+Wichtig, ob eine Funktion begrenzt oder unbegrenzt wächst.
+Gesucht ist \[\lim _{x \to \infty} f(x) = L\] oder \[\lim _{x \to -\infty} f(x) = L\]
+
+\subsection{Definitions, Wertebereich}
+
+\section*{Definitionsbereich}
+Eine Menge an Zahlen, meist aus einem der Zahlenräume oder mit Bedingung, z. B. $x > 0$. Für jede dieser Zahlen
+ist $f(x)$ definiert und liefert einen Wert.
+
+\section*{Wertebereich}
+Bereich, in dem die Funktionswerte liegen können, also Maximalwert und Minimalwert von y.
+
+\subsection{Monotonie, Krümmung}
+
+\section*{Monotonie}
+$f'(x) > 0 \rightarrow monoton steigent$
+
+$f'(x) < 0 \rightarrow monoton fallend$
+
+Monotonie muss für alle Intervalle bestimmt werden
+Dafür gelten die Intervalle zwischen $\infty$, $-\infty$ und den Nullstellen der 1. Ableitung.
+Hat $f'(x)$ also bei $x = 0$ die einzige Nullstelle, so müssen die Intervalle $]-\infty;0]$ und $[0;\infty[$
+betrachtet werden.
+
+\section*{Krümmung}
+Vorgehensweise wie bei Monotonie, nur mit 2. Ableitung
+
+$f''(x) > 0 \rightarrow links gekruemmt$
+
+$f''(x) < 0 \rightarrow rechts gekruemmt$
+
+Krümmung muss für alle Intervalle bestimmt werden
+Dafür gelten die Intervalle zwischen $\infty$, $-\infty$ und den Nullstellen der 2. Ableitung.
+Hat $f''(x)$ also bei $x = 0$ die einzige Nullstelle, so müssen die Intervalle $]-\infty;0]$ und $[0;\infty[$
+betrachtet werden.
+
+\subsection{Tangentengleichung, Normalengleichung}
+
+\subsection{Funktionsscharen}
+
+Ein Funktionsschar ist eine Menge von Funktionen, die aus einer Funktion durch veränderung
+eines Parameters geschieht, dem Scharparameter, auch k genannt.
+
+Es lässt sich nun allgemein Untersuchen, wo die signifikaten Stellen des Graphen in Abhängigkeit
+von k liegen.
+
+Wenn man nun Beispielhaft die Funktion $f(x) = k \cdot x^3 - 2x^2$ nimmt mit dem Scharparameter k.
+
+$f_{k}(x) = k \cdot x^3 - 2x^2$
+
+$f'_{k}(x) = k \cdot 3x^2 - 4x^1$
+
+$f''_{k}(x) = k \cdot 6x - 4$
+
+Setzt man nun die 1. Ableitung mit 0 gleich, so erhält man die Nullstellen $x = 0$ und $x = \frac{4}{3k}$.
+Die 2. Nullstelle lässt sich nun nach $k$ umformen, sodass man $k = \frac{4 - x}{3}$ erhält.
+Bei den Nullstellen der 1. Ableitung muss also $k = \frac{4-x}{3}$ gelten.
+Somit kann man in der Ursprungsfunktion $k$ mit $\frac{4-x}{3}$ ersetzen, wodurch man die Funktion
+der Ortslinie erhält. Die Funktionsgleichung dieser ist \newline
+
+$o(x) = \frac{4-x}{3} \cdot x^3 - 2x^2$ \newline
+
+Setzt man die 2. Ableitung mit 0 gleich, so erhält man die Nullstelle $x = \frac{2}{3k}$
+Dies entspricht also $k = \frac{2}{3x}$. Somit lässt dies in die Ursprungsfunktion einsetzen,
+wodurch sich $w(x) = \frac{2}{3x} \cdot x^3 - 2x^2$
+
+
+\section{GTR Todo}
