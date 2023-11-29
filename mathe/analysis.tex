@@ -1,5 +1,7 @@
 \section{Ableitungen}
 
+\subsection{Bedeutung von Ableitungen}
+
 \subsection{Ableitungsregeln}
 
 \subsubsection{Konstantenregel}
@@ -10,74 +12,85 @@ Die Ableitung von $x$ ist 1.
 \vspace*{-1.3cm}
 \begin{align*}
     f(x) & = 3x + 5 \\
-    f'(x) & = 3
+    f'(x) & = 3 \cdot 1 + 0
 \end{align*}
 
-\subsubsection{Summenregel}
-\subsubsection{Differenzregel}
-\subsubsection{Potenzregel}
-\subsubsection{Faktorregel}
+\subsubsection{Differenz- und Summenregel}
 
-\section*{Kettenregel}
+Die Summanden einer Summe sowie Minuend und Subtrahend einer Subtraktion
+werden unabhängig voneinander Abgeleitet.
 
-Die Kettenregel ist hilfreich, wenn man eine Funktion ableiten muss, die eine Potenz enthält.
-Sie zeigt, wie man eine Funktion abzuleiten kann, die als ihren Parameter eine weitere Funktion hat.
+\vspace*{-1.3cm}
+\begin{align*}
+    f(x) & = g(x) + u(x) & & f(x) = 5x + 2 \\
+    f'(x) & = g'(x) + u'(x) & & f'(x) = 5 + 0\\
+    f(x) & = g(x) - u(x) & & f(x) = 5x^2 - 5x + 3 \\
+    f'(x) & = g'(x) +- u'(x) & & f'(x) = 10x - 5 + 0
+\end{align*}
 
-Als Beispiel:
+\subsubsection{Potenzregel und Faktorregel}
 
-$f(x) = (2x - 1)^3$
+Die Potenzregel beschreibt, wie Potenzen abgeleitet werden. Dazu wird 1 vom
+Exponenten subtrahiert (egal ob dieser positiv oder negativ ist) und der ursprügliche
+exponent wird mit dem Term multipliziert. Faktoren im restlichen Term, z. B.
+vor der Basis, bleiben generell unberührt (da es Multiplikation ist).
 
-Die Funktion lässt sich nun in eine äußere und innere Funktion aufteilen.
+\vspace*{-0.5cm}
+\begin{equation*}
+    f(x) = x^n \qquad \Rightarrow \qquad
+    f'(x) = n \cdot x^{n - 1}
+\end{equation*}
 
-$v(x) = 2x - 1$
+\vspace*{-1cm}
+\begin{align*}
+    f(x) = x^3 \quad \Rightarrow \quad
+    f'(x) = 3 \cdot x^2 \\
+    f(x) = 2x^2 \quad \Rightarrow \quad
+    f'(x) = 2 \cdot 2 \cdot x^1
+\end{align*}
 
-$u(x) = x^3$
+\subsubsection{Kettenregel}
 
-$f(x)$ lässt sich deshalb auch als $f(x) = u(v(x))$ schreiben.
-Die Kettenregel besagt nun, das diese Funktion auf folgendem Weg aufgeleitet werden kann.
+Die Kettenregel hilft bem Ableiten, wenn sich die Funktion in eine innere und äußere Funktion
+aufteilen lässt. Dies ist z. B. bei Potenzen, Sinusfunktion usw. der Fall.
+Die Kettenregel besagt, dass die Ableitung einer zerlegbaren Funktion die Ableitung
+der inneren Funktion multipliziert mit der Ableitung der äußeren Funktion ist.
 
-$f(x) = u(v(x))$
+\begin{equation*}
+    f(x) = g(u(x)) \qquad \Rightarrow \qquad
+    f'(x) = u'(x) \cdot g'(u(x)) \\
+\end{equation*}
+\vspace*{-0.5cm}
+\begin{align*}
+    & f(x) = (2x - 1)^3 \qquad & & i(x) = 2 \cdot e^{2x - 1} \qquad & & j(x) = \sin(2x) \\
+    & f'(x) = 2 \cdot 3 \cdot (2x - 1)^2 \qquad & & i'(x) = -2 \cdot 2 \cdot e^{-2x - 1} \qquad & & j'(x) = 2 \cdot \cos(2x)
+\end{align*}
 
-$f'(x) = v'(x) \cdot u'(v(x))$
+\subsubsection{Produktregel}
+Besteht eine Funktion aus 2 Termen, die multipliziert werden, so lässt sich die Produktregel
+anwenden. Dadurch kann aufwendiges Ausmultiplizieren vermieden werden.
 
-Somit ist die Ableitung der Ursprungsfunktion
-
-$f'(x) = 2 \cdot 3(2x - 1)^2 = 6(2x - 1)^2$
-
-Diese setzt sich zusammen aus den Ableitungen von $v(x)$ und $u(x)$ der Ursprungsfunktion $v(x)$. 
-
-$v'(x) = 2$
-
-$u'(x) = 3x^2$
-
-\section*{Produktregel}
-Die Produktregel vereinfacht das Ableiten bei Funktionen, in denen 2 Terme
-miteinander Multipliziert werden, die sich als eigene Funktionen schreiben lassen.
-Als Beispiel:
-
-$f(x) = (x^2 - 1.5) \cdot (0.5x - x^2)$
-
-Die Funktion $f(x)$ lässt sich nun aufteilen in
-
-$u(x) = x^2 - 1.5$
-
-$v(x) = 0.5x - x^2$
-
-Somit lässt sich $f(x)$ als $f(x) = u(x) \cdot v(x)$ schreiben.
-Die Produktregel besagt, dass bei einer Funktion dieser Art gilt
-
-$f(x) = u(x) \cdot v(x)$
-
-$f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$
-
-Somit ist die Ableitung der Ursprungsfunktion
-
-$f'(x) = 2x \cdot (0.5x - x^2) + (x^2 - 1.5) \cdot (0.5 - 2x)$
-
-\section*{Quotientenregel}
+\begin{align*}
+    f(x) = u(x) \cdot v(x) \qquad & \Rightarrow \qquad
+    f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x) \\
+    f(x) = (2x + 3) \cdot (4x - 5) \qquad & \Rightarrow \qquad
+    f'(x) = 2 \cdot (4x - 5) + (2x + 3) \cdot 4
+\end{align*}
 
 
-\subsection{Nullstellen, Vielfachheit}
+\subsubsection{Quotientenregel}
+
+Die Quotientenregel ist ähnlich zur Produktregel und lässt sich für Divisionen von 2 als
+Funktionen zu betrachtende Terme anwenden (der Nenner der Ableitung ist die Produktregel).
+
+\begin{align*}
+    f(x) = \frac{u(x)}{v(x)} \qquad & \Rightarrow \qquad f'(x) = \frac{u'(x) \cdot v(x) + u(x) \cdot v'(x)}{(v(x))^2} \\[15pt]
+    f(x) = \frac{2x + 3}{4x - 5} \qquad & \Rightarrow \qquad f'(x) = \frac{2 \cdot (4x - 5) + (2x + 3) \cdot 4}{(4x - 5) \cdot (4x - 5)}
+\end{align*}
+
+\section{Kurvendiskussion}
+
+\subsection{Nullstellen}
 
 \section*{Nullstellen}
 Die Nullstellen der Ursprungsfunktion können in mehreren Verfahren oder Kombination dieser bestimmt werden. Diese sind
