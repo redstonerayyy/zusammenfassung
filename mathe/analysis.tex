@@ -92,139 +92,147 @@ Funktionen zu betrachtende Terme anwenden (der Nenner der Ableitung ist die Prod
 
 \subsection{Nullstellen}
 
-\section*{Nullstellen}
-Die Nullstellen der Ursprungsfunktion können in mehreren Verfahren oder Kombination dieser bestimmt werden. Diese sind
-\begin{itemize}
-	\item Umformung(z. B. Ausklammern)
-	\item pq-Formel
-	\item Taschenrechner(solve)
-	\item Polynomdivision(nicht behandelt)
-\end{itemize}
+Die Nullstellen einer Funktion können durch Umformung, die pq-Formel bei quadratischen Funktionen oder
+mit dem Taschenrechner gelöst werden (und Polynomdivision).
+Bei der pq-Formel muss dazu zuerst der Vorfaktor $a$ durch Umformen entfernt werden
+(gleich 1 sein). Wenn die Summe unter der Wurzel negativ ist, so gibt es keine Lösungen.
 
-Da die Umformung schwer einzugrenzen ist und die Lösung mit dem Taschenrechner einfach, wird nur die pq-Formel betrachtet.
-
-Die pq-Formel lässt sich nur auf Quadratische Funktionen bzw. Funktionen des 2. Grades anwenden.
-Dabei muss der Vorfaktor $a$ aus der Normalform $ax^2 + bx + c$ 1 sein.
-$b$ wird im Folgenden als $p$ bezeichnet, $c$ als $q$.
-
-Die pq-Formel lautet: \newline
-
-$\mathlarger{x_{1,2} = -\frac{p}{2} \pm \sqrt[]{(\frac{p}{2})^2 - q}}$ \newline
-
-Das Einsetzen ergibt in die Formel ergibt dann die Nullstellen der Funktion.
-
-Wenn man von der Funktion $f(x) = x^2 + 4x + 2$ ausgeht, dann ist die zugehörige pq-Formel \newline
-
-$\mathlarger{x_{1,2} = -\frac{4}{2} \pm \sqrt[]{(\frac{4}{2})^2 - 2}}$ \newline
-
-Diese lässt sich vereinfachen zu \newline
-
-$\mathlarger{x_{1,2} = -2 \pm \sqrt[]{4 - 2}}$
-
-Ist allerdings die Summe unter der Wurzel negativ, so gibt es keine Lösungen.
-
-\section*{y-Achsenabschnitt}
-
-Der y-Achsenabschnitt ist der Wert der Funktion an der Stelle $x = 0$.
-Er bezeichnet denn Schnittpunkt des Graphen mit der y-Achse und lässt sich
-durch Einsetzen von Null in die Ursprungsfunktion berechnen. 
+\begin{align*}
+    & f(x) = x^2 + px +q \\[10pt]
+    & x_{1,2} = -\frac{p}{2} \pm \sqrt{(\frac{p}{2})^2 - q}
+\end{align*}
 
 \subsection{Extrempunkte}
 
-\section*{Bestimmen von Extremstellen}
-Die Extremstellen eines Graphen sind die höchsten oder niedrigsten Punkte des Graphen.
-Dabei unterscheided man zwischen lokalen und globalen Minima und Maxima. Global bedeutet,
-dass es auf den ganzen Graphen der höchste oder tiefste Punkt ist, lokal, das es nur in einem Bereich
-der höchste oder tiefste Punkt ist.
-\newline
+Globale Extrempunkte bezeichnen die höchsten bzw. tiefsten Punkte eines Graphen für den
+gesamten Definitionsbereich. Lokale Extrempunkte bezeichnen diese höchsten oder tiefsten
+Punkte in einem bestimmten Bereich.
+Für eine Extremstelle der Funktion $f(x)$ gilt, dass die 1. Ableitung gleich 0 und die 2.
+Ableitung ungleich 0 sein muss an dieser Stelle.
+Ist die 2. Ableitung kleiner als 0, liegt ein Hochpunkt vor.
+Ist die 2. Ableitung größer als 0, so liegt ein Tiefpunkt vor.
 
-Die Extremstellen einer Funktion $f(x)$ sind an den Stellen, wo $f'(x) = 0$ gilt, also wo
-die Ursprungsfunktion keine Steigung hat. Außerdem gibt die 2. Ableitung, wenn man sie mit Null
-gleichgesetzt, also $f''(x) = 0$, aufschluss darüber, ob es ein Hoch- oder Tiefpunkt ist.
-Ist der Wert der 2. Ableitung an der Stelle x größer als $0$, so liegt ein Tiefpunkt vor, ist der Wert kleiner
-als $0$, dann ist es ein Hochpunkt.
-\newline
+\begin{align*}
+    & f'(x) = 0 \qquad und \qquad f''(x) \neq 0 \\
+    & f''(x) < 0 \qquad \Rightarrow \qquad Hochpunkt \\
+    & f''(x) > 0 \qquad \Rightarrow \qquad Tiefpunkt \\
+\end{align*}
 
-Somit lässt sich festhalten, dass die zur Berechnung der Extremstellen die 1. Ableitung der Funktion
-mit $0$ gleichgesetzt werden muss. An den Stellen wo nun $f'(x) = 0$ ist, muss nun x in die 2. Ableitung
-eingesetzt werden, um zu prüfen, ob es ein Hoch- oder Tiefpunkt ist.
-Zum Schluss können noch durch Einsetzen in die Ursprungsfunktion die tatsächlichen Punkte
-berechnet werden.
-\newline
+\subsection{Wendepunkte}
 
-1. Ableitung gleich Null setzen: $f'(x) = 0$
+Wendepunkte einer Funktion liegen dann vor, wenn sich dass Vorzeichen der Steigung (1. Ableitung)
+ändert. An diesen Punkten ändert sich dann auch dass Krümmungsverhalten des Graphen
+(vgl. Links- anstatt Rechtskurve beim Auto).
+Für einen Wendepunkt gilt, dass die 2. Ableitung gleich 0 ist und die 3. Ableitung ungleich 0.
+Für einen Sattelpunkt gilt außerdem, dass die 1. Ableitung gleich 0 ist.
 
-In 2. Ableitung einsetzen: $f''(x) > 0$ oder $f''(x) < 0$
-
-Punkte berechen: $E( x | f(x) )$
-
-\subsection{Wendepunkte, Sattelpunkte}
-
-\section*{Bestimmen von Wendepunkten}
-Die Wendepunkte bei einem Graphen sind die Punkte, wo der Graph sein Krümmungsverhalten ändert.
-Voraussetzung dafür ist, dass die 2. Ableitung an diesem Punkt gleich $0$ ist und die 3. Ableitung ungleich $0$.
-\newline
-
-Für einen Wendepunkt gilt also:
-
-$f''(x) = 0$
-$f'''(x) \neq 0$
-\newline
-
-Zur Bestimmung der Wendestellen müssen nun zunächst die Ableitungen gebildet werden und
-die 2. Ableitung wird mit 0 gleichgesetzt. Anschließend überprüft man dann mit der 3. Ableitung,
-ob es ein Wendepunkt ist.
+\begin{align*}
+    & f''(x) = 0 \qquad und \qquad f'''(x) \neq 0 \\
+    & f'(x) = 0 \qquad \Rightarrow \qquad Sattelpunkt \\
+\end{align*}
 
 \subsection{Symetrie}
 
-\section*{Symmetrie}
-Achsensymetrie(y-Achse) $f(x) = f(-x)$
+Ein Graph ist Achsensymetrisch an der y-Achse, wenn der Funktionswert für $x$ unabhängig vom
+Vorzeichen von x ist: $f(x) = f(-x)$.
 
-Punktsymetrie(Ursprung) $f(x) = -f(-x)$
+Bei der Punktsymetrie am Ursprung gilt, dass es zu jedem Punkt (x | y) einen Punkt (-x | -y)
+geben muss: $f(x) = -f(-x)$.
 
-\subsection{Limes/Unendlichkeit}
+\subsection{Verhalten im Unendlichen}
 
-\section*{Verhalten im Unendlichen}
-Für $x$ gegen $\infty$ oder $-\infty$ lässt sich ein Wert bestimmen.
-Wichtig, ob eine Funktion begrenzt oder unbegrenzt wächst.
-Gesucht ist \[\lim _{x \to \infty} f(x) = L\] oder \[\lim _{x \to -\infty} f(x) = L\]
+Mit dem Limes lässt sich bestimmen, wie sich eine Funktion im Unendlichen verhält.
+So lässt sich z. B. herausfinden, ob eine Funktion begrenzt wächst.
+Für $x$ gegen $\infty$ oder $-\infty$ lässt sich so ein Wert bestimmen.
 
-\subsection{Definitions, Wertebereich}
+\begin{equation*}
+    \lim_{x \to \infty} f(x) = L \qquad \qquad \lim_{x \to -\infty} f(x) = L
+\end{equation*}
 
-\section*{Definitionsbereich}
-Eine Menge an Zahlen, meist aus einem der Zahlenräume oder mit Bedingung, z. B. $x > 0$. Für jede dieser Zahlen
-ist $f(x)$ definiert und liefert einen Wert.
+\subsection{Definitions und Wertebereich}
 
-\section*{Wertebereich}
-Bereich, in dem die Funktionswerte liegen können, also Maximalwert und Minimalwert von y.
+Der Definitionsbereich beschreibt alle Werte für $x$, denen bei einer Funktion $f(x)$
+ein Wert für $y$ zugeordnet werden kann. Dies ist z. B. bei Wurzelfunktionen nicht
+für negative Werte von $x$ möglich. Dabei können die mathematischen Zahlenbereich
+genutzt werden sowie weitere Bedingungen bei Defintion der Defintionsmenge einer Funktion.
+\newline
 
-\subsection{Monotonie, Krümmung}
+Der Wertebereich einer Funktion hingegen beschreibt den Bereich, in dem alle y-Werte
+der Funktion liegen. Bei vielen Funktionen ist dieser Bereich $\mathbb{W}$ gleich $\mathbb{R}$,
+aber z. B. für Wurzelfunktion liegen alle Werte nur in den positiven Zahlen. 
 
-\section*{Monotonie}
-$f'(x) > 0 \rightarrow monoton steigent$
+\begin{align*}
+    & \mathbb{N} = \textnormal{natürliche} \qquad \mathbb{Z} = \textnormal{ganze} \qquad \mathbb{Q} = \textnormal{rationale} \qquad \mathbb{R} = \textnormal{reelle} \\
+    & \qquad f(x) = x^3 \qquad \Rightarrow \qquad \mathbb{D} = \mathbb{R} \\
+    & \qquad f(x) = x^2 \qquad \Rightarrow \qquad \mathbb{W} = \{ f(x) \in \mathbb{R} | f(x) \geq 0 \}
+\end{align*}
 
-$f'(x) < 0 \rightarrow monoton fallend$
+\subsection{Monotonie und Krümmung}
 
-Monotonie muss für alle Intervalle bestimmt werden
-Dafür gelten die Intervalle zwischen $\infty$, $-\infty$ und den Nullstellen der 1. Ableitung.
-Hat $f'(x)$ also bei $x = 0$ die einzige Nullstelle, so müssen die Intervalle $]-\infty;0]$ und $[0;\infty[$
-betrachtet werden.
+Die Monotonie einer Funktion bezeichnet, ob die Funktion in einem bestimmten
+Intervall nur steigt oder nur fällt (positive/negative Steigung).
+Die zu bestimmenden Intervalle sind dabei zwischen allen Punkten, wo
+sich die Steigung ändert, also zwischen allen Extremstellen und zwischen Extremstellen
+und Unendlichkeit.
 
-\section*{Krümmung}
-Vorgehensweise wie bei Monotonie, nur mit 2. Ableitung
+\begin{equation*}
+    f'(x) > 0 \quad \Rightarrow \quad \textnormal{monoton steigent} \qquad f'(x) < 0 \quad \Rightarrow \quad \textnormal{monoton fallend}
+\end{equation*}
 
-$f''(x) > 0 \rightarrow links gekruemmt$
+Die Krümmung bezeichnet die Änderung der Steigung, also ob sich die Steigung um einen
+positiven oder negativen Wert verändert. Die Krümmung muss dabei in den Intervallen zwischen
+den Wendepunkten und denen zwischen Wendepunkten und Unendlichkeit bestimmt werden.
 
-$f''(x) < 0 \rightarrow rechts gekruemmt$
+\begin{equation*}
+    f''(x) > 0 \quad \Rightarrow \quad \textnormal{links gekruemmt} \qquad f''(x) < 0 \quad \Rightarrow \quad \textnormal{rechts gekruemmt}
+\end{equation*}
 
-Krümmung muss für alle Intervalle bestimmt werden
-Dafür gelten die Intervalle zwischen $\infty$, $-\infty$ und den Nullstellen der 2. Ableitung.
-Hat $f''(x)$ also bei $x = 0$ die einzige Nullstelle, so müssen die Intervalle $]-\infty;0]$ und $[0;\infty[$
-betrachtet werden.
+\subsection{Tangentengleichung}
 
-\subsection{Tangentengleichung, Normalengleichung}
+Für einen Punkt $P$ auf einem Graphen lässt sich eine Tangente $T$ an dieser Funktion $f$
+konstruieren. Wenn $x_p$ und $y_p$ die Koordinaten von $P$ sind, so lässt sich
+eine Tangente mithilfe der 1. Ableitung der Funktion wie folgt bilden.
 
-\subsection{Funktionsscharen}
+\begin{equation*}
+    T(x) = f'(x_p) \cdot (x - x_p) + y_p
+\end{equation*}
+
+\subsection{Normalengleichung}
+
+Eine Normale einer Funktion $f$ ist eine Gerade die orthogonal (90° Winkel) zu einer Tangente
+von $f$ im Punkt $P$ liegt. Die Normalengleichung ist dabei wie die Tangentengleichung, nur
+dass die Steigung geändert wurde.
+
+\begin{equation*}
+    N(x) = -\frac{1}{f'(x_p)} \cdot (x - x_p) + y_p
+\end{equation*}
+
+\section{e-Funktion}
+
+Ableitung
+Logarithmus + natürlicher Logarithmus
+Umwandlung Exponentialfunktion / e-Funktion
+natürliche Logarithmusfunktion
+
+exponentielle wachstum
+Differentialgleichungen dazu
+begrenztes Wachstum
+Differentialgleichungen dazu
+logistisches Wachstum
+Differentialgleichungen dazu
+
+gauß algorithmus
+
+rref
+
+integrale -> idee der produktsummen zur unendlichkeit
+stammfunktion bestimmten -> bestandsidee
+flächeninhalte berechnen
+rotationsvolumen
+offene flächen
+
+
+\section{Funktionsscharen}
 
 Ein Funktionsschar ist eine Menge von Funktionen, die aus einer Funktion durch veränderung
 eines Parameters geschieht, dem Scharparameter, auch k genannt.
@@ -252,5 +260,6 @@ Setzt man die 2. Ableitung mit 0 gleich, so erhält man die Nullstelle $x = \fra
 Dies entspricht also $k = \frac{2}{3x}$. Somit lässt dies in die Ursprungsfunktion einsetzen,
 wodurch sich $w(x) = \frac{2}{3x} \cdot x^3 - 2x^2$
 
+\
 
 \section{GTR Todo}
