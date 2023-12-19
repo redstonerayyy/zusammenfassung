@@ -88,6 +88,8 @@ Funktionen zu betrachtende Terme anwenden (der Nenner der Ableitung ist die Prod
     f(x) = \frac{2x + 3}{4x - 5} \qquad & \Rightarrow \qquad f'(x) = \frac{2 \cdot (4x - 5) + (2x + 3) \cdot 4}{(4x - 5) \cdot (4x - 5)}
 \end{align*}
 
+\clearpage
+
 \section{Kurvendiskussion}
 
 \subsection{Nullstellen}
@@ -207,12 +209,68 @@ dass die Steigung geändert wurde.
     N(x) = -\frac{1}{f'(x_p)} \cdot (x - x_p) + y_p
 \end{equation*}
 
+\clearpage
+
 \section{e-Funktion}
 
-Ableitung
-Logarithmus + natürlicher Logarithmus
-Umwandlung Exponentialfunktion / e-Funktion
-natürliche Logarithmusfunktion
+Die e-Funktion, benannt nach Euler, ist eine besondere Exponentialfunktion, die abgeleitet
+sich selbst ergibt und die Umkehrfunktion des natürlichen Logarithmus ist.
+
+Es gilt $e = 2.7 1828 1828 45 90 45 ...$
+
+\begin{equation*}
+    f(x) = e^x \qquad f'(x) = e^x \qquad f^{-1} = ln(x)
+\end{equation*}
+
+Jede Exponentialfunktion $x^a$ lässt sich außerdem mit e als Basis darstellen.
+
+\begin{equation*}
+    e(x) = a^x = e^{x \cdot ln(a)}
+\end{equation*}
+
+Der natürliche Logrithmus und die e-Funktion sind Umkehrfunktionen zueinander und heben
+sich gegenseitig auf.
+
+\begin{equation*}
+    ln(e^x) = x = e^{ln(x)}
+\end{equation*}
+
+\section{Funktionsscharen}
+
+Eine Funktionsschar besteht aus Funktionen, die sich nur durch den Wert des
+Scharparameters $k$ unterscheiden. $f_1$ und $f_3$ sind beide Teil der Funktionsschar
+$f$.
+
+\begin{equation*}
+    f_k(x) = k \cdot x^3 - 2x^2 \qquad f_1(x) = 1 \cdot x^3 - 2x^2 \qquad f_3(x) = 3 \cdot x^3 - 2x^2
+\end{equation*}
+
+Bildet man die Ableitungen, so bleibt der Scharparameter erhalten.
+
+\begin{equation*}
+    f'_{k}(x) = k \cdot 3x^2 - 4x^1 \qquad f''_{k}(x) = k \cdot 6x - 4 \qquad f'''_{k}(x) = k \cdot 6
+\end{equation*}
+
+Auch beim gleichsetzen mit $0$ sind einige Nullstellen weiterhin abhängig vom Scharparameter.
+Diese Nullstellen lassen sich nach $k$ umformen, sodass man $k$ in Abhängigkeit von $x$ erhält.
+Ersetzt man $k$ durch diesen neuen Term mit $x$, so erhält man eine neue Funktion (Ortlinie).
+Diese beschreibt für eine Nullstelle alle Orte, wo die Scharfunktionen mit $k$ diese
+bestimmte Nullstelle haben.
+
+\begin{equation*}
+    f'_k(x) = 0 \qquad x_1 = 0, \quad x_2 = \frac{4}{3k} \quad \Rightarrow \quad k = \frac{4}{3x} \quad \Rightarrow \quad ex(x) = \frac{4}{3x} \cdot x^3 - 2x^2
+\end{equation*}
+
+Die Funktion $ex(x)$ beschreibt alle Orte, wo die 1. Ableitung von $f$ gleich $0$ ist.
+Somit beschreibt $ex(x)$ alle Minima (Extrempunkt), die bei $f$ für unterschiedliche $k$ entstehen können.
+
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{images/2d-f-schar-example.png}
+\end{center}
+
+\clearpage
+
+\section{Wachstum und Differentialgleichungen}
 
 exponentielle wachstum
 Differentialgleichungen dazu
@@ -221,45 +279,19 @@ Differentialgleichungen dazu
 logistisches Wachstum
 Differentialgleichungen dazu
 
-gauß algorithmus
-
-rref
+\section{Integrale und Flächen}
 
 integrale -> idee der produktsummen zur unendlichkeit
 stammfunktion bestimmten -> bestandsidee
 flächeninhalte berechnen
 rotationsvolumen
 offene flächen
-
-
-\section{Funktionsscharen}
-
-Ein Funktionsschar ist eine Menge von Funktionen, die aus einer Funktion durch veränderung
-eines Parameters geschieht, dem Scharparameter, auch k genannt.
-
-Es lässt sich nun allgemein Untersuchen, wo die signifikaten Stellen des Graphen in Abhängigkeit
-von k liegen.
-
-Wenn man nun Beispielhaft die Funktion $f(x) = k \cdot x^3 - 2x^2$ nimmt mit dem Scharparameter k.
-
-$f_{k}(x) = k \cdot x^3 - 2x^2$
-
-$f'_{k}(x) = k \cdot 3x^2 - 4x^1$
-
-$f''_{k}(x) = k \cdot 6x - 4$
-
-Setzt man nun die 1. Ableitung mit 0 gleich, so erhält man die Nullstellen $x = 0$ und $x = \frac{4}{3k}$.
-Die 2. Nullstelle lässt sich nun nach $k$ umformen, sodass man $k = \frac{4 - x}{3}$ erhält.
-Bei den Nullstellen der 1. Ableitung muss also $k = \frac{4-x}{3}$ gelten.
-Somit kann man in der Ursprungsfunktion $k$ mit $\frac{4-x}{3}$ ersetzen, wodurch man die Funktion
-der Ortslinie erhält. Die Funktionsgleichung dieser ist \newline
-
-$o(x) = \frac{4-x}{3} \cdot x^3 - 2x^2$ \newline
-
-Setzt man die 2. Ableitung mit 0 gleich, so erhält man die Nullstelle $x = \frac{2}{3k}$
-Dies entspricht also $k = \frac{2}{3x}$. Somit lässt dies in die Ursprungsfunktion einsetzen,
-wodurch sich $w(x) = \frac{2}{3x} \cdot x^3 - 2x^2$
-
-\
+x > 0
 
 \section{GTR Todo}
+
+\section{Gauß Algorithmus}
+
+gauß algorithmus
+
+rref
