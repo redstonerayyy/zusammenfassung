@@ -272,6 +272,11 @@ Somit beschreibt $ex(x)$ alle Minima (Extrempunkt), die bei $f$ für unterschied
 
 \section{Wachstum und Differentialgleichungen}
 
+\begin{align*}
+    f(x) & = A \cdot b^x = A \cdot e^{ln(b) \cdot x} = A \cdot e^{k \cdot x} \\
+    f'(x) & = k \cdot f(x)
+\end{align*}
+
 exponentielle wachstum
 Differentialgleichungen dazu
 begrenztes Wachstum
@@ -288,10 +293,31 @@ rotationsvolumen
 offene flächen
 x > 0
 
-\section{GTR Todo}
+\section{Kurvenanpassung}
 
 \section{Gauß Algorithmus}
 
-gauß algorithmus
+Beim Gauß-Algorithmus wird systematisch ein LGS gelöst.
+Dazu wird ein in standartisierter Form vorliegendes Gleichungssystem
+nach bestimmten Regeln so umgeformt, dass es sich lösen lässt.
+Die Regeln dabei sind:
 
-rref
+\begin{enumerate}
+    \item 1. Eine Zeile oder ein vielfaches dieser zu einer anderen Addieren
+    \item 2. Zwei Zeilen zu tauschen
+    \item 3. Eine Gleichung mit einem Faktor ungleich 0 multiplizieren
+\end{enumerate}
+
+\begin{align*}
+    a_{11}x_1 + a_{12}x_2 + a_{13}x_3 = b_1 \\
+    a_{21}x_1 + a_{21}x_2 + a_{21}x_3 = b_2 \\
+    a_{31}x_1 + a_{31}x_2 + a_{31}x_3 = b_3 \\
+\end{align*}
+
+Das Gleichungssystem soll so in die Stufenform gebracht werden, damit dieses lösbar wird.
+
+\begin{align*}
+    a_{11}x_1 + a_{12}x_2 + a_{13}x_3 & = b_1 \\
+    a_{12}x_2 + a_{21}x_3 & = b_2 \\
+    a_{31}x_3 & = b_3 \\
+\end{align*}
