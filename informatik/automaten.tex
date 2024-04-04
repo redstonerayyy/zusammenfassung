@@ -76,12 +76,166 @@ Die Eingabe \textbf{10111} wird hingegen korrekt akzeptiert.
 \end{equation*}
 \normalsize
 
+\clearpage
+
 \subsection{Deterministische Keller Automaten (DKA)}
 
-image
-explanation
+Deterministische Keller Automaten unterscheiden sich von DEAs dadurch,
+dass diese einen Keller haben. Keller bedeutet in diesem Sinne Stapel (Stack),
+als einen Speicher (Gedächtnis), wodurch im Gegensatz zum DEA einige
+weitere Anwendungen möglich sind.
+Auch der DKA wird mit \textbf{Zuständen} $Q$, \textbf{Übergängen},
+\textbf{Startzustand} $S$,\textbf{Endzuständen} $F$, \textbf{Eingabealphabet} $\Sigma$
+definiert. Zusätzlich wird bei den Übergängen aber noch das aktuelle Zeichen oben auf
+dem Keller berücksichtigt und es können bei einem Übergang auch Dinge oben auf den Keller
+gelegt werden. Auch gibt es noch ein \textbf{Kelleralphabet} $\Gamma$ und ein
+\textbf{Kellerstartsymbol} $Z$.
 
-\subsection{Mealy Automat}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+        \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+      
+        \node[state,initial]   (q_0)                      {$s_0$};
+        \node[state]           (q_1) [right of=q_0]     {$s_1$};
+        \node[state]           (q_2) [right of=q_1]  {$s_2$};
+        \node[state,accepting] (q_3) [right of=q_2]  {$s_3$};
 
-image
-exlanation
+        \path[->]
+        (q_0) edge               node {(\#,0):n\#} (q_1)
+        (q_1) edge [loop above]  node {(n,0):nn} (q_1)
+              edge               node {(n,1):$\varepsilon$} (q_2)
+        (q_2) edge [loop above]  node {(n,1):$\varepsilon$} (q_2)
+        (q_2) edge               node {(\#,$\varepsilon$):$\varepsilon$} (q_3);
+    \end{tikzpicture}
+    \caption*{\textbf{DKA um gleiche Anzahlen von Nullen und Einsen zu erkennen}}
+\end{figure}
+
+\Large
+\begin{align*}
+    Q & = \{s_0, s_1, s_2\} \\
+    \Sigma & = \{0, 1\} \\
+    \Gamma & = \{\#, n\} \\
+    S & = s_0 \\
+    Z & = \# \\
+    F & = \{s_2\}
+\end{align*}
+\normalsize
+
+Dieser DKA erkennt, ob auf eine Anzahl Nullen die gleiche Anzahl an Einsen folgt.
+Dies kann z. B. für die Eingaben \textbf{000111}, \textbf{00011} und \textbf{0001111}
+durchgegangen werden.
+
+\clearpage
+
+Hier wird die Eingabe akzeptiert.
+
+\begin{table}[h]
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Eingabe & Keller & Zustand \\ \hline
+    000111 & \# & $s_0$ \\ \hline
+    00111 & n\# & $s_1$ \\ \hline
+    0111 & nn\# & $s_1$ \\ \hline
+    111 & nnn\# & $s_1$ \\ \hline
+    11 & nn\# & $s_2$ \\ \hline
+    1 & n\# & $s_2$ \\ \hline
+    - & \# & $s_2$ \\ \hline
+    - & - & $s_3$ \\ \hline
+    \end{tabular}
+\end{table}
+
+Die Eingabe ist am Ende leer, doch kein Übergang ohne Eingabe mit $n$
+auf dem Keller existiert. Es gibt einen Fehler.
+
+\begin{table}[h]
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Eingabe & Keller & Zustand \\ \hline
+    00011 & \# & $s_0$ \\ \hline
+    0011 & n\# & $s_1$ \\ \hline
+    011 & nn\# & $s_1$ \\ \hline
+    11 & nnn\# & $s_1$ \\ \hline
+    1 & nn\# & $s_2$ \\ \hline
+    - & n\# & $s_2$ \\ \hline
+    \multicolumn{3}{|l|}{Fehler} \\ \hline
+    \end{tabular}
+\end{table}
+
+Der Endzustand ist erreicht, doch die Eingabe ist noch nicht leer.
+Doch es gibt keine Übergänge vom Endzustand. Es gibt einen Fehler.
+
+\begin{table}[h]
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Eingabe & Keller & Zustand \\ \hline
+    0001111 & \# & $s_0$ \\ \hline
+    001111 & n\# & $s_1$ \\ \hline
+    01111 & nn\# & $s_1$ \\ \hline
+    1111 & nnn\# & $s_1$ \\ \hline
+    111 & nn\# & $s_2$ \\ \hline
+    11 & n\# & $s_2$ \\ \hline
+    1 & \# & $s_2$ \\ \hline
+    1 & - & $s_3$ \\ \hline
+    \multicolumn{3}{|l|}{Fehler} \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\subsection{Mealy Automaten}
+
+Im Gegensatz zu DEA und DKA können Mealy Automaten dazu genutzt werden,
+Codierungen und Umwandlungen durchzuführen, da diese eine Ausgabe besitzen.
+Auch Mealy Automaten werden mit \textbf{Zuständen} $Q$, \textbf{Übergängen},
+\textbf{Startzustand} $S$ und \textbf{Eingabealphabet} $\Sigma$
+definiert. Allerdings gibt es \textbf{keinen Endzustand}.
+Zusätzlich hat der Mealy Automat noch ein \textbf{Ausgabealphabet} $\Lambda$.
+Bei jedem Übergang kann ein Symbol dieses Alphabets zur Ausgabe hinzugefügt werden.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+        \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+      
+        \node[state,initial]   (q_0)                      {$s_0$};
+        \node[state]           (q_1) [right of=q_0]     {$s_1$};
+        
+        \path[->]
+        (q_0) edge [bend left]   node {0 / $\varepsilon$} (q_1)
+        edge [loop above] node {1 / $\varepsilon$} (q_0)
+        (q_1) edge [bend left]  node {1 / a} (q_0)
+        edge [loop above] node {0 / $\varepsilon$} (q_1);
+    \end{tikzpicture}
+    \caption*{\textbf{Mealy Automat zur Transformation von binären Daten}}
+\end{figure}
+
+\vspace*{-2cm}
+
+\Large
+\begin{align*}
+    Q & = \{s_0, s_1\} \\
+    \Sigma & = \{0, 1\} \\
+    \Lambda & = \{a\} \\
+    S & = s_0 \\
+\end{align*}
+\normalsize
+
+Dieser Mealy Automat hat in der Ausgabe ein $a$ für jede Folge von \textbf{01} in
+der Eingabe. Für eine Eingabe von \textbf{010111} wäre die Ausgabe \textbf{aa}.
+Existiert für einen Zustand kein passender Übergang, so gibt es auch beim Mealy Automaten
+einen Fehler.
+
+\begin{table}[h]
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Eingabe & Ausgabe & Zustand \\ \hline
+    010111 & - & $s_0$ \\ \hline
+    10111 & - & $s_1$ \\ \hline
+    0111 & a & $s_0$ \\ \hline
+    111 & a & $s_1$ \\ \hline
+    11 & aa & $s_0$ \\ \hline
+    1 & aa & $s_0$ \\ \hline
+    - & aa & $s_0$ \\ \hline
+\end{tabular}
+\end{table}
