@@ -5,38 +5,73 @@
 Deterministische Endliche Automaten werden vorallem dazu genutzt um zu prüfen,
 ob Strings einem bestimmten Schema entsprechen, also z. B. bestimmte Buchstabenfolgen
 enthalten sind (vgl. Reguläre Ausdrücke).
-Diese bestehen aus Zuständen $Q$ und Übergängen mit 1 Startzustand und einem oder
-mehreren Endzuständen. Außerdem ist für jeden Automat ein Eingabealphabet $\sum$
-definiert, was alle Symbole enthält, die in der Eingabe (dem String) vorkommen können.
+Diese bestehen aus \textbf{Zuständen} $Q$ und \textbf{Übergängen} mit einem
+\textbf{Startzustand} $S$ und einem oder
+mehreren \textbf{Endzuständen} $F$. Außerdem ist für jeden Automat
+ein \textbf{Eingabealphabet} $\Sigma$ definiert, was alle Symbole enthält,
+die in der Eingabe (dem String) vorkommen können.
 Bei der graphischen Darstellung eines DEA wird allerdings meist nur das Eingabealphabet
-$\sum$ zusätzlich mit angegeben, da sich der Rest aus der Darstellung ergibt.
+$\Sigma$ zusätzlich mit angegeben, da sich der Rest aus der Darstellung ergibt.
 
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
-    \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
-  
-    \node[state,initial]   (s)                      {$s$};
-    \node[state,accepting] (q_1) [below left of=s]  {$q_1$};
-    \node[state]           (q_2) [below of=q_1]     {$q_2$};
-    \node[state,accepting] (r_1) [below right of=s] {$r_1$};
-    \node[state]           (r_2) [below of=r_1]     {$r_2$};
-  
-    \path[->]
-    (s)   edge              node {a} (q_1)
-          edge              node {b} (r_1)
-    (q_1) edge [loop left]  node {a} (   )
-          edge [bend left]  node {b} (q_2)
-    (q_2) edge [loop left]  node {b} (   )
-          edge [bend left]  node {a} (q_1)
-    (r_1) edge [loop right] node {b} (   )
-          edge [bend left]  node {a} (r_2)
-    (r_2) edge [loop right] node {a} (   )
-          edge [bend left]  node {b} (r_1);
-\end{tikzpicture}
+\vspace*{0.5cm}
 
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+        \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+      
+        \node[state,initial]   (q_0)                      {$s_0$};
+        \node[state]           (q_1) [right of=q_0]     {$s_1$};
+        \node[state,accepting] (q_2) [right of=q_1]  {$s_2$};
+        
+        \path[->]
+        (q_0)   edge              node {1} (q_1)
+        (q_1) edge [loop above]  node {0} (q_1)
+              edge [bend left]  node {1} (q_2)
+        (q_2) edge [loop above]  node {0} (q_2)
+              edge [bend left]  node {1} (q_1);
+    \end{tikzpicture}
+    \caption*{\textbf{DEA um gerade Anzahlen von Nullen zu erkennen}}
+\end{figure}
 
+\vspace*{-2cm}
 
-image
-explanation
+\Large
+\begin{align*}
+    Q & = \{s_0, s_1, s_2\} \\
+    \Sigma & = \{0, 1\} \\
+    S & = s_0 \\
+    F & = \{s_2\}
+\end{align*}
+\normalsize
+
+Dieser DEA erkennt bei binären Daten (Eingabealphabet aus 0 und 1), ob die Anzahl
+der Nullen gerade ist. Der Endzustand wird nur bei geraden Anzahlen erreicht.
+Somit eignet sich der Automat, diese zu erkennen.
+Ein Pfeil beschreibt einen Zustandsübergang. In einem bestimmten Zustand erfolgt
+der Übergang an einem Pfeil, wenn das aktuelle Eingabesymbol zum Symbol über dem Pfeil passt.
+Gibt es für diesen Zustand keinen Pfeil mit dem aktuellen Symbol, so schlägt der Vorgang
+Fäll und ein Fehlerzustand wird erreicht. Dieser wird meist nicht dargestellt, was bedeutet
+dass alle nicht definierten Übergänge in diesen führen (Wort muss mit einer 1 beginnen).
+Für die Eingabe \textbf{10110} folgt eine Ablehnung.
+
+\Large
+\begin{equation*}
+    s_0 \overset{1}{\rightarrow} s_1 \overset{0}{\rightarrow} s_1 \overset{1}{\rightarrow}
+    s_2 \overset{1}{\rightarrow} s_1 \overset{0}{\rightarrow} s_1 
+\end{equation*}
+\normalsize
+
+Die Eingabe \textbf{10111} wird hingegen korrekt akzeptiert.
+
+\vspace*{-0.9cm}
+
+\Large
+\begin{equation*}
+    s_0 \overset{1}{\rightarrow} s_1 \overset{0}{\rightarrow} s_1 \overset{1}{\rightarrow}
+    s_2 \overset{1}{\rightarrow} s_1 \overset{1}{\rightarrow} s_2 
+\end{equation*}
+\normalsize
 
 \subsection{Deterministische Keller Automaten (DKA)}
 
