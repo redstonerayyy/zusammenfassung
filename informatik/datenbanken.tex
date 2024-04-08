@@ -2,9 +2,9 @@
 
 \subsection{Begriffe bei Datenbanken}
 
-In relationnellen Datenbanksystemen werden Daten als Entitäten modelliert
+In relationellen Datenbanksystemen werden Daten als Entitäten modelliert
 und strukturiert in sogenannten Tabellen (Relationen) gespeichert. Zwischen
-diesen Tabellen werden dann auch zusammenhänge modelliert.
+diesen Tabellen werden dann auch Zusammenhänge modelliert.
 
 \vspace*{0.3cm}
 
@@ -129,7 +129,7 @@ oder wie viele Zuordnung es geben muss.
 Bei der Erstellung eines Datenbankschemas in einer Relationellen Datenbank
 (z. b. aus einem ER-Modell) unterscheidet man, je nach Eigentschaften des
 Schematas, in welcher Normalform sich dieses befindet. Ein Schemata kann
-von einer Normalform in eine andere (nächthöhere) überführt werden.
+von einer Normalform in eine andere (meist höhere) überführt werden.
 Dies lässt sich auch automatisiert durchführen. Jede dieser Normalformen
 unterscheidet sich darin, wie die Abhängigkeiten zwischen den Tabellen
 und Attributen sind. Je höher die Normalform, desto weniger Redundanz der Daten
@@ -278,9 +278,9 @@ so weiß man nicht, welcher Name der Richtige ist.
     \begin{tabular}{|a|a|l|l|}
     \hline
         CD\_ID & Track & Albumtitel & Titel \\ \hline
-        11 & 1 & Crazy & Los Angeles \\ \hline
-        11 & 2 & Love  & Los Angeles\\ \hline
-        11 & 3 & Crack & San Francisco \\ \hline
+        11 & 1 & Los Angeles & Crazy \\ \hline
+        11 & 2 & Los Angeles & Love \\ \hline
+        11 & 3 & San Francisco & Crack \\ \hline
         \end{tabular}
 \end{table}
 
@@ -349,6 +349,7 @@ BETWEEN, IN, IS NULL
 WHERE age < 5;
 WHERE name LIKE 'a%';
 WHERE NOT age = 3;
+WHERE age BETWEEN 3 AND 7;
 \end{lstlisting}
 
 \clearpage
@@ -441,7 +442,8 @@ HAVING SUM(Dauer) > 120
 \subsubsection{SQL Reihenfolge an Operationen}
 
 \begin{lstlisting}[language=sql]
-FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> COUNT, ... -> ORDER BY
+FROM -> JOIN -> WHERE -> GROUP BY -> HAVING
+-> SELECT -> COUNT, ... -> ORDER BY -> LIMIT
 \end{lstlisting}
 
 \subsubsection{Strukturübersicht von SQL Abfragen}

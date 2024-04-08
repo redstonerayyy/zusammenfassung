@@ -51,8 +51,8 @@ Gesamt: 13
 
 Anschließend lässt sich die individuelle Kodierung über einen Huffmann-Baum erstellen.
 Es werden alle Häufigkeiten als Knoten betrachtet. Dann wird folgendes solange
-wiederholt, bis es nur noch 1 Baum gibt. Dabei können für Symbolfolgen auch
-mehrere unterschiedliche aber alle valide Bäume entstehen.
+wiederholt, bis es nur noch 1 Baum gibt. Dabei können für gleiche Symbolfolgen auch
+mehrere unterschiedliche, aber alle valide, Bäume entstehen.
 
 \begin{enumerate}
     \item Wähle die Teilbäume mit der geringsten absoluten/relativen Häufigkeit in
@@ -109,15 +109,15 @@ for tree={
     s sep=7mm
 }
 [, phantom, s sep = 7mm
+    [3
+        [D: 1]
+        [B: 2]
+    ]
     [6
         [A: 3]
-        [3
-            [D: 1]
-            [B: 2]
-        ]
-    ]
-    [3, phantom, s sep = 7mm
         [C: 3]
+    ]
+    [, phantom, s sep = 7mm
         [E: 4]
     ]
 ]
@@ -133,15 +133,15 @@ for tree={
 }
 [, phantom, s sep = 7mm
     [7
-        [C: 3]
-        [E: 4]
-    ]
-    [6
-        [A: 3]
         [3
             [D: 1]
             [B: 2]
         ]
+        [E: 4]
+    ]
+    [6
+        [A: 3]
+        [C: 3]
     ]
 ]
 \end{forest}
@@ -155,13 +155,13 @@ for tree={
 [13
     [6
         [A: 3]
+        [C: 3]
+    ]
+    [7
         [3
             [D: 1]
             [B: 2]
         ]
-    ]
-    [7
-        [C: 3]
         [E: 4]
     ]
 ]
@@ -188,13 +188,13 @@ for tree={
 [13
     [6, EL=0
         [A: 3, EL=0]
-        [3, EL=1
+        [C: 3, EL=1]
+    ]
+    [7, EL=1
+        [3, EL=0
             [D: 1, EL=0]
             [B: 2, EL=1]
         ]
-    ]
-    [7, EL=1
-        [C: 3, EL=0]
         [E: 4, EL=1]
     ]
 ]
@@ -204,15 +204,15 @@ for tree={
 
 \begin{lstlisting}
 A: 00
-B: 011
-C: 10
-D: 010
+B: 101
+C: 01
+D: 100
 E: 11
 ABACEADBCEEEC =ASCII=> 
 01000001 01000010 01000001 01000011 01000101 01000001 01000100 01000010
 01000011 01000101 01000101 01000101 01000011
 ABACEADBCEEEC =HUFF==>
-00 011 00 10 11 00 010 011 10 11 11 11 10
+00 101 00 01 11 00 100 101 01 11 11 11 01
 \end{lstlisting}
 
 \subsection{Deflate Kompression}
@@ -225,8 +225,8 @@ Daten eingenomme Platz reduziert wird.
 \subsection{Hamming Code}
 
 Der Hamming Code ist ein Fehlerkorrekturcode um 1 Bit Fehler in Bitfolgen
-zu erkennen und zu korrigieren. Dabei zeichnet sich dieser dadruch aus,
-das nur wenige Paritätsbits benötigt werden.
+zu erkennen und zu korrigieren. Dabei zeichnet sich dieser dadurch aus,
+dass nur wenige Paritätsbits benötigt werden, auch bei großen Bitfolgen.
 
 Der Hamming Code funktioniert so, dass zu den 4 Datenbits 3 Paritätsbits
 hinzugefügt werden (gesamt 7 Bits). Die Paritätsbits werden so gesetzt,
@@ -267,7 +267,7 @@ blue_f & = d_1 + d_3 + d_4 + p_2 = 1 + 1 + 1 + 0 = 3 \\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/hamming7.4.png}
-    \caption{7,4 Hamming Code}
+    \caption{\textbf{7,4 Hamming Code}}
 \end{figure}
 
 Wenn man davon ausgeht, das 1 Bit getauscht wurde, so lässt sich erkennen,
@@ -282,7 +282,7 @@ nicht erkannt werden. Der 8,4 Hamming Code ermöglicht es allerdings zu erkennen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{images/hamming8.4.png}
-    \caption{8,4 Hamming Code}
+    \caption{\textbf{8,4 Hamming Code}}
 \end{figure}
 
 \href{https://www.youtube.com/watch?v=X8jsijhllIA}{3B1B Hamming Codes Video}
@@ -302,5 +302,5 @@ Farben.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/rgbvalues.png}
-    \caption{Verschiedene Farbtiefen bei Bildern}
+    \caption{\textbf{Verschiedene Farbtiefen bei Bildern}}
 \end{figure}

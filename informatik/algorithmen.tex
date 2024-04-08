@@ -3,19 +3,19 @@
 \subsection{Binäre Suche}
 
 Die Binäre Suche ist ein Algorithmus um in sortierten Datenstrukturen (z. B. Reihungen)
-in ein Element zu finden. Dabei werden maximal $log_{2}(n) + 1$ Operationen benötigt,
-bis das Element gefunden wurde (oder feststeht, das es nicht enthalten ist).
+ein Element zu finden. Dabei werden maximal $log_{2}(n) + 1$ Operationen benötigt,
+bis das Element gefunden wird (oder feststeht, das es nicht enthalten ist).
 Die Binäre Suche lässt sich auf lexikographisch sortierbare Datentypen anwenden,
 z. B. eine Reihung von Ganzzahlen. Durch vergleichen des gesuchten Werts mit dem mittleren
 Wert des aktuellen Bereiches kann festgestellt werden, ob sich dieser Wert im linken oder
 rechten Teil des sortierten Bereichs befindet. Anschließend wird mit dem mittleren Wert
 des neuen Teilbereichs verglichen und schließlich findet man so das gesuchte Element.
 Durch jeden Vergleich wird der Suchbereich halbiert und die nötigen Vergleiche sind
-logarithmisch zur Anzahl der Elementanzahl.
+logarithmisch zur Elementanzahl.
 
 \vspace*{0.3cm}
 Es soll geprüft werden, ob die Zahl 2 in der sortierten Reihung enthalten ist.
-Der aktuelle Vergleich ist rot und der aktuelle Bereich blau markiert.
+Der aktuelle Vergleich (mittleres Element) ist rot und der aktuelle Bereich blau markiert.
 Nach 4 Vergleichen ist klar, dass 2 enthalten ist. 
 Es wurden also $log_{2}(11) + 1$ Versuche benötigt.
 
@@ -72,21 +72,21 @@ Die Grundstruktur aller Versionen ist dabei ähnlich.
     Algorithmus sortiert werden.
     \item Ist dies nicht der Fall, wird ein Pivot Element ausgewählt. Dabei gibt es Verschiedene
     Wege der Auswahl (z. B. kann man das Mittlere nehmen).
-    \item Anschließend wird der Sortierbereich in 2 Unterbereich aufgeteilt, sodass in einem
+    \item Anschließend wird der Sortierbereich in 2 Unterbereiche aufgeteilt, sodass in einem
     Bereich alle Elemente kleiner oder gleich und im anderen Bereich alle Elemente größer oder gleich
     dem Pivot Element sind.
     \item Anschließend wendet man Quicksort (Schritte 1 bis 4) auf jeden dieser Unterbereich an.
 \end{enumerate}
 
-Ein auf Hoares publikation beruhender Pseudocode könnte so aussehen.
+Ein auf Hoares Publikation beruhender Pseudocode könnte wie folgt aussehen.
 Die Funktion $quicksort$ sorgt für das Anwenden der Partitionsmethode und das rekursive
 Aufrufen. Hoares Partitionsfunktion nutzt in $partition$ 2 Zeiger, einer startet links,
 der andere rechts. Der Linke bewegt sich nach rechts, solange alle Elemente kleiner
 als das Pivot Element sind. Der Rechte bewegt sich nach links, solange alle Elemente
-größer als das Pivot Elemente sind. Wenn beide Zeiger stoppen und sie sich nicht überkreuzt
+größer als das Pivot Element sind. Wenn beide Zeiger stoppen und sie sich nicht überkreuzt
 haben, so sind jeweils die Elemente an der Zeigerposition im falschen Teil des Bereichs und
 müssen getauscht werden. Durch Wiederholung wird so der Bereich in die für Quicksort gewollten
-2 Bereich geteilt. Die Trennung der Bereiche liegt dort, wo sich die Zeiger begegnen.
+2 Bereiche geteilt. Die Trennung der Bereiche liegt dort, wo sich die Zeiger begegnen.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -110,7 +110,7 @@ algorithm partition(A, lo, hi) is
 
         swap A[l] with A[r]
 \end{lstlisting}
-\caption{Pseudocode für Quicksort nach Hoare}
+\caption{\textbf{Pseudocode für Quicksort nach Hoare}}
 \end{figure}
 
 \begin{figure}[H]
@@ -144,7 +144,7 @@ def partition(array, lo, hi):
         array[l] = array[r]
         array[r] = temp
 \end{lstlisting}
-\caption{Python Code für Quicksort nach Hoare}
+\caption{\textbf{Python Code für Quicksort nach Hoare}}
 \end{figure}
 
 \begin{figure}[H]
@@ -239,7 +239,7 @@ def partition(array, lo, hi):
         \end{pgfonlayer}
         \end{tikzpicture}
     }
-    \caption{Beispieldurchlauf des Algorithmus}
+    \caption{\textbf{Beispieldurchlauf des Algorithmus}}
 \end{figure}
 
 \clearpage

@@ -3,7 +3,7 @@
 
 Verschlüsselung ist ein Grundpfeiler der modernen Kommunikation und absolut nötig,
 damit kein Unbekannter und Unbefugter private Nachrichten oder Passwörter mitlesen
-kann. Ohne starke Verschlüsselungsverfahren, wäre die weitergabe sensibler Daten über
+kann. Ohne starke Verschlüsselungsverfahren wäre die weitergabe sensibler Daten über
 das Internet nicht möglich.
 
 \subsection{Historische Verschlüsselungsverfahren}
@@ -46,10 +46,10 @@ wird. Beispiele sind die Caesar Chiffre, die Vigenere Chriffe oder das Blockchif
 Blockchiffre Verfahren sind symetrische Verschlüsselungsverfahren,
 die auch zur Verschlüsselung größerer Datenmengen genutzt werden können.
 Eine besondert dieser ist, dass die zu verschlüsselnden Daten Blockweise
-verschlüsselt werden und in die Verschlüsselung eines Block ein Ergebnis
+verschlüsselt werden und in die Verschlüsselung eines Block das Ergebnis
 der Verschlüsselung des vorigen Blocks mit eingeht.
 Blockchiffren wie Advanced Encryption Standard (AES) mit hohen Bitlängen (e.g. AES-256)
-sind mit heutigen Mitteln unknackbare Verfahren, weswegen dies breite Anwendung
+sind mit heutigen Mitteln unknackbare Verfahren, weswegen diese breite Anwendung
 z. B. bei Datenübertragung oder Festplattenverschlüsselung finden.
 
 \subsubsection{Diffie-Hellman Verfahren}
@@ -73,7 +73,7 @@ K: geheimer Schlüssel, nur Bob und Alice bekannt
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/diffie-hellman.png}
-    \caption{Diffie-Hellman Schlüsseltausch}
+    \caption{\textbf{Diffie-Hellman Schlüsseltausch}}
 \end{figure}
 
 \clearpage
@@ -101,13 +101,14 @@ Beide Kommunikationspartner erstellen ein asymetrisches Schlüsselpaar.
 Anschließend übertragen beide den öffentlichen Schlüssel an den Kommunikationspartner.
 Nun können Nachrichten mit dem öffentlichen Schlüssel des Partners verschüsselt werden
 und nur dieser kann diese mit dem privaten Schlüssel entschlüsseln. Niemand sonst kann
-so die Kommunikation mitverfolgen. Es ist auch möglich, nun einen symetrischen Schlüssel
-auszutauschen und z. B. AES-256 in der weiteren Kommunikation zu verwenden.
+so die Kommunikation mitverfolgen. Es ist auch möglich, nun auf diesem verschlüsselten
+Kanal einen symetrischen Schlüssel auszutauschen und z. B. AES-256 in der weiteren
+Kommunikation zu verwenden.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/public-key-encryption.png}
-    \caption{Verschlüsselung mit Schlüsselpaaren}
+    \caption{\textbf{Verschlüsselung mit Schlüsselpaaren}}
 \end{figure}
 
 \clearpage
@@ -118,7 +119,7 @@ auszutauschen und z. B. AES-256 in der weiteren Kommunikation zu verwenden.
 
 Wenn Alice und Bob ihre Schlüssel ausgetauscht haben, kann niemand ihre Nachrichten mitlesen.
 Doch fängt jemand jeweils die öffentlichen Schlüssel von Bob und Alice bei der Übertragung ab,
-so kann diese Person Beiden Nachrichten schicken, von denen diese denken, sie wärem vom
+so kann diese Person den Beiden Nachrichten schicken, von denen diese denken, sie wärem vom
 jeweils anderen.
 
 \subsubsection{Lösung mit digitalen Signaturen und Hash-Werten}
@@ -131,7 +132,7 @@ kann so feststellen, dass die Nachricht von ihr kommt. Würde man diese Nachrich
 öffentlichem Schlüssel entschlüsseln wollen, und es wäre ein anderer privater Schlüssel
 verwendet worden (z. B. von Eve), so würde sich keine Nachricht ergeben und man wüsste,
 dass diese Nachricht nicht von Alice sein kann. Anschließend verschlüsselt sie wie vorher
-auch die Nachricht mit Bob öffentlichem Schlüssel, da diese sonst jeder mitlesen könnte.
+auch die Nachricht mit Bobs öffentlichem Schlüssel, da diese sonst jeder mitlesen könnte.
 Nur Bob kann nun die Nachricht entschlüsseln und anschließend kann er mit Alice öffentlichem
 Schlüssel die Authentizität überprüfen. Nun kann niemand anderes Bob Nachrichten in Alice Namen
 senden. Gleiches gilt nun natürlich auch für Alice.
@@ -144,7 +145,7 @@ PubKeyAlice (Alice Nachricht signiert) = Nachricht
 
 Ist Alice Nachricht sehr groß und sie will nicht auf die komplette Nachricht
 ihren privaten Schlüssel anwenden (z. B. aus Effizienzgründen), so kann sie
-einen Hash-Wert (diese ist deutlich kürzer als die Nachricht) der Nachricht erstellen
+einen Hash-Wert (dieser ist deutlich kürzer als die Nachricht) der Nachricht erstellen
 und nur diesen signieren. Anschließend verschlüsselt sie dann die Nachricht und
 den signierten Hash-Wert und schickt diese an Bob.
 Bob weiß, dass nur Alice ihm diesen Hash-Wert übermittelt haben kann, und kann so
@@ -242,7 +243,7 @@ Signatur für Bob erstellt.
 Bob hat eine Bank gegründet, bei der Alice Kundin ist. Damit Eve ihre vertrauliche Kommunikation
 nicht mithören kann, nutzt Bob ein Zertifikat für seine Bank.
 Nachdem Bob sein Schlüsselpaar generiert hat, hat er bei der Zertifikatsstelle ein Zertifikat
-beantragt. Dazu musste er sich bei der Zertifikatsstelle authentifizieren, dass er
+beantragt. Dazu musste er sich bei einer Zertifikatsstelle authentifizieren und zeigen, dass er
 wirklich der Betreiber von Bob's Bank ist. Anschließend hat die Zertifikatsstelle ein
 Zertifikat für seine Bank erstellt, in welchem sein öffentlicher Schlüssel sowie Informationen
 über seine Bank mit dem privaten Schlüssel der Zertifizierungsstelle signiert ist.
@@ -257,7 +258,7 @@ Erstellt Eve selbst ein Zertifikat, so erkennt Alice mit dem öffentlichen Schl�
 Zertifizierungsstelle, dass dieses gefälscht ist.
 Dies funktioniert allerdings nur, weil Bob und Alice beide Faythe, dem Betreiber
 der Zertifikatsstelle vertrauen und weil dieser sehr gewissenhaft arbeitet.
-Da Alice Kunding bei Bob ist, kann sie sich über die gesichterte Verbindung nun mit ihrem
+Da Alice Kundin bei Bob ist, kann sie sich über die gesichterte Verbindung nun mit ihrem
 Password authentifizieren. Da sie den öffentlichen Schlüssel aus dem Zertifikat nutzt weiß sie,
 dass nur Bob die Nachricht lesen kann.
 Unter anderen Umständen, z. B. bei der Kommunikation zwischen Servern in einem Unternehmen

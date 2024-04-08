@@ -3,9 +3,9 @@
 \subsection{Deterministische Endliche Automaten (DEA)}
 
 Deterministische Endliche Automaten werden vorallem dazu genutzt um zu prüfen,
-ob Strings einem bestimmten Schema entsprechen, also z. B. bestimmte Buchstabenfolgen
+ob Zeichenketten einem bestimmten Schema entsprechen, also z. B. bestimmte Buchstabenfolgen
 enthalten sind (vgl. Reguläre Ausdrücke).
-Diese bestehen aus \textbf{Zuständen} $Q$ und \textbf{Übergängen} mit einem
+DEAs bestehen aus \textbf{Zuständen} $Q$ und \textbf{Übergängen} mit einem
 \textbf{Startzustand} $S$ und einem oder
 mehreren \textbf{Endzuständen} $F$. Außerdem ist für jeden Automat
 ein \textbf{Eingabealphabet} $\Sigma$ definiert, was alle Symbole enthält,
@@ -50,9 +50,9 @@ der Nullen gerade ist. Der Endzustand wird nur bei geraden Anzahlen erreicht.
 Somit eignet sich der Automat, diese zu erkennen.
 Ein Pfeil beschreibt einen Zustandsübergang. In einem bestimmten Zustand erfolgt
 der Übergang an einem Pfeil, wenn das aktuelle Eingabesymbol zum Symbol über dem Pfeil passt.
-Gibt es für diesen Zustand keinen Pfeil mit dem aktuellen Symbol, so schlägt der Vorgang
-Fäll und ein Fehlerzustand wird erreicht. Dieser wird meist nicht dargestellt, was bedeutet
-dass alle nicht definierten Übergänge in diesen führen (Wort muss mit einer 1 beginnen).
+Gibt es für einen Zustand keinen Pfeil mit dem aktuellen Symbol, so schlägt der Vorgang
+fehl und ein Fehlerzustand wird erreicht. Dieser wird meist nicht dargestellt, was bedeutet
+dass alle nicht definierten Übergänge in diesen führen (z. B. Wort muss mit einer 1 beginnen).
 
 \clearpage
 
@@ -128,8 +128,6 @@ durchgegangen werden.
 
 \clearpage
 
-Hier wird die Eingabe akzeptiert.
-
 \begin{table}[h]
     \begin{tabular}{|l|l|l|}
     \hline
@@ -145,8 +143,7 @@ Hier wird die Eingabe akzeptiert.
     \end{tabular}
 \end{table}
 
-Die Eingabe ist am Ende leer, doch kein Übergang ohne Eingabe mit $n$
-auf dem Keller existiert. Es gibt einen Fehler.
+Hier wird die Eingabe akzeptiert.
 
 \begin{table}[h]
     \begin{tabular}{|l|l|l|}
@@ -162,8 +159,8 @@ auf dem Keller existiert. Es gibt einen Fehler.
     \end{tabular}
 \end{table}
 
-Der Endzustand ist erreicht, doch die Eingabe ist noch nicht leer.
-Doch es gibt keine Übergänge vom Endzustand. Es gibt einen Fehler.
+Die Eingabe ist am Ende leer, doch kein Übergang ohne Eingabe mit $n$
+auf dem Keller existiert. Es gibt einen Fehler.
 
 \begin{table}[h]
     \begin{tabular}{|l|l|l|}
@@ -180,6 +177,9 @@ Doch es gibt keine Übergänge vom Endzustand. Es gibt einen Fehler.
     \multicolumn{3}{|l|}{Fehler} \\ \hline
 \end{tabular}
 \end{table}
+
+Der Endzustand ist erreicht, doch die Eingabe ist noch nicht leer.
+Doch es gibt keine Übergänge vom Endzustand. Es gibt einen Fehler.
 
 \clearpage
 
