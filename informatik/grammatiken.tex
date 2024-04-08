@@ -1,7 +1,102 @@
+
+
 \section{Grammatiken}
 
-schreibweise
+\subsection{Formale Sprachen}
 
-arten von grammatiken
+Formale Sprachen bestehen auf \textbf{Wörtern} die wiederum aus den Symbolen eines Alphabets
+bestehen. Automaten können diese Wörter erkennen und Grammatiken können diese
+Sprachen beschreiben (und somit festlegen).
 
-reguläre grammatiken
+Eine formale Sprache $L$ wird mit einer Grammatik $G$ beschrieben.
+Sie ist über die Mengen an \textbf{Nicht-Terminal Symbolen} $N$ und
+\textbf{Terminal Symbolen bzw. Alphabet} $T$ oder $\Sigma$ definiert. Es gibt ein \textbf{Startsymbol} $S$ und
+\textbf{Produktionsregeln}, die den Aufbau der Wörter definieren.
+
+\begin{figure}[h]
+    \centering
+    \Large
+    \begin{align*}
+        G_{Din} & = \{N, \Sigma, P, S\} \\
+        N & = \{S, T, Z\} \\
+        \Sigma & = \{A, B, C, D, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9\} \\
+        \\
+        S & \rightarrow TZ \mkern7mu | \mkern7mu T10 \\
+        T & \rightarrow A \mkern7mu | \mkern7mu B \mkern7mu | \mkern7mu C \mkern7mu | \mkern7mu D \\
+        Z & \rightarrow 0 \mkern7mu | \mkern7mu 1 \mkern7mu | \mkern7mu 2 \mkern7mu | \mkern7mu 3 \mkern7mu | \mkern7mu 4 \mkern7mu | \mkern7mu 5 \mkern7mu | \mkern7mu 6 \mkern7mu | \mkern7mu 7 \mkern7mu | \mkern7mu 8 \mkern7mu | \mkern7mu 9
+    \end{align*}
+    \caption*{\textbf{Grammatik zum erkennen von DIN Formaten}}
+\end{figure}
+
+\normalsize
+Beispielsweise beschreibt die Grammatik $G_{Din}$ die Bezeichnungen der DIN Formate.
+Vom Startsymbol $S$ ausgehend lassen sich alle Formatebezeichnungen bilden.
+Dabei ist wichtig, dass eine Grammatik alle Bezeichnungen bilden kann, aber nicht
+noch andere Wörter gebildet werden können.
+
+\clearpage
+
+\subsection{Chomsky Hierarchie}
+
+Die Hierarchie der Grammatiken nach Chomsky unterteilt Grammatiken in Typen von 0
+bis 3, wobei es mit höherer Zahl mehr Einschränkungen für die Produktionsregeln gibt.
+$\alpha, \beta, \gamma$ beschreiben in diesem Fall eine beliebige Ananeinanderreihung
+von Terminalen und Nicht-Terminalen.
+$A, B$ beschreiben Nicht-Terminal Symbole.
+$a$ beschreibt in Terminal Symbol.
+
+\textbf{Typ 0: Unbeschränkte Grammatik}
+\Large
+\begin{align*}
+    \alpha \rightarrow \beta
+\end{align*}
+\normalsize
+
+\textbf{Typ 1: Kontextsensitive Grammatik}
+\Large
+\begin{align*}
+    \alpha A \beta \rightarrow \alpha \gamma \beta
+\end{align*}
+\normalsize
+
+\textbf{Typ 2: Kontextfreie Grammatik}
+\Large
+\begin{align*}
+    A \rightarrow \gamma
+\end{align*}
+\normalsize
+
+\textbf{Typ 3: Reguläre Grammatik (rechtsregulär)}
+\Large
+\begin{align*}
+    A \rightarrow aB \\
+    A \rightarrow a \\
+    A \rightarrow \varepsilon
+\end{align*}
+\normalsize
+
+Bei der Regulären Grammatik kann diese auch linksregulär sein ($A \rightarrow Ba$),
+allerdings dürfen die Produktionsregeln nicht gemischt sein.
+Zusätzlich gibt es auch noch erweiterte Reguläre Grammatiken, die gleichwertig und
+umwandelbar in Reguläre Grammatiken sind, wo jedoch mehr als 1 Terminalsymbol zugelassen
+sind in der Beschreibung, was eine Grammatik potenziell verkürzt oder vereinfacht
+($A \rightarrow aaa...B$).
+
+\clearpage
+
+\subsection{Umwandlung zwischen Automaten und Grammatiken}
+
+Zwischen Automaten und Grammatiken lässt sich auf verschiedenen Wegen umwandeln,
+auch weil es mehr als einen Automaten oder eine Grammatik für eine Formale Sprache
+geben kann. Zusätzlich kommt es aber auch auf die Art von Grammatik und Automat an.
+Für die Umwandlung von Deterministischen Endlichen Automaten zu Rechtregulären Grammatiken
+lässt sich folgendes Schema anwenden.
+Häufig lassen sich danach oder im Prozess noch Vereinfachungen oder Verkürzungen vornehmen. 
+
+\begin{itemize}
+    \item[1.] Die Zustände werden zur Menge der Nicht-Terminal Symbole
+    \item[2.] Das Eingabealphabet $\Sigma$ der Automats wird zur Menge der Terminal Symbole
+    \item[3.] Der Anfangszustand ist das Startsymbol
+    \item[4.] Ein Zustandsübergang \large$z_1 \overset{a}{\rightarrow} z_2 \mkern7mu$\normalsize wird zur Produktionsregel \large$z_1 \rightarrow az_2\normalsize$\normalsize
+    \item[5.] Für jeden Entzustand wird eine Produktionsregel mit $\varepsilon$ benötigt (\large$z \rightarrow \varepsilon$\normalsize) 
+\end{itemize}
